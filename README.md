@@ -139,6 +139,8 @@ docker-compose up -d
 | [chinese-legal-practice](skills/legal/chinese-legal-practice/) | 中国法律实务技能集 |
 | [lawyer-douyin-livestream](skills/legal/lawyer-douyin-livestream/) | 律师抖音直播助手 |
 | [court-trial-realtime](skills/legal/court-trial-realtime/) | 庭审实时辅助 |
+| [cpa-accounting](skills/legal/cpa-accounting/) | 注册会计师知识技能 |
+| [cta-tax](skills/legal/cta-tax/) | 注册税务师知识技能 |
 
 ### 集成工具
 

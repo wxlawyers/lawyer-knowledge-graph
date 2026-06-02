@@ -138,6 +138,7 @@ docker-compose up -d
 | [business-development](skills/legal/business-development/) | 案源开发与品牌建设 |
 | [chinese-legal-practice](skills/legal/chinese-legal-practice/) | 中国法律实务技能集 |
 | [lawyer-douyin-livestream](skills/legal/lawyer-douyin-livestream/) | 律师抖音直播助手 |
+| [court-trial-realtime](skills/legal/court-trial-realtime/) | 庭审实时辅助 |
 
 ### 集成工具
 

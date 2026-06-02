@@ -141,6 +141,12 @@ docker-compose up -d
 | [court-trial-realtime](skills/legal/court-trial-realtime/) | 庭审实时辅助 |
 | [cpa-accounting](skills/legal/cpa-accounting/) | 注册会计师知识技能 |
 | [cta-tax](skills/legal/cta-tax/) | 注册税务师知识技能 |
+| [ma-restructuring](skills/legal/ma-restructuring/) | 并购重组 |
+| [bankruptcy-liquidation](skills/legal/bankruptcy-liquidation/) | 破产清算 |
+| [securities-compliance](skills/legal/securities-compliance/) | 证券合规 |
+| [real-estate-transaction](skills/legal/real-estate-transaction/) | 房产交易 |
+| [labor-compensation](skills/legal/labor-compensation/) | 劳动补偿 |
+| [forensic-accounting](skills/legal/forensic-accounting/) | 司法会计鉴定 |
 
 ### 集成工具
 

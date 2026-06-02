@@ -120,10 +120,48 @@ docker-compose up -d
 - [ ] 移动端适配
 - [ ] SaaS多租户部署
 
+## Hermes Agent 法律技能集
+
+本仓库包含面向诉讼律师的 Hermes Agent 技能，覆盖从接案到结案的全流程。
+
+| 技能 | 功能 |
+|------|------|
+| [litigation-case-analysis](skills/legal/litigation-case-analysis/) | 案件分析与请求权基础分析 |
+| [evidence-organization](skills/legal/evidence-organization/) | 证据组织与四性验证 |
+| [legal-research](skills/legal/legal-research/) | 法律检索与案例研究 |
+| [legal-document-drafting](skills/legal/legal-document-drafting/) | 法律文书撰写 |
+| [trial-preparation](skills/legal/trial-preparation/) | 庭前准备 |
+| [trial-response](skills/legal/trial-response/) | 庭审应对 |
+| [client-communication](skills/legal/client-communication/) | 当事人沟通 |
+| [case-management](skills/legal/case-management/) | 案件管理 |
+| [knowledge-accumulation](skills/legal/knowledge-accumulation/) | 知识沉淀与复用 |
+| [business-development](skills/legal/business-development/) | 案源开发与品牌建设 |
+| [chinese-legal-practice](skills/legal/chinese-legal-practice/) | 中国法律实务技能集 |
+| [lawyer-douyin-livestream](skills/legal/lawyer-douyin-livestream/) | 律师抖音直播助手 |
+
+### 集成工具
+
+- **北大法宝**：9个HTTP MCP服务（法规搜索、案例检索、法条检索等）
+- **元典智库**：5个MCP工具（法规检索、法条检索、案例检索、法规详情、法条详情）
+- **快查企业数据**：企业工商信息、司法风险、知识产权等多维数据查询
+- **法智法律检索**：法条检索、案例检索、法律文章检索
+
+### 快速使用
+
+```bash
+# 安装到 Hermes Agent
+cp -r skills/legal/* ~/.hermes/skills/legal/
+
+# 自然语言调用
+# "帮我分析这个案件的请求权基础"
+# "查一下民法典关于违约责任的规定"
+# "帮我准备一期关于劳动纠纷的直播脚本"
+```
+
 ## License
 
 MIT
 
 ## Author
 
-余律师 (yulvshi) - 江苏无锡，资深民商事律师
+余律师 (wxlawyers) - 江苏三诚律师事务所，资深诉讼律师

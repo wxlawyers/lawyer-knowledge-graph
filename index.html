@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>余正洪律师 · 涉外法律服务</title>
+    <meta name="description" content="余正洪律师，江苏三诚律师事务所，专注涉外法律服务，包括外企劳动争议、涉外合同纠纷、外企知产保护。">
+    <meta name="keywords" content="涉外律师,无锡涉外律师,外企法律顾问,涉外劳动争议,涉外合同纠纷">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏 */
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a365d;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #1a365d;
+        }
+        
+        /* 英雄区 */
+        .hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            color: #fff;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #e53e3e;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #c53030;
+        }
+        
+        /* 服务介绍 */
+        .services {
+            padding: 80px 0;
+            background: #fff;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: #1a365d;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #1a365d;
+        }
+        
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* 专业领域 */
+        .expertise {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .expertise-item {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #1a365d;
+        }
+        
+        .expertise-item h4 {
+            color: #1a365d;
+            margin-bottom: 10px;
+        }
+        
+        .expertise-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* 律师简介 */
+        .about {
+            padding: 80px 0;
+            background: #fff;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-image {
+            text-align: center;
+        }
+        
+        .about-image .placeholder {
+            width: 250px;
+            height: 300px;
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 4rem;
+            margin: 0 auto;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: #1a365d;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .credentials {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .credential-item {
+            text-align: center;
+        }
+        
+        .credential-item .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a365d;
+        }
+        
+        .credential-item .label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* 联系方式 */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            color: #fff;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-item {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-item p {
+            opacity: 0.9;
+        }
+        
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: #1a202c;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .credentials {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">余正洪律师</a>
+            <ul class="nav-links">
+                <li><a href="#services">服务介绍</a></li>
+                <li><a href="#expertise">专业领域</a></li>
+                <li><a href="#about">律师简介</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero">
+        <div class="container">
+            <h1>涉外法律服务专家</h1>
+            <p>专注外企劳动争议、涉外合同纠纷、外企知产保护，为外资企业提供专业法律解决方案</p>
+            <a href="#contact" class="btn">免费咨询</a>
+        </div>
+    </section>
+
+    <!-- 服务介绍 -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">专业涉外法律服务</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>外企劳动争议</h3>
+                    <p>外籍员工劳动合同、工资争议、社保公积金、解雇赔偿，专业代理劳动仲裁和诉讼</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>涉外合同纠纷</h3>
+                    <p>中英文合同审查、国际贸易纠纷、货款追讨、合同违约索赔，全程法律服务</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>外企知产保护</h3>
+                    <p>专利侵权、商标侵权、商业秘密保护，为外企知识产权保驾护航</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3>外企合规咨询</h3>
+                    <p>劳动用工合规、数据合规、反腐败合规，帮助企业规避法律风险</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 专业领域 -->
+    <section class="expertise" id="expertise">
+        <div class="container">
+            <h2 class="section-title">擅长领域</h2>
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <h4>涉外劳动法</h4>
+                    <p>外籍员工劳动合同、工资争议、社保公积金、解雇赔偿、劳动仲裁</p>
+                </div>
+                <div class="expertise-item">
+                    <h4>国际贸易法</h4>
+                    <p>国际货物买卖、信用证纠纷、国际运输、海关合规、贸易制裁</p>
+                </div>
+                <div class="expertise-item">
+                    <h4>外商投资法</h4>
+                    <p>外资企业设立、股权变更、公司治理、投资退出、并购重组</p>
+                </div>
+                <div class="expertise-item">
+                    <h4>国际知产法</h4>
+                    <p>专利申请、商标注册、版权保护、商业秘密、知产诉讼</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 律师简介 -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">关于律师</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="placeholder">余</div>
+                </div>
+                <div class="about-text">
+                    <h3>余正洪 律师</h3>
+                    <p>江苏三诚律师事务所合伙人，专注民商事诉讼、知识产权、公司法/商事合规领域。</p>
+                    <p>执业以来，代理了大量合同纠纷、劳动争议、知产案件，积累了丰富的诉讼经验。近年来，随着无锡外企数量增加，开始专注涉外法律服务，为外资企业提供专业法律解决方案。</p>
+                    <p>善于运用AI工具提升办案效率，结合心理学博弈技巧，为客户提供高质量的法律服务。</p>
+                    <div class="credentials">
+                        <div class="credential-item">
+                            <div class="number">10+</div>
+                            <div class="label">年执业经验</div>
+                        </div>
+                        <div class="credential-item">
+                            <div class="number">500+</div>
+                            <div class="label">代理案件</div>
+                        </div>
+                        <div class="credential-item">
+                            <div class="number">98%</div>
+                            <div class="label">客户满意度</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h4>电话咨询</h4>
+                    <p><a href="tel:13812345678">138-1234-5678</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h4>邮箱咨询</h4>
+                    <p><a href="mailto:lawyer@yuzhenghong.com">lawyer@yuzhenghong.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h4>办公地址</h4>
+                    <p>江苏省无锡市梁溪区xxx路xxx号</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <h4>微信咨询</h4>
+                    <p>扫码添加微信</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>© 2026 余正洪律师 · 江苏三诚律师事务所 · 版权所有</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

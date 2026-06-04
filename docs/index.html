@@ -1,457 +1,457 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>余正洪律师 · 涉外法律服务</title>
-    <meta name="description" content="余正洪律师，江苏三诚律师事务所，专注涉外法律服务，包括外企劳动争议、涉外合同纠纷、外企知产保护。">
-    <meta name="keywords" content="涉外律师,无锡涉外律师,外企法律顾问,涉外劳动争议,涉外合同纠纷">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        nav {
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1a365d;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #4a5568;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: #1a365d;
-        }
-        
-        .hero {
-            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
-            color: #fff;
-            padding: 150px 0 100px;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #e53e3e;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        
-        .btn:hover {
-            background: #c53030;
-        }
-        
-        .services {
-            padding: 80px 0;
-            background: #fff;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 50px;
-            color: #1a365d;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        
-        .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #1a365d;
-        }
-        
-        .service-card p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-        
-        .expertise {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-        
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .expertise-item {
-            background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid #1a365d;
-        }
-        
-        .expertise-item h4 {
-            color: #1a365d;
-            margin-bottom: 10px;
-        }
-        
-        .expertise-item p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .about {
-            padding: 80px 0;
-            background: #fff;
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .about-image {
-            text-align: center;
-        }
-        
-        .about-image img {
-            width: 250px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
-            color: #1a365d;
-            margin-bottom: 20px;
-        }
-        
-        .about-text p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .credentials {
-            display: flex;
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .credential-item {
-            text-align: center;
-        }
-        
-        .credential-item .number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1a365d;
-        }
-        
-        .credential-item .label {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .contact {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
-            color: #fff;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .contact-item {
-            text-align: center;
-            padding: 30px;
-        }
-        
-        .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .contact-item h4 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .contact-item p {
-            opacity: 0.9;
-        }
-        
-        .contact-item a {
-            color: #fff;
-            text-decoration: none;
-        }
-        
-        .contact-item a:hover {
-            text-decoration: underline;
-        }
-        
-        footer {
-            background: #1a202c;
-            color: #fff;
-            padding: 30px 0;
-            text-align: center;
-        }
-        
-        footer p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .credentials {
-                justify-content: center;
-            }
-        }
-    </style>
-</head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">余正洪律师</a>
-            <ul class="nav-links">
-                <li><a href="#services">服务介绍</a></li>
-                <li><a href="#expertise">专业领域</a></li>
-                <li><a href="#about">律师简介</a></li>
-                <li><a href="#contact">联系我们</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="container">
-            <h1>涉外法律服务专家</h1>
-            <p>专注外企劳动争议、涉外合同纠纷、外企知产保护，为外资企业提供专业法律解决方案</p>
-            <a href="#contact" class="btn">免费咨询</a>
-        </div>
-    </section>
-
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title">专业涉外法律服务</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🏢</div>
-                    <h3>外企劳动争议</h3>
-                    <p>外籍员工劳动合同、工资争议、社保公积金、解雇赔偿，专业代理劳动仲裁和诉讼</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📋</div>
-                    <h3>涉外合同纠纷</h3>
-                    <p>中英文合同审查、国际贸易纠纷、货款追讨、合同违约索赔，全程法律服务</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔒</div>
-                    <h3>外企知产保护</h3>
-                    <p>专利侵权、商标侵权、商业秘密保护，为外企知识产权保驾护航</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚖️</div>
-                    <h3>外企合规咨询</h3>
-                    <p>劳动用工合规、数据合规、反腐败合规，帮助企业规避法律风险</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="expertise" id="expertise">
-        <div class="container">
-            <h2 class="section-title">擅长领域</h2>
-            <div class="expertise-grid">
-                <div class="expertise-item">
-                    <h4>涉外劳动法</h4>
-                    <p>外籍员工劳动合同、工资争议、社保公积金、解雇赔偿、劳动仲裁</p>
-                </div>
-                <div class="expertise-item">
-                    <h4>国际贸易法</h4>
-                    <p>国际货物买卖、信用证纠纷、国际运输、海关合规、贸易制裁</p>
-                </div>
-                <div class="expertise-item">
-                    <h4>外商投资法</h4>
-                    <p>外资企业设立、股权变更、公司治理、投资退出、并购重组</p>
-                </div>
-                <div class="expertise-item">
-                    <h4>国际知产法</h4>
-                    <p>专利申请、商标注册、版权保护、商业秘密、知产诉讼</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="container">
-            <h2 class="section-title">关于律师</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="images/53cf9ca97a0323e3d54d6d9269872ea9.jpg" alt="余正洪律师">
-                </div>
-                <div class="about-text">
-                    <h3>余正洪 律师</h3>
-                    <p>江苏三诚律师事务所合伙人，专注民商事诉讼、知识产权、公司法/商事合规领域。</p>
-                    <p>执业以来，代理了大量合同纠纷、劳动争议、知产案件，积累了丰富的诉讼经验。近年来，随着无锡外企数量增加，开始专注涉外法律服务，为外资企业提供专业法律解决方案。</p>
-                    <p>善于运用AI工具提升办案效率，结合心理学博弈技巧，为客户提供高质量的法律服务。</p>
-                    <div class="credentials">
-                        <div class="credential-item">
-                            <div class="number">15+</div>
-                            <div class="label">年执业经验</div>
-                        </div>
-                        <div class="credential-item">
-                            <div class="number">500+</div>
-                            <div class="label">代理案件</div>
-                        </div>
-                        <div class="credential-item">
-                            <div class="number">98%</div>
-                            <div class="label">客户满意度</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">联系我们</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="contact-icon">📞</div>
-                    <h4>电话咨询</h4>
-                    <p><a href="tel:13601539126">136-0153-9126</a></p>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <h4>邮箱咨询</h4>
-                    <p><a href="mailto:yuzhenghong86@icloud.com">yuzhenghong86@icloud.com</a></p>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <h4>办公地址</h4>
-                    <p>无锡市梁溪区清扬路金匮苑31-3号</p>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">💬</div>
-                    <h4>微信咨询</h4>
-                    <p>微信：wuxilawyers</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>© 2026 余正洪律师 · 江苏三诚律师事务所 · 版权所有</p>
-        </div>
-    </footer>
-
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+     1|     1|<!DOCTYPE html>
+     2|     2|<html lang="zh-CN">
+     3|     3|<head>
+     4|     4|    <meta charset="UTF-8">
+     5|     5|    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     6|     6|    <title>余正洪律师 · 涉外法律服务</title>
+     7|     7|    <meta name="description" content="余正洪律师，江苏三诚律师事务所，专注涉外法律服务，包括外企劳动争议、涉外合同纠纷、外企知产保护。">
+     8|     8|    <meta name="keywords" content="涉外律师,无锡涉外律师,外企法律顾问,涉外劳动争议,涉外合同纠纷">
+     9|     9|    <style>
+    10|    10|        * {
+    11|    11|            margin: 0;
+    12|    12|            padding: 0;
+    13|    13|            box-sizing: border-box;
+    14|    14|        }
+    15|    15|        
+    16|    16|        body {
+    17|    17|            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    18|    18|            line-height: 1.6;
+    19|    19|            color: #333;
+    20|    20|            background-color: #f8f9fa;
+    21|    21|        }
+    22|    22|        
+    23|    23|        .container {
+    24|    24|            max-width: 1200px;
+    25|    25|            margin: 0 auto;
+    26|    26|            padding: 0 20px;
+    27|    27|        }
+    28|    28|        
+    29|    29|        nav {
+    30|    30|            background: #fff;
+    31|    31|            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    32|    32|            position: fixed;
+    33|    33|            width: 100%;
+    34|    34|            top: 0;
+    35|    35|            z-index: 1000;
+    36|    36|        }
+    37|    37|        
+    38|    38|        .nav-container {
+    39|    39|            display: flex;
+    40|    40|            justify-content: space-between;
+    41|    41|            align-items: center;
+    42|    42|            padding: 15px 20px;
+    43|    43|            max-width: 1200px;
+    44|    44|            margin: 0 auto;
+    45|    45|        }
+    46|    46|        
+    47|    47|        .logo {
+    48|    48|            font-size: 1.5rem;
+    49|    49|            font-weight: 700;
+    50|    50|            color: #1a365d;
+    51|    51|            text-decoration: none;
+    52|    52|        }
+    53|    53|        
+    54|    54|        .nav-links {
+    55|    55|            display: flex;
+    56|    56|            list-style: none;
+    57|    57|            gap: 30px;
+    58|    58|        }
+    59|    59|        
+    60|    60|        .nav-links a {
+    61|    61|            text-decoration: none;
+    62|    62|            color: #4a5568;
+    63|    63|            font-weight: 500;
+    64|    64|            transition: color 0.3s;
+    65|    65|        }
+    66|    66|        
+    67|    67|        .nav-links a:hover {
+    68|    68|            color: #1a365d;
+    69|    69|        }
+    70|    70|        
+    71|    71|        .hero {
+    72|    72|            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+    73|    73|            color: #fff;
+    74|    74|            padding: 150px 0 100px;
+    75|    75|            text-align: center;
+    76|    76|        }
+    77|    77|        
+    78|    78|        .hero h1 {
+    79|    79|            font-size: 2.5rem;
+    80|    80|            margin-bottom: 20px;
+    81|    81|            font-weight: 700;
+    82|    82|        }
+    83|    83|        
+    84|    84|        .hero p {
+    85|    85|            font-size: 1.2rem;
+    86|    86|            opacity: 0.9;
+    87|    87|            max-width: 600px;
+    88|    88|            margin: 0 auto 30px;
+    89|    89|        }
+    90|    90|        
+    91|    91|        .btn {
+    92|    92|            display: inline-block;
+    93|    93|            padding: 12px 30px;
+    94|    94|            background: #e53e3e;
+    95|    95|            color: #fff;
+    96|    96|            text-decoration: none;
+    97|    97|            border-radius: 5px;
+    98|    98|            font-weight: 600;
+    99|    99|            transition: background 0.3s;
+   100|   100|        }
+   101|   101|        
+   102|   102|        .btn:hover {
+   103|   103|            background: #c53030;
+   104|   104|        }
+   105|   105|        
+   106|   106|        .services {
+   107|   107|            padding: 80px 0;
+   108|   108|            background: #fff;
+   109|   109|        }
+   110|   110|        
+   111|   111|        .section-title {
+   112|   112|            text-align: center;
+   113|   113|            font-size: 2rem;
+   114|   114|            margin-bottom: 50px;
+   115|   115|            color: #1a365d;
+   116|   116|        }
+   117|   117|        
+   118|   118|        .services-grid {
+   119|   119|            display: grid;
+   120|   120|            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   121|   121|            gap: 30px;
+   122|   122|        }
+   123|   123|        
+   124|   124|        .service-card {
+   125|   125|            background: #f8f9fa;
+   126|   126|            padding: 30px;
+   127|   127|            border-radius: 10px;
+   128|   128|            text-align: center;
+   129|   129|            transition: transform 0.3s, box-shadow 0.3s;
+   130|   130|        }
+   131|   131|        
+   132|   132|        .service-card:hover {
+   133|   133|            transform: translateY(-5px);
+   134|   134|            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+   135|   135|        }
+   136|   136|        
+   137|   137|        .service-icon {
+   138|   138|            font-size: 3rem;
+   139|   139|            margin-bottom: 20px;
+   140|   140|        }
+   141|   141|        
+   142|   142|        .service-card h3 {
+   143|   143|            font-size: 1.3rem;
+   144|   144|            margin-bottom: 15px;
+   145|   145|            color: #1a365d;
+   146|   146|        }
+   147|   147|        
+   148|   148|        .service-card p {
+   149|   149|            color: #666;
+   150|   150|            font-size: 0.95rem;
+   151|   151|        }
+   152|   152|        
+   153|   153|        .expertise {
+   154|   154|            padding: 80px 0;
+   155|   155|            background: #f8f9fa;
+   156|   156|        }
+   157|   157|        
+   158|   158|        .expertise-grid {
+   159|   159|            display: grid;
+   160|   160|            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   161|   161|            gap: 20px;
+   162|   162|        }
+   163|   163|        
+   164|   164|        .expertise-item {
+   165|   165|            background: #fff;
+   166|   166|            padding: 25px;
+   167|   167|            border-radius: 8px;
+   168|   168|            border-left: 4px solid #1a365d;
+   169|   169|        }
+   170|   170|        
+   171|   171|        .expertise-item h4 {
+   172|   172|            color: #1a365d;
+   173|   173|            margin-bottom: 10px;
+   174|   174|        }
+   175|   175|        
+   176|   176|        .expertise-item p {
+   177|   177|            color: #666;
+   178|   178|            font-size: 0.9rem;
+   179|   179|        }
+   180|   180|        
+   181|   181|        .about {
+   182|   182|            padding: 80px 0;
+   183|   183|            background: #fff;
+   184|   184|        }
+   185|   185|        
+   186|   186|        .about-content {
+   187|   187|            display: grid;
+   188|   188|            grid-template-columns: 1fr 2fr;
+   189|   189|            gap: 50px;
+   190|   190|            align-items: center;
+   191|   191|        }
+   192|   192|        
+   193|   193|        .about-image {
+   194|   194|            text-align: center;
+   195|   195|        }
+   196|   196|        
+   197|   197|        .about-image img {
+   198|   198|            width: 250px;
+   199|   199|            height: 300px;
+   200|   200|            object-fit: cover;
+   201|   201|            border-radius: 10px;
+   202|   202|        }
+   203|   203|        
+   204|   204|        .about-text h3 {
+   205|   205|            font-size: 1.8rem;
+   206|   206|            color: #1a365d;
+   207|   207|            margin-bottom: 20px;
+   208|   208|        }
+   209|   209|        
+   210|   210|        .about-text p {
+   211|   211|            color: #666;
+   212|   212|            margin-bottom: 15px;
+   213|   213|        }
+   214|   214|        
+   215|   215|        .credentials {
+   216|   216|            display: flex;
+   217|   217|            gap: 30px;
+   218|   218|            margin-top: 30px;
+   219|   219|        }
+   220|   220|        
+   221|   221|        .credential-item {
+   222|   222|            text-align: center;
+   223|   223|        }
+   224|   224|        
+   225|   225|        .credential-item .number {
+   226|   226|            font-size: 2rem;
+   227|   227|            font-weight: 700;
+   228|   228|            color: #1a365d;
+   229|   229|        }
+   230|   230|        
+   231|   231|        .credential-item .label {
+   232|   232|            color: #666;
+   233|   233|            font-size: 0.9rem;
+   234|   234|        }
+   235|   235|        
+   236|   236|        .contact {
+   237|   237|            padding: 80px 0;
+   238|   238|            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+   239|   239|            color: #fff;
+   240|   240|        }
+   241|   241|        
+   242|   242|        .contact-grid {
+   243|   243|            display: grid;
+   244|   244|            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   245|   245|            gap: 30px;
+   246|   246|        }
+   247|   247|        
+   248|   248|        .contact-item {
+   249|   249|            text-align: center;
+   250|   250|            padding: 30px;
+   251|   251|        }
+   252|   252|        
+   253|   253|        .contact-icon {
+   254|   254|            font-size: 2.5rem;
+   255|   255|            margin-bottom: 15px;
+   256|   256|        }
+   257|   257|        
+   258|   258|        .contact-item h4 {
+   259|   259|            margin-bottom: 10px;
+   260|   260|            font-size: 1.2rem;
+   261|   261|        }
+   262|   262|        
+   263|   263|        .contact-item p {
+   264|   264|            opacity: 0.9;
+   265|   265|        }
+   266|   266|        
+   267|   267|        .contact-item a {
+   268|   268|            color: #fff;
+   269|   269|            text-decoration: none;
+   270|   270|        }
+   271|   271|        
+   272|   272|        .contact-item a:hover {
+   273|   273|            text-decoration: underline;
+   274|   274|        }
+   275|   275|        
+   276|   276|        footer {
+   277|   277|            background: #1a202c;
+   278|   278|            color: #fff;
+   279|   279|            padding: 30px 0;
+   280|   280|            text-align: center;
+   281|   281|        }
+   282|   282|        
+   283|   283|        footer p {
+   284|   284|            opacity: 0.8;
+   285|   285|            font-size: 0.9rem;
+   286|   286|        }
+   287|   287|        
+   288|   288|        @media (max-width: 768px) {
+   289|   289|            .nav-links {
+   290|   290|                display: none;
+   291|   291|            }
+   292|   292|            
+   293|   293|            .hero h1 {
+   294|   294|                font-size: 2rem;
+   295|   295|            }
+   296|   296|            
+   297|   297|            .about-content {
+   298|   298|                grid-template-columns: 1fr;
+   299|   299|                text-align: center;
+   300|   300|            }
+   301|   301|            
+   302|   302|            .credentials {
+   303|   303|                justify-content: center;
+   304|   304|            }
+   305|   305|        }
+   306|   306|    </style>
+   307|   307|</head>
+   308|   308|<body>
+   309|   309|    <nav>
+   310|   310|        <div class="nav-container">
+   311|   311|            <a href="#" class="logo">余正洪律师</a>
+   312|   312|            <ul class="nav-links">
+   313|   313|                <li><a href="#services">服务介绍</a></li>
+   314|   314|                <li><a href="#expertise">专业领域</a></li>
+   315|   315|                <li><a href="#about">律师简介</a></li>
+   316|   316|                <li><a href="#contact">联系我们</a></li>
+   317|   317|            </ul>
+   318|   318|        </div>
+   319|   319|    </nav>
+   320|   320|
+   321|   321|    <section class="hero">
+   322|   322|        <div class="container">
+   323|   323|            <h1>涉外法律服务专家</h1>
+   324|   324|            <p>专注外企劳动争议、涉外合同纠纷、外企知产保护，为外资企业提供专业法律解决方案</p>
+   325|   325|            <a href="#contact" class="btn">免费咨询</a>
+   326|   326|        </div>
+   327|   327|    </section>
+   328|   328|
+   329|   329|    <section class="services" id="services">
+   330|   330|        <div class="container">
+   331|   331|            <h2 class="section-title">专业涉外法律服务</h2>
+   332|   332|            <div class="services-grid">
+   333|   333|                <div class="service-card">
+   334|   334|                    <div class="service-icon">🏢</div>
+   335|   335|                    <h3>外企劳动争议</h3>
+   336|   336|                    <p>外籍员工劳动合同、工资争议、社保公积金、解雇赔偿，专业代理劳动仲裁和诉讼</p>
+   337|   337|                </div>
+   338|   338|                <div class="service-card">
+   339|   339|                    <div class="service-icon">📋</div>
+   340|   340|                    <h3>涉外合同纠纷</h3>
+   341|   341|                    <p>中英文合同审查、国际贸易纠纷、货款追讨、合同违约索赔，全程法律服务</p>
+   342|   342|                </div>
+   343|   343|                <div class="service-card">
+   344|   344|                    <div class="service-icon">🔒</div>
+   345|   345|                    <h3>外企知产保护</h3>
+   346|   346|                    <p>专利侵权、商标侵权、商业秘密保护，为外企知识产权保驾护航</p>
+   347|   347|                </div>
+   348|   348|                <div class="service-card">
+   349|   349|                    <div class="service-icon">⚖️</div>
+   350|   350|                    <h3>外企合规咨询</h3>
+   351|   351|                    <p>劳动用工合规、数据合规、反腐败合规，帮助企业规避法律风险</p>
+   352|   352|                </div>
+   353|   353|            </div>
+   354|   354|        </div>
+   355|   355|    </section>
+   356|   356|
+   357|   357|    <section class="expertise" id="expertise">
+   358|   358|        <div class="container">
+   359|   359|            <h2 class="section-title">擅长领域</h2>
+   360|   360|            <div class="expertise-grid">
+   361|   361|                <div class="expertise-item">
+   362|   362|                    <h4>涉外劳动法</h4>
+   363|   363|                    <p>外籍员工劳动合同、工资争议、社保公积金、解雇赔偿、劳动仲裁</p>
+   364|   364|                </div>
+   365|   365|                <div class="expertise-item">
+   366|   366|                    <h4>国际贸易法</h4>
+   367|   367|                    <p>国际货物买卖、信用证纠纷、国际运输、海关合规、贸易制裁</p>
+   368|   368|                </div>
+   369|   369|                <div class="expertise-item">
+   370|   370|                    <h4>外商投资法</h4>
+   371|   371|                    <p>外资企业设立、股权变更、公司治理、投资退出、并购重组</p>
+   372|   372|                </div>
+   373|   373|                <div class="expertise-item">
+   374|   374|                    <h4>国际知产法</h4>
+   375|   375|                    <p>专利申请、商标注册、版权保护、商业秘密、知产诉讼</p>
+   376|   376|                </div>
+   377|   377|            </div>
+   378|   378|        </div>
+   379|   379|    </section>
+   380|   380|
+   381|   381|    <section class="about" id="about">
+   382|   382|        <div class="container">
+   383|   383|            <h2 class="section-title">关于律师</h2>
+   384|   384|            <div class="about-content">
+   385|   385|                <div class="about-image">
+   386|   386|                    <img src="images/53cf9ca97a0323e3d54d6d9269872ea9.jpg" alt="余正洪律师">
+   387|   387|                </div>
+   388|   388|                <div class="about-text">
+   389|   389|                    <h3>余正洪 律师</h3>
+   390|   390|                    <p>江苏三诚律师事务所资深律师，专注民商事诉讼、知识产权、公司法/商事合规领域。</p>
+   391|   391|                    <p>执业以来，代理了大量合同纠纷、劳动争议、知产案件，积累了丰富的诉讼经验。近年来，随着无锡外企数量增加，开始专注涉外法律服务，为外资企业提供专业法律解决方案。</p>
+   392|   392|                    <p>善于运用AI工具提升办案效率，结合心理学博弈技巧，为客户提供高质量的法律服务。</p>
+   393|   393|                    <div class="credentials">
+   394|   394|                        <div class="credential-item">
+   395|   395|                            <div class="number">15+</div>
+   396|   396|                            <div class="label">年执业经验</div>
+   397|   397|                        </div>
+   398|   398|                        <div class="credential-item">
+   399|   399|                            <div class="number">500+</div>
+   400|   400|                            <div class="label">代理案件</div>
+   401|   401|                        </div>
+   402|   402|                        <div class="credential-item">
+   403|   403|                            <div class="number">98%</div>
+   404|   404|                            <div class="label">客户满意度</div>
+   405|   405|                        </div>
+   406|   406|                    </div>
+   407|   407|                </div>
+   408|   408|            </div>
+   409|   409|        </div>
+   410|   410|    </section>
+   411|   411|
+   412|   412|    <section class="contact" id="contact">
+   413|   413|        <div class="container">
+   414|   414|            <h2 class="section-title">联系我们</h2>
+   415|   415|            <div class="contact-grid">
+   416|   416|                <div class="contact-item">
+   417|   417|                    <div class="contact-icon">📞</div>
+   418|   418|                    <h4>电话咨询</h4>
+   419|   419|                    <p><a href="tel:13601539126">136-0153-9126</a></p>
+   420|   420|                </div>
+   421|   421|                <div class="contact-item">
+   422|   422|                    <div class="contact-icon">📧</div>
+   423|   423|                    <h4>邮箱咨询</h4>
+   424|   424|                    <p><a href="mailto:yuzhenghong86@icloud.com">yuzhenghong86@icloud.com</a></p>
+   425|   425|                </div>
+   426|   426|                <div class="contact-item">
+   427|   427|                    <div class="contact-icon">📍</div>
+   428|   428|                    <h4>办公地址</h4>
+   429|   429|                    <p>无锡市梁溪区清扬路金匮苑31-3号</p>
+   430|   430|                </div>
+   431|   431|                <div class="contact-item">
+   432|   432|                    <div class="contact-icon">💬</div>
+   433|   433|                    <h4>微信咨询</h4>
+   434|   434|                    <p>微信：wuxilawyers</p>
+   435|   435|                </div>
+   436|   436|            </div>
+   437|   437|        </div>
+   438|   438|    </section>
+   439|   439|
+   440|   440|    <footer>
+   441|   441|        <div class="container">
+   442|   442|            <p>© 2026 余正洪律师 · 江苏三诚律师事务所 · 版权所有</p>
+   443|   443|        </div>
+   444|   444|    </footer>
+   445|   445|
+   446|   446|    <script>
+   447|   447|        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+   448|   448|            anchor.addEventListener('click', function (e) {
+   449|   449|                e.preventDefault();
+   450|   450|                document.querySelector(this.getAttribute('href')).scrollIntoView({
+   451|   451|                    behavior: 'smooth'
+   452|   452|                });
+   453|   453|            });
+   454|   454|        });
+   455|   455|    </script>
+   456|   456|</body>
+   457|   457|</html>

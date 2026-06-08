@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>余正洪律师 · 要素式起诉状助手</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; color: #333; background: #f5f7fa; line-height: 1.6; }
+
+/* Navigation */
+nav { background: #1a365d; color: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+nav .logo { font-size: 20px; font-weight: 700; }
+nav .logo span { color: #ffd700; }
+nav .nav-links a { color: #fff; text-decoration: none; margin-left: 24px; font-size: 14px; opacity: 0.85; transition: opacity 0.2s; }
+nav .nav-links a:hover { opacity: 1; }
+
+/* Hero */
+.hero { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 100%); color: #fff; text-align: center; padding: 60px 24px 50px; }
+.hero h1 { font-size: 32px; margin-bottom: 16px; }
+.hero h1 span { color: #ffd700; }
+.hero p { max-width: 720px; margin: 0 auto 12px; font-size: 16px; opacity: 0.9; }
+.hero .hint { font-size: 13px; opacity: 0.7; margin-top: 8px; }
+
+/* Search */
+.search-section { max-width: 640px; margin: -24px auto 24px; padding: 0 20px; position: relative; z-index: 10; }
+.search-box { width: 100%; padding: 14px 20px 14px 48px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 16px; outline: none; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: border-color 0.2s; }
+.search-box:focus { border-color: #1a365d; }
+.search-icon { position: absolute; left: 36px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #999; }
+
+/* Filter */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 0 20px; margin-bottom: 32px; }
+.filter-btn { padding: 8px 20px; border: 2px solid #1a365d; background: #fff; color: #1a365d; border-radius: 24px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.2s; }
+.filter-btn:hover, .filter-btn.active { background: #1a365d; color: #fff; }
+
+/* Cards grid */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; padding: 0 24px 48px; }
+.card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.3s, transform 0.3s; cursor: pointer; }
+.card:hover { box-shadow: 0 8px 30px rgba(26,54,93,0.15); transform: translateY(-2px); }
+.card-header { background: #1a365d; color: #fff; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; }
+.card-header h3 { font-size: 17px; }
+.card-header .tag { background: #ffd700; color: #1a365d; font-size: 12px; padding: 3px 10px; border-radius: 12px; font-weight: 700; }
+.card-body { padding: 18px 20px; }
+.card-body .scene { font-size: 14px; color: #666; margin-bottom: 12px; }
+.card-body .arrow { color: #1a365d; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.card-body .arrow::before { content: "▸ "; }
+.card-detail { display: none; padding: 0 20px 18px; }
+.card-detail.open { display: block; }
+.card-detail table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.card-detail table th, .card-detail table td { padding: 8px 12px; border: 1px solid #e2e8f0; text-align: left; }
+.card-detail table th { background: #f7fafc; color: #1a365d; font-weight: 600; width: 40%; }
+.card-detail table td { color: #444; }
+.card-footer { padding: 0 20px 18px; }
+.btn-detail { display: block; width: 100%; padding: 10px; background: #1a365d; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+.btn-detail:hover { background: #2a4a7f; }
+.hidden { display: none !important; }
+
+/* Modal */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+.modal-overlay.active { display: flex; }
+.modal { background: #fff; border-radius: 16px; max-width: 600px; width: 100%; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.modal-header { background: #1a365d; color: #fff; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; border-radius: 16px 16px 0 0; position: sticky; top: 0; }
+.modal-header h2 { font-size: 18px; }
+.modal-close { background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; line-height: 1; opacity: 0.7; transition: opacity 0.2s; }
+.modal-close:hover { opacity: 1; }
+.modal-body { padding: 24px; }
+.modal-body table { width: 100%; border-collapse: collapse; }
+.modal-body table th, .modal-body table td { padding: 12px 16px; border: 1px solid #e2e8f0; text-align: left; font-size: 14px; }
+.modal-body table th { background: #f7fafc; color: #1a365d; font-weight: 600; width: 35%; }
+.modal-body .modal-hint { margin-top: 16px; padding: 12px 16px; background: #fffbeb; border-left: 4px solid #ffd700; border-radius: 4px; font-size: 13px; color: #92400e; }
+
+/* Footer */
+footer { background: #1a365d; color: #fff; padding: 40px 24px 24px; }
+.footer-content { max-width: 800px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; }
+.footer-block h4 { color: #ffd700; margin-bottom: 8px; font-size: 15px; }
+.footer-block p { font-size: 14px; opacity: 0.85; margin-bottom: 4px; }
+.footer-disclaimer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 13px; opacity: 0.6; }
+
+@media (max-width: 768px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 24px; }
+  .filter-bar { gap: 6px; }
+  .filter-btn { padding: 6px 14px; font-size: 13px; }
+  nav .nav-links { display: none; }
+  .footer-content { flex-direction: column; align-items: center; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">⚖️ 余正洪律师 · <span>要素式起诉状助手</span></div>
+  <div class="nav-links">
+    <a href="#cases">案由查询</a>
+    <a href="#contact">联系方式</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>什么是<span>要素式起诉状</span>？</h1>
+  <p>要素式起诉状是人民法院推行的新型起诉状格式，将传统长篇叙述改为结构化要素填写，让诉讼请求更加清晰明确。</p>
+  <p>本工具整理了常见案由的要素清单，帮助您快速了解各类案件需要准备的关键信息。</p>
+  <p class="hint">👇 下方按案由分类查找，点击卡片展开要素清单</p>
+</section>
+
+<section class="search-section" id="cases">
+  <span class="search-icon">🔍</span>
+  <input type="text" class="search-box" id="searchInput" placeholder="输入案由关键词搜索，如：借贷、劳动、离婚…">
+</section>
+
+<section class="filter-bar" id="filterBar">
+  <button class="filter-btn active" data-cat="all">全部</button>
+  <button class="filter-btn" data-cat="合同纠纷">合同纠纷</button>
+  <button class="filter-btn" data-cat="劳动争议">劳动争议</button>
+  <button class="filter-btn" data-cat="侵权纠纷">侵权纠纷</button>
+  <button class="filter-btn" data-cat="婚姻家事">婚姻家事</button>
+  <button class="filter-btn" data-cat="金融纠纷">金融纠纷</button>
+  <button class="filter-btn" data-cat="知产纠纷">知产纠纷</button>
+</section>
+
+<section class="cards-grid" id="cardsGrid"></section>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle"></h2>
+      <button class="modal-close" id="modalClose">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="footer-content">
+    <div class="footer-block">
+      <h4>🏛️ 律师信息</h4>
+      <p>余正洪律师</p>
+      <p>江苏三诚律师事务所</p>
+    </div>
+    <div class="footer-block">
+      <h4>📍 地址</h4>
+      <p>无锡市清扬路金匮苑31-3号</p>
+    </div>
+    <div class="footer-block">
+      <h4>📞 联系电话</h4>
+      <p>136-0153-9126</p>
+    </div>
+  </div>
+  <p class="footer-disclaimer">⚠️ 声明：本工具仅供参考，具体格式以各地法院要求为准。如需法律帮助，请联系专业律师。</p>
+</footer>
+
+<script>
+const data = [
+  {
+    name: "民间借贷纠纷",
+    cat: "合同纠纷",
+    scene: "自然人之间的借款合同纠纷，包括有息借贷和无息借贷、有无担保等情形。",
+    elements: [
+      ["借款金额", "填写实际出借的本金数额（大写+小写）"],
+      ["借款日期", "借款实际交付的日期"],
+      ["还款期限", "合同约定的还款日期或还款期限"],
+      ["约定利率", "年利率/月利率，注意是否超过法定上限"],
+      ["已还金额", "被告已归还的本金和利息总额"],
+      ["担保方式", "保证/抵押/质押/无担保"],
+      ["逾期情况", "逾期起始日期、逾期天数、逾期利息计算方式"]
+    ]
+  },
+  {
+    name: "买卖合同纠纷",
+    cat: "合同纠纷",
+    scene: "因货物买卖产生的价款支付、质量瑕疵、交付违约等争议。",
+    elements: [
+      ["合同签订日期", "双方签订买卖合同的日期"],
+      ["标的物名称规格", "买卖货物的名称、型号、规格、数量"],
+      ["价款金额", "合同约定的总价款"],
+      ["付款方式", "转账/现金/分期/承兑等"],
+      ["交付时间", "约定的交付日期及实际交付情况"],
+      ["质量标准", "约定的质量标准或国家标准/行业标准"],
+      ["违约情形", "具体违约行为描述及违约责任约定"]
+    ]
+  },
+  {
+    name: "劳动争议（违法解除）",
+    cat: "劳动争议",
+    scene: "用人单位违法解除或终止劳动合同，劳动者主张赔偿金或恢复劳动关系。",
+    elements: [
+      ["入职日期", "劳动者入职用人单位的日期"],
+      ["离职日期", "劳动关系解除或终止的日期"],
+      ["月工资标准", "解除前12个月平均工资"],
+      ["工作年限", "在本单位连续工作的年限"],
+      ["解除原因", "用人单位给出的解除理由"],
+      ["社保缴纳情况", "是否依法缴纳社会保险"],
+      ["是否签书面合同", "是否签订书面劳动合同及签订时间"]
+    ]
+  },
+  {
+    name: "交通事故责任纠纷",
+    cat: "侵权纠纷",
+    scene: "机动车交通事故引发的人身损害赔偿和财产损失赔偿纠纷。",
+    elements: [
+      ["事故日期", "交通事故发生的具体日期"],
+      ["责任认定", "交警部门出具的事故责任认定书结论"],
+      ["伤残等级", "司法鉴定确定的伤残等级（如有）"],
+      ["医疗费总额", "已发生的医疗费用总额及后续治疗费"],
+      ["误工天数", "医嘱或鉴定确定的误工天数"],
+      ["护理天数", "护理期限及护理人数"],
+      ["被扶养人情况", "被扶养人人数、年龄、劳动能力等"]
+    ]
+  },
+  {
+    name: "离婚纠纷",
+    cat: "婚姻家事",
+    scene: "夫妻一方或双方要求解除婚姻关系，涉及子女抚养、财产分割、债务承担等。",
+    elements: [
+      ["结婚日期", "登记结婚的日期"],
+      ["子女信息", "子女姓名、出生日期、目前抚养情况"],
+      ["共同财产清单", "房产、车辆、存款、股票等共同财产明细"],
+      ["共同债务", "共同债务的金额、用途、债权人"],
+      ["过错情形", "家暴/出轨/赌博等过错行为（如有）"],
+      ["抚养费主张", "主张的抚养费金额及支付方式"]
+    ]
+  },
+  {
+    name: "信用卡纠纷",
+    cat: "金融纠纷",
+    scene: "持卡人未按约定偿还信用卡透支款项，银行提起诉讼追偿。",
+    elements: [
+      ["开卡日期", "办理信用卡的日期"],
+      ["透支本金", "透支未还的本金金额"],
+      ["利息金额", "截至起诉日的利息总额"],
+      ["违约金", "产生的违约金或滞纳金金额"],
+      ["最低还款额", "每月最低应还款金额"],
+      ["最后还款日", "最后还款日及逾期起始日"]
+    ]
+  },
+  {
+    name: "物业服务合同纠纷",
+    cat: "合同纠纷",
+    scene: "业主未按约定缴纳物业费，物业公司提起诉讼追缴欠费。",
+    elements: [
+      ["物业费标准", "合同约定的物业费单价（元/㎡/月）"],
+      ["欠费期间", "欠缴物业费的起止时间段"],
+      ["欠费金额", "欠缴物业费总额"],
+      ["服务内容", "物业公司提供的具体服务项目"],
+      ["催缴情况", "催缴通知的方式、时间、次数"]
+    ]
+  },
+  {
+    name: "知识产权侵权纠纷",
+    cat: "知产纠纷",
+    scene: "因专利、商标、著作权被他人侵犯而提起的侵权诉讼。",
+    elements: [
+      ["权利类型", "专利权/商标权/著作权"],
+      ["权利证书号", "专利号/商标注册号/著作权登记号"],
+      ["侵权行为描述", "被控侵权行为的具体表现"],
+      ["侵权获利/损失", "因侵权造成的实际损失或侵权人获利"],
+      ["合理开支", "律师费、公证费、调查费等维权费用"]
+    ]
+  },
+  {
+    name: "建设工程合同纠纷",
+    cat: "合同纠纷",
+    scene: "建设工程施工合同的价款结算、工期延误、质量争议等纠纷。",
+    elements: [
+      ["工程名称", "建设项目的名称和地点"],
+      ["合同价款", "合同约定的工程总价款"],
+      ["结算金额", "经审定的工程结算金额"],
+      ["已付款", "发包方已支付的工程款总额"],
+      ["欠付金额", "尚欠的工程款数额"],
+      ["竣工日期", "实际竣工验收日期"],
+      ["质量争议", "工程质量问题的具体描述（如有）"]
+    ]
+  },
+  {
+    name: "公司股权转让纠纷",
+    cat: "合同纠纷",
+    scene: "股东之间或股东与第三人之间因股权转让产生的价款、效力等争议。",
+    elements: [
+      ["转让方", "出让股权的股东信息"],
+      ["受让方", "受让股权的主体信息"],
+      ["转让比例", "转让的股权比例或出资额"],
+      ["转让价格", "约定的股权转让价款"],
+      ["付款情况", "已付款项、付款方式、未付金额"],
+      ["工商变更情况", "是否完成工商变更登记"]
+    ]
+  }
+];
+
+const grid = document.getElementById('cardsGrid');
+const searchInput = document.getElementById('searchInput');
+const filterBar = document.getElementById('filterBar');
+const modalOverlay = document.getElementById('modalOverlay');
+let activeCat = 'all';
+
+function renderCards() {
+  const keyword = searchInput.value.trim().toLowerCase();
+  grid.innerHTML = '';
+  let visible = 0;
+  data.forEach((item, idx) => {
+    if (activeCat !== 'all' && item.cat !== activeCat) return;
+    if (keyword && !item.name.toLowerCase().includes(keyword) && !item.scene.toLowerCase().includes(keyword) && !item.cat.toLowerCase().includes(keyword)) return;
+    visible++;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-header">
+        <h3>${item.name}</h3>
+        <span class="tag">${item.cat}</span>
+      </div>
+      <div class="card-body">
+        <p class="scene">${item.scene}</p>
+        <p class="arrow">点击展开要素清单</p>
+      </div>
+      <div class="card-detail" id="detail-${idx}">
+        <table>
+          <thead><tr><th>要素名称</th><th>填写说明</th></tr></thead>
+          <tbody>${item.elements.map(e => `<tr><td>${e[0]}</td><td>${e[1]}</td></tr>`).join('')}</tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        <button class="btn-detail" onclick="event.stopPropagation(); openModal(${idx})">📋 查看详细模板</button>
+      </div>
+    `;
+    card.addEventListener('click', () => {
+      const detail = document.getElementById('detail-' + idx);
+      detail.classList.toggle('open');
+      const arrow = card.querySelector('.arrow');
+      arrow.textContent = detail.classList.contains('open') ? '点击收起要素清单' : '点击展开要素清单';
+    });
+    grid.appendChild(card);
+  });
+  if (visible === 0) {
+    grid.innerHTML = '<p style="text-align:center;color:#999;padding:40px;font-size:16px;">未找到匹配的案由，请尝试其他关键词</p>';
+  }
+}
+
+function openModal(idx) {
+  const item = data[idx];
+  document.getElementById('modalTitle').textContent = item.name + ' — 要素清单';
+  document.getElementById('modalBody').innerHTML = `
+    <table>
+      <thead><tr><th>要素名称</th><th>填写说明</th></tr></thead>
+      <tbody>${item.elements.map((e, i) => `<tr><td><strong>${i+1}. ${e[0]}</strong></td><td>${e[1]}</td></tr>`).join('')}</tbody>
+    </table>
+    <div class="modal-hint">💡 提示：以上要素为常见填写项目，实际起诉时请根据当地法院发布的最新要素式起诉状模板进行填写。</div>
+  `;
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modalOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+
+filterBar.addEventListener('click', e => {
+  if (!e.target.classList.contains('filter-btn')) return;
+  filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  activeCat = e.target.dataset.cat;
+  renderCards();
+});
+
+searchInput.addEventListener('input', renderCards);
+
+renderCards();
+</script>
+</body>
+</html>

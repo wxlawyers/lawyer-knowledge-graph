@@ -101,11 +101,29 @@
             z-index: 0;
         }
         
+        .hero-bg video,
         .hero-bg img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.3);
+        }
+        
+        .hero-bg video {
+            filter: brightness(0.4);
+        }
+        
+        .hero-bg img.fallback {
+            display: none;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .hero-bg video {
+                display: none;
+            }
+            .hero-bg img.fallback {
+                display: block;
+                filter: brightness(0.3);
+            }
         }
         
         .hero-content {
@@ -639,10 +657,13 @@
         </div>
     </nav>
     
-    <!-- 英雄区 - 全屏照片背景 -->
+    <!-- 英雄区 - 全屏视频背景 -->
     <section class="hero" id="hero">
         <div class="hero-bg">
-            <img src="images/a5d7756219a5eef0277fdbc376db9137.jpg" alt="余正洪律师">
+            <video autoplay muted loop playsinline>
+                <source src="images/涉外律师形象展示片.mp4" type="video/mp4">
+            </video>
+            <img src="images/a5d7756219a5eef0277fdbc376db9137.jpg" alt="余正洪律师" class="fallback">
         </div>
         <div class="hero-content">
             <div class="hero-subtitle">International Legal Services</div>

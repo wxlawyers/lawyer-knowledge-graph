@@ -21,6 +21,22 @@ nav .nav-links a:hover { opacity: 1; }
 .hero h1 span { color: #ffd700; }
 .hero p { max-width: 720px; margin: 0 auto 12px; font-size: 16px; opacity: 0.9; }
 .hero .hint { font-size: 13px; opacity: 0.7; margin-top: 8px; }
+.hero .stats { display: flex; justify-content: center; gap: 32px; margin-top: 20px; flex-wrap: wrap; }
+.hero .stat-item { font-size: 15px; opacity: 0.9; }
+.hero .stat-item strong { color: #ffd700; font-size: 20px; }
+
+/* Guide Steps */
+.guide-section { max-width: 900px; margin: 0 auto 32px; padding: 0 24px; }
+.guide-section h2 { text-align: center; font-size: 22px; color: #1a365d; margin-bottom: 24px; }
+.guide-steps { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+.step-card { flex: 1; min-width: 220px; max-width: 280px; padding: 28px 20px; border-radius: 12px; text-align: center; color: #fff; position: relative; }
+.step-card:nth-child(1) { background: linear-gradient(135deg, #1a365d, #2a4a7f); }
+.step-card:nth-child(2) { background: linear-gradient(135deg, #2a4a7f, #3a5a9f); }
+.step-card:nth-child(3) { background: linear-gradient(135deg, #3a5a9f, #4a6abf); }
+.step-card .step-icon { font-size: 36px; margin-bottom: 12px; }
+.step-card .step-num { position: absolute; top: 12px; right: 16px; background: #ffd700; color: #1a365d; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+.step-card h3 { font-size: 16px; margin-bottom: 8px; }
+.step-card p { font-size: 13px; opacity: 0.9; }
 
 /* Search */
 .search-section { max-width: 640px; margin: -24px auto 24px; padding: 0 20px; position: relative; z-index: 10; }
@@ -44,6 +60,7 @@ nav .nav-links a:hover { opacity: 1; }
 .card-body .scene { font-size: 14px; color: #666; margin-bottom: 12px; }
 .card-body .arrow { color: #1a365d; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
 .card-body .arrow::before { content: "▸ "; }
+.card-body .law-summary { font-size: 12px; color: #1a365d; background: #f0f4ff; padding: 6px 10px; border-radius: 6px; margin-bottom: 8px; }
 .card-detail { display: none; padding: 0 20px 18px; }
 .card-detail.open { display: block; }
 .card-detail table { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -51,6 +68,7 @@ nav .nav-links a:hover { opacity: 1; }
 .card-detail table th { background: #f7fafc; color: #1a365d; font-weight: 600; width: 40%; }
 .card-detail table td { color: #444; }
 .card-footer { padding: 0 20px 18px; }
+.card-footer .evidence-count { font-size: 12px; color: #666; margin-bottom: 10px; }
 .btn-detail { display: block; width: 100%; padding: 10px; background: #1a365d; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
 .btn-detail:hover { background: #2a4a7f; }
 .hidden { display: none !important; }
@@ -68,6 +86,26 @@ nav .nav-links a:hover { opacity: 1; }
 .modal-body table th, .modal-body table td { padding: 12px 16px; border: 1px solid #e2e8f0; text-align: left; font-size: 14px; }
 .modal-body table th { background: #f7fafc; color: #1a365d; font-weight: 600; width: 35%; }
 .modal-body .modal-hint { margin-top: 16px; padding: 12px 16px; background: #fffbeb; border-left: 4px solid #ffd700; border-radius: 4px; font-size: 13px; color: #92400e; }
+.modal-body .modal-section { margin-top: 20px; }
+.modal-body .modal-section h3 { font-size: 15px; color: #1a365d; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid #ffd700; }
+.modal-body .modal-section ul { list-style: none; padding: 0; }
+.modal-body .modal-section li { padding: 6px 0; font-size: 14px; color: #444; }
+.modal-body .modal-section li::before { content: "✦ "; color: #ffd700; }
+.modal-body .modal-section .law-item { padding: 8px 12px; background: #f0f4ff; border-radius: 6px; margin-bottom: 6px; font-size: 14px; color: #1a365d; }
+.modal-body .modal-section .tip-item { padding: 8px 12px; background: #fffbeb; border-left: 3px solid #ffd700; margin-bottom: 6px; font-size: 13px; color: #92400e; }
+.btn-print { display: block; width: 100%; padding: 12px; background: #ffd700; color: #1a365d; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 16px; transition: background 0.2s; }
+.btn-print:hover { background: #f0c800; }
+
+/* FAQ */
+.faq-section { max-width: 800px; margin: 0 auto 48px; padding: 0 24px; }
+.faq-section h2 { text-align: center; font-size: 22px; color: #1a365d; margin-bottom: 24px; }
+.faq-item { background: #fff; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); overflow: hidden; }
+.faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: #1a365d; font-size: 15px; }
+.faq-question:hover { background: #f7fafc; }
+.faq-question .faq-icon { font-size: 20px; transition: transform 0.3s; color: #ffd700; }
+.faq-question.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-answer-inner { padding: 0 20px 16px; font-size: 14px; color: #555; line-height: 1.8; }
 
 /* Footer */
 footer { background: #1a365d; color: #fff; padding: 40px 24px 24px; }
@@ -83,6 +121,9 @@ footer { background: #1a365d; color: #fff; padding: 40px 24px 24px; }
   .filter-btn { padding: 6px 14px; font-size: 13px; }
   nav .nav-links { display: none; }
   .footer-content { flex-direction: column; align-items: center; text-align: center; }
+  .guide-steps { flex-direction: column; align-items: center; }
+  .step-card { max-width: 100%; }
+  .hero .stats { gap: 16px; }
 }
 </style>
 </head>
@@ -91,7 +132,9 @@ footer { background: #1a365d; color: #fff; padding: 40px 24px 24px; }
 <nav>
   <div class="logo">⚖️ 余正洪律师 · <span>要素式起诉状助手</span></div>
   <div class="nav-links">
+    <a href="#guide">使用指南</a>
     <a href="#cases">案由查询</a>
+    <a href="#faq">常见问题</a>
     <a href="#contact">联系方式</a>
   </div>
 </nav>
@@ -100,7 +143,36 @@ footer { background: #1a365d; color: #fff; padding: 40px 24px 24px; }
   <h1>什么是<span>要素式起诉状</span>？</h1>
   <p>要素式起诉状是人民法院推行的新型起诉状格式，将传统长篇叙述改为结构化要素填写，让诉讼请求更加清晰明确。</p>
   <p>本工具整理了常见案由的要素清单，帮助您快速了解各类案件需要准备的关键信息。</p>
+  <div class="stats">
+    <span class="stat-item">覆盖 <strong>18</strong> 种常见案由</span>
+    <span class="stat-item">共计 <strong>150+</strong> 关键要素</span>
+    <span class="stat-item">📅 实时更新</span>
+  </div>
   <p class="hint">👇 下方按案由分类查找，点击卡片展开要素清单</p>
+</section>
+
+<section class="guide-section" id="guide">
+  <h2>📌 使用指南</h2>
+  <div class="guide-steps">
+    <div class="step-card">
+      <span class="step-num">1</span>
+      <div class="step-icon">🔍</div>
+      <h3>选择案由</h3>
+      <p>在下方搜索或筛选找到您需要的案由类型</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">2</span>
+      <div class="step-icon">📋</div>
+      <h3>查看要素</h3>
+      <p>点击卡片查看该类案件需要填写的关键要素</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">3</span>
+      <div class="step-icon">📁</div>
+      <h3>准备材料</h3>
+      <p>根据要素清单和证据指引准备起诉材料</p>
+    </div>
+  </div>
 </section>
 
 <section class="search-section" id="cases">
@@ -116,6 +188,8 @@ footer { background: #1a365d; color: #fff; padding: 40px 24px 24px; }
   <button class="filter-btn" data-cat="婚姻家事">婚姻家事</button>
   <button class="filter-btn" data-cat="金融纠纷">金融纠纷</button>
   <button class="filter-btn" data-cat="知产纠纷">知产纠纷</button>
+  <button class="filter-btn" data-cat="建设工程">建设工程</button>
+  <button class="filter-btn" data-cat="公司股权">公司股权</button>
 </section>
 
 <section class="cards-grid" id="cardsGrid"></section>
@@ -129,6 +203,45 @@ footer { background: #1a365d; color: #fff; padding: 40px 24px 24px; }
     <div class="modal-body" id="modalBody"></div>
   </div>
 </div>
+
+<section class="faq-section" id="faq">
+  <h2>❓ 常见问题</h2>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>什么是要素式起诉状？</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer"><div class="faq-answer-inner">要素式起诉状是人民法院推行的新型起诉状格式，将传统长篇叙述式的起诉状改为结构化、表格化的要素填写方式。当事人只需按照要求逐项填写关键信息，无需撰写大段的事实陈述，大大降低了起诉门槛，提高了立案效率。</div></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>哪些法院要求使用要素式起诉状？</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer"><div class="faq-answer-inner">目前上海、北京、深圳、杭州等地法院已在部分案由中推行要素式起诉状，最高人民法院也在逐步推广。各地推行进度不同，建议在起诉前先咨询当地法院或查询法院官网了解最新要求。</div></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>要素式起诉状和传统起诉状有什么区别？</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer"><div class="faq-answer-inner">传统起诉状采用叙述式写作，需要当事人自行组织语言描述事实和理由；要素式起诉状则采用表格式结构，将案件关键信息分解为具体要素，当事人只需逐项填写。要素式起诉状更加简洁明了，便于法官快速把握案件要点，也降低了当事人的写作难度。</div></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>填写要素式起诉状需要注意什么？</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer"><div class="faq-answer-inner">要素填写要精确具体，避免模糊表述。例如金额需写明大小写，日期需精确到日。所有填写内容应有相应证据支撑，不能虚构事实。不同法院的模板可能略有差异，请务必使用当地法院指定的最新版本模板。填写完成后建议仔细核对，确保信息准确无误。</div></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>当事人可以自己填写要素式起诉状吗？</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer"><div class="faq-answer-inner">可以，要素式起诉状的设计初衷就是降低起诉门槛，方便当事人自行填写。但对于复杂案件，建议咨询专业律师，以确保要素填写完整准确、诉讼请求合理合法。律师可以帮助评估案件风险、确定最优诉讼策略，最大限度维护当事人的合法权益。</div></div>
+  </div>
+</section>
 
 <footer id="contact">
   <div class="footer-content">
@@ -163,7 +276,10 @@ const data = [
       ["已还金额", "被告已归还的本金和利息总额"],
       ["担保方式", "保证/抵押/质押/无担保"],
       ["逾期情况", "逾期起始日期、逾期天数、逾期利息计算方式"]
-    ]
+    ],
+    evidence: ["借款合同/借条", "转账记录", "催款记录（短信/微信/函件）", "利息计算明细", "担保合同（如有）"],
+    law: ["民法典第667条（借款合同）", "民法典第680条（利率限制）", "最高法院民间借贷司法解释"],
+    tips: ["注意3年诉讼时效", "保留转账凭证原件"]
   },
   {
     name: "买卖合同纠纷",
@@ -177,7 +293,10 @@ const data = [
       ["交付时间", "约定的交付日期及实际交付情况"],
       ["质量标准", "约定的质量标准或国家标准/行业标准"],
       ["违约情形", "具体违约行为描述及违约责任约定"]
-    ]
+    ],
+    evidence: ["买卖合同", "送货单/签收单", "转账凭证", "催款记录", "质量检验报告（如有）"],
+    law: ["民法典第595条（买卖合同）", "民法典第577条（违约责任）"],
+    tips: ["注意收货时及时验收并保留签收单", "质量问题应在合理期限内通知对方"]
   },
   {
     name: "劳动争议（违法解除）",
@@ -191,7 +310,10 @@ const data = [
       ["解除原因", "用人单位给出的解除理由"],
       ["社保缴纳情况", "是否依法缴纳社会保险"],
       ["是否签书面合同", "是否签订书面劳动合同及签订时间"]
-    ]
+    ],
+    evidence: ["劳动合同", "工资条/银行流水", "解除劳动合同通知书", "社保缴纳记录", "考勤记录"],
+    law: ["劳动合同法第47条（经济补偿）", "劳动合同法第87条（违法解除赔偿金）", "劳动合同法第48条（继续履行）"],
+    tips: ["劳动争议需先经劳动仲裁前置程序", "注意1年仲裁时效"]
   },
   {
     name: "交通事故责任纠纷",
@@ -205,7 +327,10 @@ const data = [
       ["误工天数", "医嘱或鉴定确定的误工天数"],
       ["护理天数", "护理期限及护理人数"],
       ["被扶养人情况", "被扶养人人数、年龄、劳动能力等"]
-    ]
+    ],
+    evidence: ["交通事故认定书", "医疗费发票及病历", "伤残鉴定报告", "误工证明", "收入证明"],
+    law: ["民法典第1179条（人身损害赔偿）", "道路交通安全法第76条"],
+    tips: ["治疗终结后再做伤残鉴定", "保留所有医疗费票据原件"]
   },
   {
     name: "离婚纠纷",
@@ -218,7 +343,10 @@ const data = [
       ["共同债务", "共同债务的金额、用途、债权人"],
       ["过错情形", "家暴/出轨/赌博等过错行为（如有）"],
       ["抚养费主张", "主张的抚养费金额及支付方式"]
-    ]
+    ],
+    evidence: ["结婚证", "子女出生证明", "财产证明（房产证、行驶证等）", "收入证明", "过错证据（如有）"],
+    law: ["民法典第1079条（离婚条件）", "民法典第1084条（子女抚养）", "民法典第1087条（财产分割）"],
+    tips: ["第一次起诉离婚如无充分证据可能不判离", "注意收集共同财产线索"]
   },
   {
     name: "信用卡纠纷",
@@ -231,7 +359,10 @@ const data = [
       ["违约金", "产生的违约金或滞纳金金额"],
       ["最低还款额", "每月最低应还款金额"],
       ["最后还款日", "最后还款日及逾期起始日"]
-    ]
+    ],
+    evidence: ["信用卡申请表/领用合约", "账单明细", "催收记录", "还款记录"],
+    law: ["民法典第674条（借款利息）", "商业银行信用卡业务监督管理办法"],
+    tips: ["注意核对利息和违约金计算是否正确", "可尝试与银行协商分期还款"]
   },
   {
     name: "物业服务合同纠纷",
@@ -243,7 +374,10 @@ const data = [
       ["欠费金额", "欠缴物业费总额"],
       ["服务内容", "物业公司提供的具体服务项目"],
       ["催缴情况", "催缴通知的方式、时间、次数"]
-    ]
+    ],
+    evidence: ["物业服务合同", "物业费缴费通知", "催缴函件", "房产证/购房合同"],
+    law: ["民法典第944条（物业费缴纳）", "物业管理条例"],
+    tips: ["物业服务质量不达标可作为抗辩理由", "注意收集物业服务不到位的证据"]
   },
   {
     name: "知识产权侵权纠纷",
@@ -255,11 +389,14 @@ const data = [
       ["侵权行为描述", "被控侵权行为的具体表现"],
       ["侵权获利/损失", "因侵权造成的实际损失或侵权人获利"],
       ["合理开支", "律师费、公证费、调查费等维权费用"]
-    ]
+    ],
+    evidence: ["权利证书", "侵权产品实物/截图", "公证书", "损失或获利证据", "维权合理开支凭证"],
+    law: ["著作权法第54条", "商标法第63条", "专利法第71条"],
+    tips: ["建议起诉前先做公证保全", "注意选择合适的管辖法院"]
   },
   {
     name: "建设工程合同纠纷",
-    cat: "合同纠纷",
+    cat: "建设工程",
     scene: "建设工程施工合同的价款结算、工期延误、质量争议等纠纷。",
     elements: [
       ["工程名称", "建设项目的名称和地点"],
@@ -269,11 +406,14 @@ const data = [
       ["欠付金额", "尚欠的工程款数额"],
       ["竣工日期", "实际竣工验收日期"],
       ["质量争议", "工程质量问题的具体描述（如有）"]
-    ]
+    ],
+    evidence: ["施工合同", "工程结算书/审计报告", "付款凭证", "竣工验收报告", "签证单/变更单"],
+    law: ["民法典第799条（竣工验收）", "民法典第793条（工程价款）", "建工司法解释"],
+    tips: ["建设工程纠纷可主张优先受偿权", "注意28天优先受偿权行使期限"]
   },
   {
     name: "公司股权转让纠纷",
-    cat: "合同纠纷",
+    cat: "公司股权",
     scene: "股东之间或股东与第三人之间因股权转让产生的价款、效力等争议。",
     elements: [
       ["转让方", "出让股权的股东信息"],
@@ -282,7 +422,141 @@ const data = [
       ["转让价格", "约定的股权转让价款"],
       ["付款情况", "已付款项、付款方式、未付金额"],
       ["工商变更情况", "是否完成工商变更登记"]
-    ]
+    ],
+    evidence: ["股权转让协议", "股东会决议", "工商变更登记材料", "付款凭证", "公司章程"],
+    law: ["公司法第84条（股权转让）", "民法典第502条（合同生效）"],
+    tips: ["注意其他股东的优先购买权", "及时办理工商变更登记"]
+  },
+  {
+    name: "房屋租赁合同纠纷",
+    cat: "合同纠纷",
+    scene: "房屋租赁过程中因租金支付、违约退租、押金退还等产生的争议。",
+    elements: [
+      ["出租方/承租方", "租赁双方的姓名/名称及身份信息"],
+      ["租赁物地址", "租赁房屋的具体地址"],
+      ["租期", "租赁合同约定的起止日期"],
+      ["租金标准", "每月/每年租金金额及支付方式"],
+      ["押金金额", "租赁押金数额"],
+      ["欠付租金", "承租方欠缴的租金金额及期间"],
+      ["违约情形", "违约行为的具体描述"],
+      ["房屋现状", "房屋目前使用状态及交还情况"]
+    ],
+    evidence: ["租赁合同", "租金支付记录", "房屋交接清单", "催缴通知", "房屋现状照片"],
+    law: ["民法典第703条（租赁合同）", "民法典第722条（承租人违约）", "民法典第733条（租赁物返还）"],
+    tips: ["退租时做好房屋交接并拍照留证", "押金退还需依据合同约定"]
+  },
+  {
+    name: "追偿权纠纷",
+    cat: "合同纠纷",
+    scene: "担保人代偿债务后向原债务人行使追偿权引发的纠纷。",
+    elements: [
+      ["原债务人", "原债务的债务人信息"],
+      ["担保人", "承担担保责任的主体信息"],
+      ["代偿金额", "担保人实际代偿的金额"],
+      ["代偿日期", "担保人实际代偿的日期"],
+      ["追偿依据", "代偿行为的合同或法律依据"],
+      ["原债务金额", "原始债务的总金额及构成"]
+    ],
+    evidence: ["担保合同", "代偿凭证/转账记录", "原债务合同", "债权人出具的收据", "代偿通知"],
+    law: ["民法典第700条（保证人追偿权）", "民法典第392条（混合担保追偿）"],
+    tips: ["追偿权诉讼时效从代偿之日起算3年", "保留代偿的完整凭证"]
+  },
+  {
+    name: "生命权身体权健康权纠纷",
+    cat: "侵权纠纷",
+    scene: "因侵害他人生命权、身体权、健康权引发的人身损害赔偿纠纷。",
+    elements: [
+      ["受害人信息", "受害人的姓名、年龄、职业等基本信息"],
+      ["侵权行为描述", "侵权行为的具体经过和表现形式"],
+      ["损害后果", "造成的具体损害结果"],
+      ["医疗费总额", "已发生及后续的医疗费用"],
+      ["伤残等级", "司法鉴定确定的伤残等级"],
+      ["误工费", "因误工减少的收入"],
+      ["护理费", "护理期限及护理费用"],
+      ["精神损害", "精神损害程度及赔偿主张"]
+    ],
+    evidence: ["医疗费票据及病历", "伤残鉴定报告", "误工及收入证明", "护理费凭证", "侵权行为证据（监控/证人等）"],
+    law: ["民法典第1179条（人身损害赔偿范围）", "民法典第1183条（精神损害赔偿）"],
+    tips: ["及时报警并保留就医记录", "伤残鉴定建议在治疗终结后进行"]
+  },
+  {
+    name: "名誉权纠纷",
+    cat: "侵权纠纷",
+    scene: "因他人捏造、散布虚假事实损害名誉引发的侵权纠纷。",
+    elements: [
+      ["侵权言论内容", "被控侵权言论/文章的具体内容"],
+      ["传播范围", "侵权言论的传播渠道和影响范围"],
+      ["造成损害", "对受害人名誉造成的具体损害"],
+      ["删除请求", "要求删除/停止侵权的具体主张"],
+      ["精神损害赔偿", "主张的精神损害抚慰金金额"]
+    ],
+    evidence: ["侵权言论截图/公证", "传播范围证据", "损害后果证明", "删除通知/交涉记录"],
+    law: ["民法典第1024条（名誉权保护）", "民法典第1183条（精神损害赔偿）"],
+    tips: ["建议及时对侵权内容做公证保全", "注意区分正当评论与名誉侵权的界限"]
+  },
+  {
+    name: "遗嘱继承纠纷",
+    cat: "婚姻家事",
+    scene: "因遗嘱效力、遗产分配等引发的继承纠纷。",
+    elements: [
+      ["被继承人死亡日期", "被继承人去世的具体日期"],
+      ["遗嘱形式", "自书遗嘱/代书遗嘱/公证遗嘱/口头遗嘱"],
+      ["遗嘱内容", "遗嘱中关于遗产分配的具体内容"],
+      ["继承人信息", "法定继承人及遗嘱继承人的信息"],
+      ["遗产清单", "房产、存款、车辆等遗产明细"],
+      ["遗嘱效力争议", "对遗嘱效力存在争议的具体事项"]
+    ],
+    evidence: ["遗嘱原件", "被继承人死亡证明", "亲属关系证明", "遗产产权证明", "遗嘱见证人证言（如有）"],
+    law: ["民法典第1134-1139条（遗嘱形式）", "民法典第1123条（继承方式）", "民法典第1143条（遗嘱无效情形）"],
+    tips: ["不同形式遗嘱的效力要件不同，务必核实", "口头遗嘱仅在危急情况下有效"]
+  },
+  {
+    name: "合伙协议纠纷",
+    cat: "合同纠纷",
+    scene: "合伙人之间因出资、盈亏分配、退伙等事项产生的争议。",
+    elements: [
+      ["合伙人信息", "全体合伙人的姓名/名称及出资情况"],
+      ["出资比例", "各合伙人的出资额及比例"],
+      ["合伙期限", "合伙协议约定的经营期限"],
+      ["盈亏分配", "利润分配和亏损分担的比例及方式"],
+      ["退伙条件", "退伙的条件、程序及财产结算方式"],
+      ["争议事项", "引发纠纷的具体事项描述"]
+    ],
+    evidence: ["合伙协议", "出资凭证", "账册/财务记录", "退伙通知/协议", "盈亏分配记录"],
+    law: ["民法典第967条（合伙合同）", "民法典第972条（利润分配）", "民法典第976条（退伙）"],
+    tips: ["建议签订书面合伙协议并明确约定", "合伙清算时注意债权债务处理"]
+  },
+  {
+    name: "产品责任纠纷",
+    cat: "侵权纠纷",
+    scene: "因产品存在缺陷导致人身或财产损害引发的侵权纠纷。",
+    elements: [
+      ["产品名称型号", "缺陷产品的名称、品牌、型号"],
+      ["购买日期", "购买该产品的日期及渠道"],
+      ["缺陷描述", "产品缺陷的具体表现形式"],
+      ["损害后果", "因产品缺陷造成的损害结果"],
+      ["因果关系", "产品缺陷与损害后果之间的因果关系"],
+      ["生产者/销售者信息", "产品生产者和销售者的名称、地址"]
+    ],
+    evidence: ["购买凭证/发票", "缺陷产品实物/照片", "损害鉴定报告", "医疗记录（人身损害时）", "产品说明书/宣传材料"],
+    law: ["民法典第1202条（产品生产者责任）", "民法典第1203条（产品销售者责任）", "产品质量法"],
+    tips: ["产品责任适用无过错责任原则", "注意保留缺陷产品不要擅自处理"]
+  },
+  {
+    name: "网络侵权纠纷",
+    cat: "知产纠纷",
+    scene: "因网络平台上发生的著作权、名誉权等侵权行为引发的纠纷。",
+    elements: [
+      ["侵权平台", "实施侵权行为的网络平台名称"],
+      ["侵权内容", "被控侵权的具体内容描述"],
+      ["URL链接", "侵权内容的网页链接地址"],
+      ["公证证据", "对侵权内容进行公证保全的情况"],
+      ["损害赔偿", "因网络侵权造成的损失或侵权获利"],
+      ["删除请求", "要求平台或侵权人删除侵权内容的主张"]
+    ],
+    evidence: ["侵权内容公证书", "网页截图及URL", "权利证明文件", "损失证据", "平台通知/投诉记录"],
+    law: ["民法典第1194-1197条（网络侵权）", "信息网络传播权保护条例"],
+    tips: ["及时对侵权网页做公证保全", "可先向平台发送删除通知"]
   }
 ];
 
@@ -300,6 +574,8 @@ function renderCards() {
     if (activeCat !== 'all' && item.cat !== activeCat) return;
     if (keyword && !item.name.toLowerCase().includes(keyword) && !item.scene.toLowerCase().includes(keyword) && !item.cat.toLowerCase().includes(keyword)) return;
     visible++;
+    const lawSummary = item.law ? item.law.slice(0, 2).join('；') : '';
+    const evidenceCount = item.evidence ? item.evidence.length : 0;
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
@@ -309,6 +585,7 @@ function renderCards() {
       </div>
       <div class="card-body">
         <p class="scene">${item.scene}</p>
+        ${lawSummary ? `<p class="law-summary">📜 ${lawSummary}</p>` : ''}
         <p class="arrow">点击展开要素清单</p>
       </div>
       <div class="card-detail" id="detail-${idx}">
@@ -318,6 +595,7 @@ function renderCards() {
         </table>
       </div>
       <div class="card-footer">
+        ${evidenceCount > 0 ? `<p class="evidence-count">📋 ${evidenceCount}项关键证据</p>` : ''}
         <button class="btn-detail" onclick="event.stopPropagation(); openModal(${idx})">📋 查看详细模板</button>
       </div>
     `;
@@ -336,14 +614,39 @@ function renderCards() {
 
 function openModal(idx) {
   const item = data[idx];
-  document.getElementById('modalTitle').textContent = item.name + ' — 要素清单';
-  document.getElementById('modalBody').innerHTML = `
+  let html = `
     <table>
       <thead><tr><th>要素名称</th><th>填写说明</th></tr></thead>
       <tbody>${item.elements.map((e, i) => `<tr><td><strong>${i+1}. ${e[0]}</strong></td><td>${e[1]}</td></tr>`).join('')}</tbody>
     </table>
-    <div class="modal-hint">💡 提示：以上要素为常见填写项目，实际起诉时请根据当地法院发布的最新要素式起诉状模板进行填写。</div>
   `;
+  if (item.evidence && item.evidence.length > 0) {
+    html += `
+    <div class="modal-section">
+      <h3>📂 关键证据清单</h3>
+      <ul>${item.evidence.map(e => `<li>${e}</li>`).join('')}</ul>
+    </div>`;
+  }
+  if (item.law && item.law.length > 0) {
+    html += `
+    <div class="modal-section">
+      <h3>📜 主要法律依据</h3>
+      ${item.law.map(l => `<div class="law-item">${l}</div>`).join('')}
+    </div>`;
+  }
+  if (item.tips && item.tips.length > 0) {
+    html += `
+    <div class="modal-section">
+      <h3>💡 实务提示</h3>
+      ${item.tips.map(t => `<div class="tip-item">${t}</div>`).join('')}
+    </div>`;
+  }
+  html += `
+    <div class="modal-hint">💡 提示：以上要素为常见填写项目，实际起诉时请根据当地法院发布的最新要素式起诉状模板进行填写。</div>
+    <button class="btn-print" onclick="window.print()">🖨️ 打印此模板</button>
+  `;
+  document.getElementById('modalTitle').textContent = item.name + ' — 要素清单';
+  document.getElementById('modalBody').innerHTML = html;
   modalOverlay.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -351,6 +654,16 @@ function openModal(idx) {
 function closeModal() {
   modalOverlay.classList.remove('active');
   document.body.style.overflow = '';
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  const answer = el.nextElementSibling;
+  if (el.classList.contains('open')) {
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  } else {
+    answer.style.maxHeight = '0';
+  }
 }
 
 document.getElementById('modalClose').addEventListener('click', closeModal);

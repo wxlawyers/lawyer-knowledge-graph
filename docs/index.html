@@ -912,41 +912,84 @@
             </div>
             <div class="contact-form">
                 <h3>在线预约咨询</h3>
-                <form>
+                <form id="consultationForm" onsubmit="handleSubmit(event)">
                     <div class="form-row">
                         <div class="form-group">
                             <label>姓名 *</label>
-                            <input type="text" placeholder="请输入您的姓名" required>
+                            <input type="text" name="name" placeholder="请输入您的姓名" required>
                         </div>
                         <div class="form-group">
                             <label>电话 *</label>
-                            <input type="tel" placeholder="请输入您的电话" required>
+                            <input type="tel" name="phone" placeholder="请输入您的电话" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>邮箱</label>
-                        <input type="email" placeholder="请输入您的邮箱">
+                        <input type="email" name="email" placeholder="请输入您的邮箱">
                     </div>
                     <div class="form-group">
                         <label>咨询类型</label>
-                        <select style="width:100%;padding:14px 16px;border:1px solid #ddd;font-size:0.95rem;font-family:'Inter',sans-serif;">
+                        <select name="type" style="width:100%;padding:14px 16px;border:1px solid #ddd;font-size:0.95rem;font-family:'Inter',sans-serif;">
                             <option>请选择咨询类型</option>
-                            <option>外企劳动争议</option>
+                            <option>企业出海</option>
                             <option>涉外合同纠纷</option>
+                            <option>跨境投资与并购</option>
+                            <option>跨境争议解决</option>
                             <option>外企知产保护</option>
                             <option>外企合规咨询</option>
+                            <option>私人财富管理与家事法</option>
+                            <option>外企劳动争议</option>
                             <option>其他法律问题</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>咨询内容 *</label>
-                        <textarea placeholder="请描述您的法律问题" required></textarea>
+                        <textarea name="message" placeholder="请描述您的法律问题" required></textarea>
                     </div>
                     <button type="submit" class="btn-submit">提交预约</button>
+                    <div id="formSuccess" style="display:none;margin-top:20px;padding:15px;background:#d4edda;color:#155724;border:1px solid #c3e6cb;text-align:center;">
+                        ✅ 预约已提交成功！我们将尽快与您联系。
+                    </div>
                 </form>
             </div>
         </div>
     </section>
+    
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('consultationForm');
+            const formData = new FormData(form);
+            
+            // 构建邮件内容
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const email = formData.get('email') || '未提供';
+            const type = formData.get('type');
+            const message = formData.get('message');
+            
+            const subject = encodeURIComponent('法律咨询预约 - ' + name);
+            const body = encodeURIComponent(
+                '姓名: ' + name + '\n' +
+                '电话: ' + phone + '\n' +
+                '邮箱: ' + email + '\n' +
+                '咨询类型: ' + type + '\n' +
+                '咨询内容:\n' + message
+            );
+            
+            // 打开邮件客户端
+            window.open('mailto:yuzhenghong86@icloud.com?subject=' + subject + '&body=' + body);
+            
+            // 显示成功提示
+            document.getElementById('formSuccess').style.display = 'block';
+            form.reset();
+            
+            // 3秒后隐藏提示
+            setTimeout(function() {
+                document.getElementById('formSuccess').style.display = 'none';
+            }, 5000);
+        }
+    </script>
     
     <!-- 页脚 -->
     <footer>

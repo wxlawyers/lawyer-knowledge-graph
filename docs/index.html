@@ -22,7 +22,7 @@
             --gold: #c9a96e;
             --light-gold: #d4b87a;
             --white: #ffffff;
-            --light-gray: #f5f5f5;
+            --light-gray: #f8f9fa;
             --text: #333333;
             --text-light: #666666;
         }
@@ -36,45 +36,44 @@
         
         /* 导航栏 */
         nav {
-            background: rgba(10, 22, 40, 0.95);
-            backdrop-filter: blur(10px);
+            background: var(--navy);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            padding: 0 50px;
+            padding: 0 60px;
         }
         
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 18px 0;
             max-width: 1400px;
             margin: 0 auto;
         }
         
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 600;
             color: var(--gold);
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
         
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 40px;
+            gap: 35px;
         }
         
         .nav-links a {
             text-decoration: none;
             color: var(--white);
             font-weight: 400;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
             transition: color 0.3s;
         }
         
@@ -82,75 +81,45 @@
             color: var(--gold);
         }
         
-        /* 英雄区 - 全屏照片背景 */
+        /* 英雄区 - 照片+文字左右布局 */
         .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 700px;
+            padding-top: 80px;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            overflow: hidden;
+            background: var(--navy);
         }
         
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        
-        .hero-bg video,
-        .hero-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .hero-bg video {
-            filter: brightness(0.4);
-        }
-        
-        .hero-bg img.fallback {
-            display: none;
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-            .hero-bg video {
-                display: none;
-            }
-            .hero-bg img.fallback {
-                display: block;
-                filter: brightness(0.3);
-            }
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
         }
         
         .hero-content {
-            position: relative;
-            z-index: 1;
-            padding: 0 80px;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
+            color: var(--white);
         }
         
         .hero-subtitle {
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: var(--gold);
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
+            font-size: 3.8rem;
             font-weight: 600;
             color: var(--white);
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: 30px;
         }
         
@@ -159,12 +128,12 @@
         }
         
         .hero p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 600px;
-            margin-bottom: 50px;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 500px;
+            margin-bottom: 45px;
             font-weight: 300;
-            line-height: 1.8;
+            line-height: 1.9;
         }
         
         .hero-buttons {
@@ -174,12 +143,12 @@
         
         .btn-primary {
             display: inline-block;
-            padding: 18px 45px;
+            padding: 16px 40px;
             background: var(--gold);
             color: var(--navy);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             letter-spacing: 1px;
             transition: all 0.3s;
         }
@@ -191,25 +160,89 @@
         
         .btn-secondary {
             display: inline-block;
-            padding: 18px 45px;
-            border: 2px solid var(--white);
+            padding: 16px 40px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             letter-spacing: 1px;
             transition: all 0.3s;
         }
         
         .btn-secondary:hover {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            object-position: top;
+        }
+        
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -30px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--gold);
+            z-index: -1;
+        }
+        
+        /* 统计数据 */
+        .stats {
             background: var(--white);
-            color: var(--navy);
+            padding: 0 60px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: var(--white);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .stat-item {
+            padding: 40px 30px;
+            text-align: center;
+            border-right: 1px solid #eee;
+        }
+        
+        .stat-item:last-child {
+            border-right: none;
+        }
+        
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            letter-spacing: 1px;
         }
         
         /* 服务领域 */
         .services {
-            padding: 120px 80px;
-            background: var(--white);
+            padding: 120px 60px;
+            background: var(--light-gray);
         }
         
         .section-header {
@@ -219,17 +252,17 @@
         
         .section-label {
             font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
             color: var(--gold);
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 15px;
         }
         
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 600;
             color: var(--navy);
             margin-bottom: 20px;
@@ -251,55 +284,50 @@
         }
         
         .service-card {
-            padding: 50px 40px;
-            background: var(--light-gray);
+            padding: 45px 35px;
+            background: var(--white);
             text-align: center;
             transition: all 0.3s;
             border: 1px solid transparent;
         }
         
         .service-card:hover {
-            background: var(--white);
             border-color: var(--gold);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
         }
         
         .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
         }
         
         .service-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--navy);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .service-card p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-light);
             line-height: 1.7;
         }
         
-        /* 关于律师 */
+        /* 关于律师 - 照片+文字左右布局 */
         .about {
-            padding: 120px 80px;
-            background: var(--navy);
+            padding: 120px 60px;
+            background: var(--white);
         }
         
-        .about .section-title {
-            color: var(--white);
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
+        .about-container {
             max-width: 1400px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 100px;
             align-items: center;
         }
         
@@ -309,31 +337,27 @@
         
         .about-image img {
             width: 100%;
-            height: 600px;
+            height: 500px;
             object-fit: cover;
-            filter: grayscale(20%);
         }
         
-        .about-image::after {
+        .about-image::before {
             content: '';
             position: absolute;
             bottom: -20px;
-            right: -20px;
+            left: -20px;
             width: 200px;
             height: 200px;
             border: 3px solid var(--gold);
             z-index: -1;
         }
         
-        .about-text {
-            color: var(--white);
-        }
-        
         .about-text h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 600;
-            margin-bottom: 30px;
+            color: var(--navy);
+            margin-bottom: 25px;
         }
         
         .about-text h3 span {
@@ -341,52 +365,48 @@
         }
         
         .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 20px;
-            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.9;
+            color: var(--text-light);
+            margin-bottom: 18px;
         }
         
-        .credentials {
+        .about-features {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 50px;
-            padding-top: 50px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 35px;
         }
         
-        .credential-item {
-            text-align: center;
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         
-        .credential-item .number {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 600;
+        .feature-icon {
             color: var(--gold);
-            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
         
-        .credential-item .label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            letter-spacing: 1px;
+        .feature-text {
+            font-size: 0.95rem;
+            color: var(--navy);
+            font-weight: 500;
         }
         
         /* 联系我们 */
         .contact {
-            padding: 120px 80px;
+            padding: 120px 60px;
             background: var(--light-gray);
         }
         
-        .contact-grid {
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
-            max-width: 1400px;
-            margin: 0 auto;
         }
         
         .contact-info h3 {
@@ -394,7 +414,7 @@
             font-size: 2rem;
             font-weight: 600;
             color: var(--navy);
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
         
         .contact-item {
@@ -405,12 +425,13 @@
         }
         
         .contact-icon {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--gold);
+            margin-top: 3px;
         }
         
         .contact-details h4 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--navy);
             margin-bottom: 5px;
@@ -431,6 +452,43 @@
             color: var(--gold);
         }
         
+        /* 微信二维码区域 */
+        .wechat-section {
+            margin-top: 40px;
+            padding: 35px;
+            background: var(--white);
+            border: 1px solid #eee;
+        }
+        
+        .wechat-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .qr-code {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .wechat-tip {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        /* 联系表单 */
         .contact-form {
             background: var(--white);
             padding: 50px;
@@ -444,13 +502,19 @@
             margin-bottom: 30px;
         }
         
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: var(--navy);
             margin-bottom: 8px;
@@ -459,9 +523,10 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 15px;
+            padding: 14px 16px;
             border: 1px solid #ddd;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
             transition: border-color 0.3s;
         }
         
@@ -472,17 +537,17 @@
         }
         
         .form-group textarea {
-            height: 150px;
+            height: 120px;
             resize: vertical;
         }
         
         .btn-submit {
             width: 100%;
-            padding: 18px;
+            padding: 16px;
             background: var(--navy);
             color: var(--white);
             border: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             letter-spacing: 1px;
             cursor: pointer;
@@ -493,37 +558,11 @@
             background: var(--dark-blue);
         }
         
-        /* 二维码区域 */
-        .qr-section {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 1px solid #eee;
-        }
-        
-        .qr-section h4 {
-            font-size: 1rem;
-            color: var(--navy);
-            margin-bottom: 15px;
-        }
-        
-        .qr-code {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto;
-        }
-        
-        .qr-code img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
         /* 页脚 */
         footer {
             background: var(--navy);
             color: var(--white);
-            padding: 60px 80px 30px;
+            padding: 80px 60px 30px;
         }
         
         .footer-content {
@@ -532,7 +571,7 @@
             gap: 60px;
             max-width: 1400px;
             margin: 0 auto;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
@@ -547,14 +586,15 @@
         .footer-about p {
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.7);
-            line-height: 1.7;
+            line-height: 1.8;
         }
         
         .footer-links h4 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--white);
+            letter-spacing: 1px;
         }
         
         .footer-links ul {
@@ -562,13 +602,13 @@
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: color 0.3s;
         }
         
@@ -579,7 +619,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: rgba(255, 255, 255, 0.5);
         }
         
@@ -589,20 +629,33 @@
                 padding: 0 30px;
             }
             
+            .hero-container {
+                grid-template-columns: 1fr;
+                padding: 60px 30px;
+            }
+            
+            .hero-image {
+                order: -1;
+            }
+            
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 2.8rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .about-content {
+            .about-container {
                 grid-template-columns: 1fr;
                 gap: 50px;
             }
             
-            .contact-grid {
+            .contact-container {
                 grid-template-columns: 1fr;
             }
         }
@@ -612,20 +665,16 @@
                 display: none;
             }
             
-            .hero {
-                min-height: 600px;
-            }
-            
-            .hero-content {
-                padding: 0 30px;
-            }
-            
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .hero-buttons {
                 flex-direction: column;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
             }
             
             .services,
@@ -635,6 +684,10 @@
             }
             
             .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
                 grid-template-columns: 1fr;
             }
             
@@ -657,18 +710,42 @@
         </div>
     </nav>
     
-    <!-- 英雄区 - 全屏视频背景 -->
+    <!-- 英雄区 - 照片+文字左右布局 -->
     <section class="hero" id="hero">
-        <div class="hero-bg">
-            <img src="images/a5d7756219a5eef0277fdbc376db9137.jpg" alt="余正洪律师">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-subtitle">International Legal Services</div>
+                <h1>涉外法律服务<br><span>专家</span></h1>
+                <p>专注涉外法律服务，为外资企业提供专业、高效、可靠的法律解决方案。精通跨境争议解决，熟悉国际商业规则。</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">免费咨询</a>
+                    <a href="#services" class="btn-secondary">了解更多</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/a5d7756219a5eef0277fdbc376db9137.jpg" alt="余正洪律师">
+            </div>
         </div>
-        <div class="hero-content">
-            <div class="hero-subtitle">International Legal Services</div>
-            <h1>涉外法律服务<br><span>专家</span></h1>
-            <p>专注涉外法律服务，为外资企业提供专业、高效、可靠的法律解决方案。精通跨境争议解决，熟悉国际商业规则。</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn-primary">免费咨询</a>
-                <a href="#services" class="btn-secondary">了解更多</a>
+    </section>
+    
+    <!-- 统计数据 -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">年执业经验</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">代理案件</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">客户满意度</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">服务客户</div>
             </div>
         </div>
     </section>
@@ -711,27 +788,30 @@
             <h2 class="section-title">关于律师</h2>
             <div class="section-line"></div>
         </div>
-        <div class="about-content">
+        <div class="about-container">
             <div class="about-image">
-                <img src="images/a5d7756219a5eef0277fdbc376db9137.jpg" alt="余正洪律师">
+                <img src="images/53cf9ca97a0323e3d54d6d9269872ea9.jpg" alt="余正洪律师">
             </div>
             <div class="about-text">
                 <h3>余正洪 <span>律师</span></h3>
-                <p>江苏三诚律师事务所合伙人，专注民商事诉讼、知识产权、公司法/商事合规领域。</p>
-                <p>执业以来，代理了大量合同纠纷、劳动争议、知产案件，积累了丰富的诉讼经验。近年来，随着无锡外企数量增加，开始专注涉外法律服务，为外资企业提供专业法律解决方案。</p>
-                <p>善于运用AI工具提升办案效率，结合心理学博弈技巧，为客户提供高质量的法律服务。</p>
-                <div class="credentials">
-                    <div class="credential-item">
-                        <div class="number">10+</div>
-                        <div class="label">年执业经验</div>
+                <p>江苏三诚律师事务所合伙人，专注民商事诉讼、知识产权、公司法/商事合规领域。执业以来，代理了大量合同纠纷、劳动争议、知产案件，积累了丰富的诉讼经验。</p>
+                <p>近年来，随着无锡外企数量增加，开始专注涉外法律服务，为外资企业提供专业法律解决方案。善于运用AI工具提升办案效率，结合心理学博弈技巧，为客户提供高质量的法律服务。</p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">✦</div>
+                        <div class="feature-text">精通中英双语</div>
                     </div>
-                    <div class="credential-item">
-                        <div class="number">500+</div>
-                        <div class="label">代理案件</div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✦</div>
+                        <div class="feature-text">熟悉国际商业规则</div>
                     </div>
-                    <div class="credential-item">
-                        <div class="number">98%</div>
-                        <div class="label">客户满意度</div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✦</div>
+                        <div class="feature-text">AI赋能高效办案</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✦</div>
+                        <div class="feature-text">心理学博弈技巧</div>
                     </div>
                 </div>
             </div>
@@ -745,7 +825,7 @@
             <h2 class="section-title">联系我们</h2>
             <div class="section-line"></div>
         </div>
-        <div class="contact-grid">
+        <div class="contact-container">
             <div class="contact-info">
                 <h3>联系方式</h3>
                 <div class="contact-item">
@@ -776,31 +856,47 @@
                         <p>江苏三诚律师事务所</p>
                     </div>
                 </div>
-                <div class="qr-section">
-                    <h4>微信咨询</h4>
+                
+                <!-- 微信二维码 -->
+                <div class="wechat-section">
+                    <h4>📱 微信咨询</h4>
                     <div class="qr-code">
-                        <img src="images/53cf9ca97a0323e3d54d6d9269872ea9.jpg" alt="微信二维码">
+                        <img src="images/二维码.jpg" alt="微信二维码">
                     </div>
+                    <p class="wechat-tip">扫码添加微信，获取专业法律咨询</p>
                 </div>
             </div>
             <div class="contact-form">
                 <h3>在线预约咨询</h3>
                 <form>
-                    <div class="form-group">
-                        <label>姓名</label>
-                        <input type="text" placeholder="请输入您的姓名">
-                    </div>
-                    <div class="form-group">
-                        <label>电话</label>
-                        <input type="tel" placeholder="请输入您的电话">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>姓名 *</label>
+                            <input type="text" placeholder="请输入您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <label>电话 *</label>
+                            <input type="tel" placeholder="请输入您的电话" required>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>邮箱</label>
                         <input type="email" placeholder="请输入您的邮箱">
                     </div>
                     <div class="form-group">
-                        <label>咨询内容</label>
-                        <textarea placeholder="请描述您的法律问题"></textarea>
+                        <label>咨询类型</label>
+                        <select style="width:100%;padding:14px 16px;border:1px solid #ddd;font-size:0.95rem;font-family:'Inter',sans-serif;">
+                            <option>请选择咨询类型</option>
+                            <option>外企劳动争议</option>
+                            <option>涉外合同纠纷</option>
+                            <option>外企知产保护</option>
+                            <option>外企合规咨询</option>
+                            <option>其他法律问题</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>咨询内容 *</label>
+                        <textarea placeholder="请描述您的法律问题" required></textarea>
                     </div>
                     <button type="submit" class="btn-submit">提交预约</button>
                 </form>

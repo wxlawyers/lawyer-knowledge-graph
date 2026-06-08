@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>余正洪律师 · 要素式起诉状助手</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; color: #333; background: #f5f7fa; line-height: 1.6; }
+
+/* Navigation */
+nav { background: #1a365d; color: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+nav .logo { font-size: 20px; font-weight: 700; }
+nav .logo span { color: #ffd700; }
+nav .nav-links a { color: #fff; text-decoration: none; margin-left: 24px; font-size: 14px; opacity: 0.85; transition: opacity 0.2s; }
+nav .nav-links a:hover { opacity: 1; }
+
+/* Hero */
+.hero { background: linear-gradient(135deg, #1a365d 0%, #2a4a7f 100%); color: #fff; text-align: center; padding: 60px 24px 50px; }
+.hero h1 { font-size: 32px; margin-bottom: 16px; }
+.hero h1 span { color: #ffd700; }
+.hero p { max-width: 720px; margin: 0 auto 12px; font-size: 16px; opacity: 0.9; }
+.hero .hint { font-size: 13px; opacity: 0.7; margin-top: 8px; }
+.hero .stats { display: flex; justify-content: center; gap: 32px; margin-top: 20px; flex-wrap: wrap; }
+.hero .stat-item { font-size: 15px; opacity: 0.9; }
+.hero .stat-item strong { color: #ffd700; font-size: 20px; }
+
+/* Guide Steps */
+.guide-section { max-width: 900px; margin: 0 auto 32px; padding: 0 24px; }
+.guide-section h2 { text-align: center; font-size: 22px; color: #1a365d; margin-bottom: 24px; }
+.guide-steps { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+.step-card { flex: 1; min-width: 220px; max-width: 280px; padding: 28px 20px; border-radius: 12px; text-align: center; color: #fff; position: relative; }
+.step-card:nth-child(1) { background: linear-gradient(135deg, #1a365d, #2a4a7f); }
+.step-card:nth-child(2) { background: linear-gradient(135deg, #2a4a7f, #3a5a9f); }
+.step-card:nth-child(3) { background: linear-gradient(135deg, #3a5a9f, #4a6abf); }
+.step-card .step-icon { font-size: 36px; margin-bottom: 12px; }
+.step-card .step-num { position: absolute; top: 12px; right: 16px; background: #ffd700; color: #1a365d; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+.step-card h3 { font-size: 16px; margin-bottom: 8px; }
+.step-card p { font-size: 13px; opacity: 0.9; }
+
+/* Search */
+.search-section { max-width: 640px; margin: -24px auto 24px; padding: 0 20px; position: relative; z-index: 10; }
+.search-box { width: 100%; padding: 14px 20px 14px 48px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 16px; outline: none; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: border-color 0.2s; }
+.search-box:focus { border-color: #1a365d; }
+.search-icon { position: absolute; left: 36px; top: 50%; transform: translateY(-50%); font-size: 18px; color: #999; }
+
+/* Filter */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 0 20px; margin-bottom: 32px; }
+.filter-btn { padding: 8px 20px; border: 2px solid #1a365d; background: #fff; color: #1a365d; border-radius: 24px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.2s; }
+.filter-btn:hover, .filter-btn.active { background: #1a365d; color: #fff; }
+
+/* Cards grid */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; padding: 0 24px 48px; }
+.card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.3s, transform 0.3s; cursor: pointer; }
+.card:hover { box-shadow: 0 8px 30px rgba(26,54,93,0.15); transform: translateY(-2px); }
+.card-header { background: #1a365d; color: #fff; padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; }
+.card-header h3 { font-size: 17px; }
+.card-header .tag { background: #ffd700; color: #1a365d; font-size: 12px; padding: 3px 10px; border-radius: 12px; font-weight: 700; }
+.card-body { padding: 18px 20px; }
+.card-body .scene { font-size: 14px; color: #666; margin-bottom: 12px; }
+.card-body .arrow { color: #1a365d; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.card-body .arrow::before { content: "▸ "; }
+.card-body .law-summary { font-size: 12px; color: #1a365d; background: #f0f4ff; padding: 6px 10px; border-radius: 6px; margin-bottom: 8px; }
+.card-detail { display: none; padding: 0 20px 18px; }
+.card-detail.open { display: block; }
+.card-detail table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.card-detail table th, .card-detail table td { padding: 8px 12px; border: 1px solid #e2e8f0; text-align: left; }
+.card-detail table th { background: #f7fafc; color: #1a365d; font-weight: 600; width: 40%; }
+.card-detail table td { color: #444; }
+.card-footer { padding: 0 20px 18px; }
+.card-footer .evidence-count { font-size: 12px; color: #666; margin-bottom: 10px; }
+.btn-detail { display: block; width: 100%; padding: 10px; background: #1a365d; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+.btn-detail:hover { background: #2a4a7f; }
+.hidden { display: none !important; }
+
+/* Modal */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+.modal-overlay.active { display: flex; }
+.modal { background: #fff; border-radius: 16px; max-width: 600px; width: 100%; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.modal-header { background: #1a365d; color: #fff; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; border-radius: 16px 16px 0 0; position: sticky; top: 0; }
+.modal-header h2 { font-size: 18px; }
+.modal-close { background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; line-height: 1; opacity: 0.7; transition: opacity 0.2s; }
+.modal-close:hover { opacity: 1; }
+.modal-body { padding: 24px; }
+.modal-body table { width: 100%; border-collapse: collapse; }
+.modal-body table th, .modal-body table td { padding: 12px 16px; border: 1px solid #e2e8f0; text-align: left; font-size: 14px; }
+.modal-body table th { background: #f7fafc; color: #1a365d; font-weight: 600; width: 35%; }
+.modal-body .modal-hint { margin-top: 16px; padding: 12px 16px; background: #fffbeb; border-left: 4px solid #ffd700; border-radius: 4px; font-size: 13px; color: #92400e; }
+.modal-body .modal-section { margin-top: 20px; }
+.modal-body .modal-section h3 { font-size: 15px; color: #1a365d; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid #ffd700; }
+.modal-body .modal-section ul { list-style: none; padding: 0; }
+.modal-body .modal-section li { padding: 6px 0; font-size: 14px; color: #444; }
+.modal-body .modal-section li::before { content: "✦ "; color: #ffd700; }
+.modal-body .modal-section .law-item { padding: 8px 12px; background: #f0f4ff; border-radius: 6px; margin-bottom: 6px; font-size: 14px; color: #1a365d; }
+.modal-body .modal-section .tip-item { padding: 8px 12px; background: #fffbeb; border-left: 3px solid #ffd700; margin-bottom: 6px; font-size: 13px; color: #92400e; }
+.btn-print { display: block; width: 100%; padding: 12px; background: #ffd700; color: #1a365d; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 16px; transition: background 0.2s; }
+.btn-print:hover { background: #f0c800; }
+
+/* FAQ */
+.faq-section { max-width: 800px; margin: 0 auto 48px; padding: 0 24px; }
+.faq-section h2 { text-align: center; font-size: 22px; color: #1a365d; margin-bottom: 24px; }
+.faq-item { background: #fff; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); overflow: hidden; }
+.faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: #1a365d; font-size: 15px; }
+.faq-question:hover { background: #f7fafc; }
+.faq-question .faq-icon { font-size: 20px; transition: transform 0.3s; color: #ffd700; }
+.faq-question.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-answer-inner { padding: 0 20px 16px; font-size: 14px; color: #555; line-height: 1.8; }
+
+/* Footer */
+footer { background: #1a365d; color: #fff; padding: 40px 24px 24px; }
+.footer-content { max-width: 800px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; }
+.footer-block h4 { color: #ffd700; margin-bottom: 8px; font-size: 15px; }
+.footer-block p { font-size: 14px; opacity: 0.85; margin-bottom: 4px; }
+.footer-disclaimer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 13px; opacity: 0.6; }
+
+@media (max-width: 768px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 24px; }
+  .filter-bar { gap: 6px; }
+  .filter-btn { padding: 6px 14px; font-size: 13px; }
+  nav .nav-links { display: none; }
+  .footer-content { flex-direction: column; align-items: center; text-align: center; }
+  .guide-steps { flex-direction: column; align-items: center; }
+  .step-card { max-width: 100%; }
+  .hero .stats { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">⚖️ 余正洪律师 · <span>要素式起诉状助手</span></div>
+  <div class="nav-links">
+    <a href="#guide">使用指南</a>
+    <a href="#cases">案由查询</a>
+    <a href="#faq">常见问题</a>
+    <a href="#contact">联系方式</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>什么是<span>要素式起诉状</span>？</h1>
+  <p>要素式起诉状是人民法院推行的新型起诉状格式，将传统长篇叙述改为结构化要素填写，让诉讼请求更加清晰明确。</p>
+  <p>本工具整理了常见案由的要素清单，帮助您快速了解各类案件需要准备的关键信息。</p>
+  <div class="stats">
+    <span class="stat-item">覆盖 <strong>67</strong> 种常见案由</span>
+    <span class="stat-item">共计 <strong>550+</strong> 关键要素</span>
+    <span class="stat-item">📅 实时更新</span>
+  </div>
+  <p class="hint">👇 下方按案由分类查找，点击卡片展开要素清单</p>
+</section>
+
+<section class="guide-section" id="guide">
+  <h2>📌 使用指南</h2>
+  <div class="guide-steps">
+    <div class="step-card">
+      <span class="step-num">1</span>
+      <div class="step-icon">🔍</div>
+      <h3>选择案由</h3>
+      <p>在下方搜索或筛选找到您需要的案由类型</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">2</span>
+      <div class="step-icon">📋</div>
+      <h3>查看要素</h3>
+      <p>点击卡片查看该类案件需要填写的关键要素</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">3</span>
+      <div class="step-icon">📁</div>
+      <h3>准备材料</h3>
+      <p>根据要素清单和证据指引准备起诉材料</p>
+    </div>
+  </div>
+</section>
+
+<section class="search-section" id="cases">
+  <span class="search-icon">🔍</span>
+  <input type="text" class="search-box" id="searchInput" placeholder="输入案由关键词搜索，如：借贷、劳动、离婚…">
+</section>
+
+<section class="filter-bar" id="filterBar">
+  <button class="filter-btn active" data-cat="all">全部</button>
+  <button class="filter-btn" data-cat="合同纠纷">合同纠纷</button>
+  <button class="filter-btn" data-cat="劳动争议">劳动争议</button>
+  <button class="filter-btn" data-cat="侵权纠纷">侵权纠纷</button>
+  <button class="filter-btn" data-cat="婚姻家事">婚姻家事</button>
+  <button class="filter-btn" data-cat="金融纠纷">金融纠纷</button>
+  <button class="filter-btn" data-cat="知产纠纷">知产纠纷</button>
+  <button class="filter-btn" data-cat="建设工程">建设工程</button>
+  <button class="filter-btn" data-cat="公司股权">公司股权</button>
+  <button class="filter-btn" data-cat="行政纠纷">行政纠纷</button>
+  <button class="filter-btn" data-cat="执行">执行</button>
+  <button class="filter-btn" data-cat="海事纠纷">海事纠纷</button>
+  <button class="filter-btn" data-cat="刑事自诉">刑事自诉</button>
+  <button class="filter-btn" data-cat="国家赔偿">国家赔偿</button>
+</section>
+
+<section class="cards-grid" id="cardsGrid"></section>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle"></h2>
+      <button class="modal-close" id="modalClose">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<section class="faq-section" id="faq">
+  <h2>❓ 常见问题</h2>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>什么是要素式起诉状？</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer"><div class="faq-answer-inner">要素式起诉状是人民法院推行的新型起诉状格式，将传统长篇叙述式的起诉状改为结构化、表格化的要素填写方式。当事人只需按照要求逐项填写关键信息，无需撰写大段的事实陈述，大大降低了起诉门槛，提高了立案效率。</div></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>哪些法院要求使用要素式起诉状？</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer"><div class="faq-answer-inner">目前上海、北京、深圳、杭州等地法院已在部分案由中推行要素式起诉状，最高人民法院也在逐步推广。各地推行进度不同，建议在起诉前先咨询当地法院或查询法院官网了解最新要求。</div></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>要素式起诉状和传统起诉状有什么区别？</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer"><div class="faq-answer-inner">传统起诉状采用叙述式写作，需要当事人自行组织语言描述事实和理由；要素式起诉状则采用表格式结构，将案件关键信息分解为具体要素，当事人只需逐项填写。要素式起诉状更加简洁明了，便于法官快速把握案件要点，也降低了当事人的写作难度。</div></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>填写要素式起诉状需要注意什么？</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer"><div class="faq-answer-inner">要素填写要精确具体，避免模糊表述。例如金额需写明大小写，日期需精确到日。所有填写内容应有相应证据支撑，不能虚构事实。不同法院的模板可能略有差异，请务必使用当地法院指定的最新版本模板。填写完成后建议仔细核对，确保信息准确无误。</div></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">
+      <span>当事人可以自己填写要素式起诉状吗？</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer"><div class="faq-answer-inner">可以，要素式起诉状的设计初衷就是降低起诉门槛，方便当事人自行填写。但对于复杂案件，建议咨询专业律师，以确保要素填写完整准确、诉讼请求合理合法。律师可以帮助评估案件风险、确定最优诉讼策略，最大限度维护当事人的合法权益。</div></div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-content">
+    <div class="footer-block">
+      <h4>🏛️ 律师信息</h4>
+      <p>余正洪律师</p>
+      <p>江苏三诚律师事务所</p>
+    </div>
+    <div class="footer-block">
+      <h4>📍 地址</h4>
+      <p>无锡市清扬路金匮苑31-3号</p>
+    </div>
+    <div class="footer-block">
+      <h4>📞 联系电话</h4>
+      <p>136-0153-9126</p>
+    </div>
+    <div class="footer-block" style="text-align:center;">
+      <h4>📱 微信咨询</h4>
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAiwAAALgCAYAAAC3XSwmAABVVklEQVR4nO3deXxU9aH///eZJTNJSEJICGQBwiKiggRQEQVERBT3tYparWvdWttvrb297a/ffnu9t1/9qdfWVlu9eq91qcVWXHFjKSAoorKDoCyyhgBJyD7JZOb7RzjHSTJJZrKQT8jr+Xj4MGTOOfOZM5M57/NZrZyck8MCAAAwmKu7CwAAANAWAgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABjP090F6Gmeu3drdxcBAHCMuOUPw7u7CD0GNSwAAMB4BBYAAGA8moQ6gKo8AEC86FrQPtSwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxvN0dwHQvZ67d2t3F+GYcssfhnd3EY6qrv789PTzyd9X5+rpnwd0DDUsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAeawkhLr1tLY+uXgsm3uPHe/67+vhdzbS1eLr6/Jh2/ruaae8vzEYNCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMx1pC6FKmrRVi2lotvW1tmq4uj2mft65m2us17fOGYws1LAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHmsJAd2op68FE+/2pr1eAD0HNSwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB5rCQHdqKvX4jHt+PHq6uOzthHQc1DDAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjsZYQulRXrwXT05m2lk1Xrz0UL9POj2n4+0JvQg0LAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIzHWkKIC2u7dK+uXuunq9emMa38pn2eTSsPYBJqWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPNYS6uW6eu0YtK6nr33T1Uxbeyhe/H0BnYcaFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj7WEejnWpmldTz8/pq2V09Xns7eVp7cdH70bNSwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB5rCfVyPX0tD9PWgjGNaeenp59Pyg90H2pYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA81hLq5bp6rZmu1tVro5h2frr69Zq21oxp5z9e8ZbftM9zbysPzEYNCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMx1pCvZxpa3OYtnZMvOfHtLVRWAumc3X157Orj2/a5820v3eYjRoWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPtYR6OdPWLmEtktaZ9n7Fi/K3zrTPf2/7+4LZqGEBAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPFYSwhx6elrtcSrp7/erl6bpqefn65m2vnv6cdH70YNCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMx1pCMEpXr10Sr56+1k9vWzump5fHtON3NdPeL5iNGhYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI+1hGAU09bu6WqmrfVj2toupr1f8TJtbSzT3q+evhYSji5qWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPNYSglFMWzump691YtraQ71NTz8/Xb22lGl/7zAbNSwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB5rCfVyrOXRuq4+P6zd0zrTzr9pfy9d/fkx7fWid6OGBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGYy2hXq63rU3T1bp67ZV4j9/T146h/J2rqz8/Xc209xdHFzUsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAeawkhLr1tLY+uXkvFtLVj4tXVa+X09M+baeXv6vfLtLWHcGyhhgUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxmMtIXQp09YW6elru5imt60109PLb9r7ZdrfI8xGDQsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjMdaQgCMZdpaM6atrRNveUxbCyne8pj2ecDRRQ0LAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIzHWkJAD9LVa82Ydvyerqtfb1e/X/EyrTw4tlDDAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjsZYQulRvWzumpzNtbSDT1prh9QLdhxoWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPtYQQF9PWOkHrWPumc5n2ertab3u9MBs1LAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHmsJ9XJdvfYKWtfTz39PL3+8etvrBUxCDQsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADCep7sL0JM9d+/W7i4CAAC9AjUsAADAeAQWAABgPCsn5+RwdxcCAACgNdSwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMYjsAAAAOMRWAAAgPEILAAAwHgEFgAAYDwCCwAAMB6BBQAAGI/AAgAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFiEN2ep3+73d3asbJh+Vxh7u7OADQa3i6uwBAT+HzhnTvBYXKSqvTdVMPqrjCoy+2JXd3sbqcPyGkmtq2721G5tRoSP+AJGnZlymqCjTfx5I0Y+xhSVLRYa/W7EjqUNlOGlSt7PRaLVibplji47TRZTpleIWC9ZYefzu7Q8/dklNHVGjW+FJJ0jMfDtC+Em+XPA/Q2xBYgBh9b/oBZafXOv8+Ob+qUwNLSmK93K6wqmtdqqu3FApZnXbsSC5XWB6XlOSrVyhsqazK3eK2V51xSJNGVui/5mdp0+7EVo97Ql61Lj2tWJK0/MuUqNuEJV16WrGSfCEt35zSocDicYd13dSDyk6v1YjsGv3p/QFt7pOYENKJg6p1sKzrQoTLkvKzGoJbXX3Dezigb50OV7lVG2z/+2pZktcdVkpivaoCLlXHECKBYwmBBYjB+eNKNfG4CknSrkMJysuo1dQTy3S40q25K/p1ynPMOPmwLj61pFOOFasP16Tpr0szoz6WkRLU1BPL1cdfr/sv3as3Pu2nt1amt1iTUXmkRiUc8XM0FTVuJflCqqzp2AX35iMBMixpycbUmPaxa4pq6romDEpSIPjtse3A8tsbdnbqczz+drbWdrB2CuhpiOhAG84de1jfOfOQJOnrfX79+6t5+vvyDEnSxaeWOLUKx5pD5R798uVBWrczSZYlXTaxWHedv7/Fvjt2AKmvbz0MBI88XhVouWanLReML9Wk48slSe98lq6Nuxpqf5L9IaemKlopgkdqN0LhlstoWVKCJyyfN9SusgUjXn+Ybk5Ap6GGBWiBJenSicW65Eitx84DPj3+drZqg5be/aKv0pODmjH2sC49rURJvpD+9lGmQh24QK3ekaw9xQmqqHarrt5SsN6KqV/GsAE1uuGsg5KkZxdkac+hhFa397jD8rrD6uOvV2ll618BZVVuPf5Wti6fWKyLTinRKSMqlOir1x/mDVSgrvH9jv3v+jaaPOpD9vbtq+UoGFqpKyc1BMgNuxIb1XBNPqFM1xwJl60ZnBnQc/dubXWbtz9L12ufRK89Gz+sUt+ddkCS9OgbOdodcc4jw5AdWP71pcEqr3YrWC+FQtHf19/dukOJCSH951vZUZvfXJbkdoWV7O947RTQExFYgCi87rBunVGk0440A20v8umxN3IadSR9eWmmLEs65+TDOnfsYWWn1+nP7w9otTmkNdv3+7R9vy/u/ZISvq0J2Ffs1Y6i+I/RmnBYeu2Tfiqp8OiGsw7opEHV+l+X7NP//UduowtvrLUJdt1He7LdmMFV+v7MIlmWtOdQgv703sBmzxsKWQoELYVC3z6XzetuqDkJhVuu4fF7Q/K4w05zTjTBkKW0pHpJUkWT8BBZHvvnwhg63trb1h8Jq9FZ9F1Br0VgAZoYlFmrO2buV26/hg62G3Yl6sl3B0a9ULy0JFNVAZcuPrVEowdX6Tezd+nZ+Vna2EYH1Z5o0fpUhcLSTWcf0BfbktsVODpi+pjDum7qQbks6UCZV4++md0sHM5fk6YPVvVtsWxnjirXrTOKtPuQT79+JS/qNrefW6RJx5e3GsCqI563rr5JYGn0c9f1lQF6GwILcIQlaWZBqa6cVOz005j3eV+99klGq009c1f0096SBN08vUjpfYL6yWV7tXh9ql77pJ8qatrfT8NEizekqrjco3U7kzSgb53Kjox8aasZqC0uq6GpKiWxXhU1rkbNTcn+kL53dpEmDK+UJO0pTtCjb2RHbc7qaDliFVn7Emra1SVKDQuAjiOwAJLSk4O67dwinZBXLalhNMmzC7L0+dbYhi2v2NJHOw/49P3z9mtwZkDTRpfptOMq9Pqn/bRwXWqXDVHuDut2NoxO+fU1u6N2TPV5Q232D5Gka848FLW/yUNzc7R5z7c1VOOGVjphZfOeRP3h3YFOH44ET1jBekuhsJSWXK/qgEu1wc491y5XWD5PuF1NMfURpyfBE+5w2VyWZFnhoxbMAJMQWNCrJftDOq+gVOeOPexcfHce8OnPH8Q/4de+Eq8efDVXF04o1YUTGjriXjfloM4eXaZXl/fTmu1HvxmlvbzusPKzAvpqn7+7i6KPNqUoPysglxXWS0syG12szzqpTJOOL9df/tlfl55WrLH5VU6NT7TaDbvmLC8joD/cvj3q8/m8DdtcfGqJLpxQKq8npEXr0vTSkujDv5tyRWSJcEQH3H+9co9y+tU6AaupRF/D5+8HFxY2CjpSw8gllyUleEJ67M0cbdh17DU5Am0hsKBXSvaFNPNIUPEf6bRaH7L0/qo0LVqfpsNVblmKv2Nofb2ldz7vq817/Lr41BKdkNcwE+sPLyzUvpIEfbA6TSu+6hPTzLHd6cazD+iMUeVatC5Nc5ZlRK0Z+P07A1VW5VZNnUvBekujh1Tp1nOKVBu09MBfhrR47J9etle5/Wr15sp0LVyXJksNo18SvGGlJQWjjnJ6eWlGs1oqlyusc04+rKy0OmdmWamhJqOtd85lSUm+1octe91hqR3LL7hc3+4TGUwqAi553OE2l3Roazh1ezt1Az0dgQW9zvhhlbp1RpESI0bXbNiVqJeX9JfHHdb/f9M3nfI8P34uXyNzqnXVGcXqn1qn7PRa3XT2AV07+ZCWfZmiFxfHdsd+tCUmhDQgrU6WGjq6Hp9brSffHaB9JY2DRNOht1VHmmnCbcyea9eQVNe6mm3X0miaaE1qU04oV1ZanUIhS//4uJ8sS/rLPy1VBVqeKdjudLvzYNudbueu6Kd5n/eV3xtuFELa4orIE5Fz0tgjf177pJ/e/iy92X5/uH27knwhPfJ6TtRO2/919za5XOHmfWaAXoLAgl5nw65EHa5yKzEhpD3FCXp1eYYza+igzNo29o5dWNLKr/vo823JOnNUuS46pVT9U+vk84YazdvRkoF963TzOUWSGvputDQnSGerrnXpt6/l6ryCUl01qVi5/Wr1y6v36Kn3Bmj9TjNmV/V5Q7p8YsOEfR9v6aOiw50/1X443BCuKgPx9RdxWQ3hpuk8Op3VAZeRR+itCCzodQJ1Lv19eYaS/SEt25TSqNp+f6lX//LCYFXUuKP2NTguu0Y/vWyvJOlfXhis4opv/4QsfbtOT58jo12khtqBpRtTtWxTqiYMr9Bpx1Vo8Ya2p5IPBC0dl10jSTEFnM4UDkvvreqrbfv9uveCQvXx1+tHFxXqvxf217IW1gk6mi6cUKrUpHoF6y298Wnz2oru5HV/G1gAdB4CC3qllhYtrA1ard6tR16E6oJRJviqtxRQ9H4GoXBDjcvKr/vEVMaK6m+bSyo7aXi02xVWgiestKR6HSjztDnaZMtev377jxzdf+k+pfcJ6pYjzSm7Dh7dABUpt1+tzhtXKkmavzat0UKGqYn1CoWlyoC724YU+xManrizRysBvR2BBTBUMCJMtDbraqRfXr0n5uP/6Ln8Vvua2PaVJOihuTn6+ZV7tKOoe8OK1x3W98/b79RirP+mcRPVOTEuIBnL1PxWjHmj6Xb+I51mA0E6xwKdicACGCocbvjPso7ehGgtKTrs1aNv5HTrGjYuS7r5nCLlZbTezyhYbx3pdNu+qfldVlhul+RppaOt3U+l6c+SnFFnNbXUsACdicCCXsnnDSklMaTy6pZHlHQm15GmmNTEehVXeGLu3xAOW7KscMzjq5/+YECLNSDWkdlkEzxhpSYF4x5afbT70URyu8K6Y2aRTh1RoZpal8JSo1Fetjc+7ddoMcSmYpmaPxYed+TPjd+cPv6GNYY6qxkPQAMCC3ql4QMCuv9I59n2evTm9g1//pcXBnfJqBZJKjrs0Z7irg8WA/vWqbzGrUCdpfoYV5Vui9sVlvdIqCut9Dh9QDzusO6ZVaix+VUKS/qv+Vn67rQDSozyMjuyWnY87FAiySmvrW9yw2PlBBagUxFYAMTtp5ftVXqfYNTHOjo1vyT971cGOTVFd563X2PzqyRJb36ari+2JeuWI8O9I1mSEryhRusQdUSCJ6xgKPocMOt3Jukn/90wOV7TYNLvyHk5XElgAToTgQW90jcHffq3OXkqq3Y3jPZpYSr3pkYMrNGPL9knSfrly4NUUtH2n9C3TTEhpSXVR120ryfIzwpoR5HvqD/vqm3JGj+sUvPXpOmNTxuae9xRMok/IaQ/3rFdNbUuBUN2H5bGGmbBlfL61eo/b9nR7BgNQ9Mb+q/4E0L6/14eFLXGqjZoqTYY/X3MTKmTJBWVdU0tGtBb9cxvTqCDKmtc2l4T/eI7pH9AB8u8UYcm10TcvVcHXM0WxMtMDSovI6DV26MNm3Y3GoLbk7hcYf344n3att+n/5o/QM98mKXKGreq66wj89V0rA+QpW/716QlB3Ww7NuvpuVfpiglsV7vr+ob07H8Ufq2NOVyNQzt7mwpifVKO9IkFO9aVABaR2ABInjdYd17QaESE0J6aUmmPt4c+yRpo3Kr9YMLC+XzhPX7dwZq7TdmzArbGU7Iq1ZKYr1OHlIlrzukL/e0f/G9JF9IVa2sh9P0Qh9WwyR2bQnUufS/Xxmkkgq3AnWuqEPBY5ma35n8z1+vsur4mnWG9A84PxeWdF8nZeBYxEQBQITzxpUqIyWoRF8o7o6x24t82leSIJcrrLtnFWr4wJouKuXRN/G4CknS5r2JrTZpXTO5oV+K3fTS1PQxh/Xo977RqSMqOr2MobC062CCKmrcMc9bE/U4IUu1QSuu0Vy2EwdVS5JKKz06VM79INCZCCzAEdnptbrolIZJx5ZsSNXWQn9c+wfqXPrPt7K1pzhBCZ6wfnTRPmWnd97aRN0lMSGkCcMrJUkrtrQ8S++AvnU6Z8xhnTeuVNdMPtjscctqqKnxeUP6/swindIFoaW7nXLkPK37pv01UACiI7AAauiMefes/UrwhFVa6dHfP85o13Eqa1x69I1sHSr3KNkf0k8u3dclfSWOpnNOPqzEhIbRNyu+ih5YXJZ009kH5HGHVV3r0lsrm6/vEw5Lf/5ggDbvSZTLFdb3ZxapYGhlp5QxIyWo1KR6ueNYVbktlho+F1lpdVHnfGlq+MAaZaY2dLhdF2WRSKaRAzqGOkv0ei5LunVGkXL71SoUlv70/oAOzehaWunR429n61+v3KN+fYL64UX79NBruT1ybRmfN6SZBYclSR9v7tPiZHNXTTqkUbkNzSEvL81ssdkoWG/p9+8M1L9csUeDMmt19/n79dhb2fpyd8dqJK44vViTji+PeftYpuaP9MjrOdrYRhkvObIkwOFKd/RO13G+/YMya+X3hnSgrCH8uo6EsVDb2Qk4JlHDgl7NsqTbZux3+lS89kmGtuyNrykomj2HEvTHeQMVClkamhXQbTOKeuQd9tljytTHX69QyGqx4+uZo8p1/vhSSdInm/to2abWOypX17r02Fs5Oljmlccd1n0XFmpoVqDVfeIVCjf0RWn6X+TQ9WiPO//FWVFzXHaNxgxpmCvm/dV9o/Z9sWt/og3JjiYnvVY/v3KPHrv5G/3b7F2SGpZoKI5hKD1wLOKTj17L5w3pthlFTv+Mf65P1bzP+3ba8TfuTtRrn/TTVWcc0ikjKnTJaQl649PmTSWmSk2s14UTGmoNlm5KidoJ+YxR5c4kbjuKfPqfRVkxHftwpVuPvpmtX161W8n+kH58yT79xz9yVdjOocB//7if5izLUFXApWArM+/GMkookscdVlJCqNFw9qYSE0K6dUbDOThc5dY/N6RG3S7Z11A1kuSLrYnw60K/Sio9SkoIyeMOq7TSrbc/S282lB7oLQgs6JWy0up07wWFzkJ6K7b00QuL+3f687z7RV+NzK3WyUOqdMlpxdp9KEGfb23eXHDGqHKVV7tVWWNfcI/coR9ZWK9vclCDMqN34M3qW+f8PLBvnerqW7+gWTqyuJ87rGR/vbzusFZ+3bxvyuwpB5XsC6mu3tKbUfqknHVSmW6cdkCWJZVUevTEvIFxNXvtL/Xqv+YP0A8v2qc+/nr9r4v36cFXc+MbSnzk6WKZwC9y+1gF661Wy2NJ+t70A8pKa3gP/ntBVovNZh9tStEX25K1J8Y1mQ6Ve5zZdAEQWNBLHZ9bo9x+DQHgn+tT9eLi/s1muj0hr1o1tS6V17hUUeNWbZ1L+RFNF7GsoByW9F8fZunX1+5Wvz5BXXxKib7YmtysBuDayYcarU/T1IyxhzVj7OE2n++2c5tPWd+WPYcSmgWWaaPLNHFkQzPZonVpjQKBxx3WtZMPafqYhvKUVnr08Nyc2ENDhDU7kvTeF301a3ypMlPrdPes/Xr49ew2F6N0mles+Npu7BWYO2f1I+n6sw46zYn/XJ/a6tw7C9eltXosy37JPbHtEDgKCCzolZZuTFFaUlB1QUvvr+4bdZsZYw9rXAujWGqDlspjrAmoqHHrT+8P0BUTi/XH9wZ20qWya/m9Dc0XNbUuvRPRTOZxh/WvV+5xgltxhUePvJ6j/aXtn9X1H5/004jsGh2XXaOROdW6cEJp1FFGkewVkt3u+M6mHXRcnRAKpo857IS2TbsT9fLSzA4dz35Nnk4c6QQcSwgs6LXe/qz1i+LWQn/UwHKgzKu5n/SLK3h8vc+vh1/PafHxR17PVkWNW5VH+mDEUnvTER53uKFJyBeKOpX9e6v6qqbOpWRffaNgFqy39Nelmfpfl+zT3hKvfv9OdocX+QuFLP3pvQH69bW7VVLp0UdtdNr1eb8tr98b38Xd3j6W6fvb8s/1acrLqFV+VkBPzBsY9yRzkdyusBNYOqNswLGIwAK04L0v+mrRulR53WF5PWGFww1rCbU2rXx77Tx4dBcVDNY3rAHUUn8LqaGJI5qv9vn10Nwc7T6U0KGLdKSSSo8eezNbhaXeNldbTkmsj/pzLJL99aqrt5wapI4IhaUXF/eXPyHU6nmMRVpSvQ4dWT8pljlfgN7Iysk5mfpHAD2K3aQTDjdfkRnAsYkaFgA9TrzzpADo+RjQDwAAjEdgAQAAxiOwAAAA4xFYAACA8QgsAADAeAQWAABgPAILAAAwHoEFAAAYj8ACAACMR2ABAADGI7AAAADjEVgAAIDxCCwAAMB4BBYAAGA8AgsAADAegQUAABiPwAIAAIxHYAEAAMbzdHcBAKC3SElJkd/vlyQdOHCgm0sD9CwElmOcZVlyu90KBoPdXZQ2TZ8+XQMGDFBpaanefffdFrdLTU3VhRdeKElauXKlvv7666NVxKNm4MCBKiws7PBx8vPzNX78eEnSm2++qWAwqCFDhujgwYOqrKyM+3gnnniiBg4cqEWLFikcDre5/VlnnaXx48crGAzqiSeeiPv5YnHKKafovPPOkyQ9++yznXLeusp5552nmTNnqrS0VA888EC3lOHss89WZmamNm/erI0bNxrz3eByuTRw4EDt3bu3Xfv7fD7l5+dr8+bNnVwymILAcgyzLEvXXXedjj/+eP3lL38x/sI+dOhQTZw4UV999VWrgcXlcunss8+WJONfU3ucfvrp+t73vqf58+frH//4R0zBoCXp6ek6//zzFQgE9Nprr+m4447Tfffdp4qKCj355JPauXNnzMfyeDy65pprlJ2dreHDh+uZZ55pcx+/368TTjhBBw8ebPdraItlWRoyZIgkqa6uTpKUlZWlsrIy1dbWKhQKtfu4Xq9Xffr0UVVVlWpqajpc1tLSUklScXFxh4/VHqmpqbriiivk8/k0ePBgrVu3rlvKEcnr9Wr8+PGaNWuW0tLS9Otf/1qHDx+Oef/+/fvrzDPP1NSpU5WYmKjf/va3cX2u0XMQWI5h+fn5mjhxovx+v376059q8eLFeu211xp98aakpMjtdquqqkrBYLBdX+52LY7f71daWpr27NnTrvJWVVVJksrLy1vdrqKiwvm5rW1jkZOTo8rKSlVWVnbq3aZ9Xvr06aPk5OSYzovH49HMmTPlcrk0c+ZMZWRk6LnnnnMuxPEKBAKSvj23O3fu1Lp16zRhwgQ98MADeuqpp7Rhw4aYjnXjjTcqOztb4XBYH330UUz72J81uxxdoba21vnZfv8efPDBTn2OJ554otHFPTU1VZWVlaqvr4/rOHb52vs5sz9P8VzQbS6XS7fddpt8Pp8qKir07LPPdigMd4Tf79fIkSM1ZswYnXrqqUpKSnIeu/LKK/Xcc8+1uK9lWcrNzdW4ceM0btw45eXlNXr8kksu0R/+8IcuKzu6D4HlGLZ9+3b96le/0nXXXaeCggJNmzZNo0eP1h//+Efn4jllyhRddtllnfq8d9xxR7v2s7/8Iy9A0djByuVydcqF8Pbbb1dubm6Hj9OaQ4cO6ec//3mb2wWDQT300EO69dZbVVBQoAkTJigtLU2/+93v2vVa7XNqB9FAIKCnn35aV111lc4991zdc889euqpp9q80z7//PN1+umnS5Leffddbdq0SZKUnJwsl8ulqqoqhUKhZhdA+8LcWhC2LEsej6fd72fkxf9oXYB/8YtfqG/fvqqrq1N9fX3Mz+v1eiVJI0aM0OOPPx7z89nh1+v1qry8XPfff3/cZb788ss1atQohcNhPfvss05tTyzP7fF4lJqaqrKysrjCc2pqqrKzs9W/f39lZWWpf//+GjBggLKzs+V2u53twuGwNm3apGXLlunzzz+X1BCwUlNTlZaWpvT0dA0ePFjDhg1Tfn5+o4AjNdRYrVy5UitXrqR25RhGYDnGlZaW6sknn9TUqVN1zTXXKDMzUz/72c/0zDPPHNXq4Ly8PFVUVKimpqbFmhyXy+X83/65LW63O+q2LpdLHo9Hfr9fKSkp2rVrV8dewFEUCAT01FNP6brrrtNZZ52lESNG6J577tETTzwRd01LtAtpOBzWq6++qoSEBE2dOlWpqamtHmPs2LG6/PLLJUkbN27UG2+84Tx2xhln6Oqrr26zHIMGDdLTTz/d6jbz5s3T66+/HvWxcePG6frrr5ck/ed//mej2qrIz5L9en/1q1+pvLzc+axFOw+PPvqoEhMT9fvf/15ffvlls8ddLpfcbreSkpKi9vexLEsJCQmtvqaWuFyuZhfdrnTppZc6/Xwsy9J9993XruOsW7dOf/zjH2Ouib3uuuucPlRNBYNBbdmyRWvWrNGqVauaBajLL7/cKXNToVDIqS1cv369duzY0W21RTh6CCy9xJIlS7R7927dc889SklJ0b333quXX35Za9eu1d69e1VdXe3cLUbq27ev7rnnHknSO++8o9WrVzc7ttvtVmJiovNfND/4wQ+Unp4eU1lPO+00nXbaaTFtG0vHxaqqKv3oRz9q8fFPP/3UqSWor69vd5+Hptxut3NuYg1gtnA4rJdeekmWZWnq1KkaNWqU7rzzTudikZqaqvr6egUCgZju8D2e5n/qc+bM0YYNG7Rnzx653e6ozRsnnXSSbrvtNlmWpT179ujpp59u9lyhUEi1tbVRy+H1euXz+RQKhZxmqab8fr88Hk+rYSwYDDrBqml4iHxO+72LpeOtvV8wGGy1iaa6urrZ75588kmVl5erqqoq6t9NS6ZOnaobbrhBmzdv1qOPPhrTPpKc2pXk5GSlpKTEvJ9lWbr22mudPl8lJSVxf77dbrf69u0rSRo9erTy8/O1bdu2mPa1a8wCgYB27dqlvXv3au/evdq+fbt27doV03kPh8MqKirS7t27tWvXLm3btk3bt2/v0mZGmInA0ots27ZNDz30kO6//36lpqZq//792r17t3bv3t3iPpH9RQ4dOqRvvvnmaBT1qGqtg293e+mll5SSkqJx48aptrbWucheeumlmjJlSszHSUtLa7WG44EHHmh2hztt2jRde+21crlcOnDggH73u981Cx0LFy7U/PnzWwxMkyZN0s0336w9e/bo3/7t36Juc8stt+j0009vNXRFhoamwaY77qyP9t9BfX296uvrVVNTo0OHDsW0j8vl0s0336yJEyc6v1uwYIE++OCDmJ/Xsizdeuutzg3EnDlzYg4r0rfNuytXrtRf/vKXmPeL3Hf//v361a9+Fde+ODYRWHqZoqIiPfLIIxo1alTUavCu8vDDD6u6urrFO3FJ+s53vqMZM2bok08+abXTnST96U9/ksvl0m9/+1tt37692eN2m39CQkKLtT49QTgc1nPPPaerr75af/vb35zzFu2uv7MkJyfru9/9rlOVv3fvXj3++ONR+zzE2+m0vSJDSms1BN3VLJCenq7KykrV1dV1WhnsviMpKSlxjypKT0/XzTffrFGjRkmSPvvsM02YMEFXXXWVqqurtXTp0piO853vfMcJK4sXL9aCBQviKkdHPh+dVdOJYweBpRcqKipSUVHRUX3OWO4KI/uwtMWyrEb/byocDjtV/S01RfQUgUBAL774YqPf2VXpn3/+uZ599tkW983Ly9O//uu/qq6urlG/BXvIrtfrVUpKSqOatIKCAiesbNmyRU899ZTTDOP1ep1ms7S0NKdJpDO5XC75fL52hbLIC6TX6+1w2VwulyzLavPC+5Of/ERZWVkxH/f4449vs0+PrbKyUj/+8Y9j2tayLJ1xxhn6zne+o8TERNXX1+vll1/W0qVLdd555+nKK6/UDTfcoMTExFZrWizL0uzZszVt2jRJ0rJly/Tyyy/HVIZIHQkd9ElBUwSWY1RSUpKys7O1devW7i5KzOyaEHsm0Jb4fD4nqPTk2pOOsC8EoVCo1X4AdlhzuVzNtrMv5k2HyC5btkxDhgyRZVl65ZVXGl2szzrrLE2cOFEvvviiLr74Yp188smqq6tTMBiMeoGx+87k5ua2OCrG5/NJki688ELNmjVLXq9Xixcv1l//+tfWToEjMrRGXiB/9rOfKScnp8VO3vZn55577mkWSCzLksvlUkJCgn73u99p48aNrZbBDlcHDhxodchxWlqa+vfvr+rq6jaHuffp00cDBw6MObiNHDlSV199tTMnTXFxsZ5++mmnCef9999Xenq6pk+frquuukoDBw7UnDlzms0v07SG7aOPPtILL7zQrgARyz72ufb5fE6/LPv3QCQCyzHqe9/7nsaOHavly5fr73//e7tmNT3atm/frvr6eu3fv19Sw1waSUlJ+vzzz/XSSy8527ndbn3yySeS1ONrT7qa3Q8gcghpLF555ZVmF3l7wr7+/fs3Gr1h19S0JpZRMW0doyVNh8faqqqq5PF4onY4jmQHppbE8rdjX2Tnz5+vRYsWtbid3el2586dbXa6HT9+vO688842h/lLDcHw4osv1pAhQxQOh6POuSRJf/vb3xQKhTRjxgxNnjxZo0eP1osvvqi1a9c6z3n99dc7HXsXLlzYqCmyvSZPnqzJkye3ud2zzz6rFStWSIqtphW9C4HlGJSVlaXhw4fLsiydeeaZGjNmjF588cWoI3xM8s9//rPRv+1Jspp+6VZVVbXZx6Un6d+/v1JTU1VdXe2EBMuylJSUpKSkJH311VfNzoH9Zd7WhSRyJIXL5WoUQlprMolWIzF58mT1799foVBIc+fOlWVZeumll5xmoWj72J1ud+3a1Wan2zfeeEPvvfeefD5fXAEr8sIWWVNiv7bXX39d8+bNa7bf448/rqSkJD322GNR+3PZ/aR6Ql+KYDCoP/7xj7rmmmu0YMGCFjvSh8NhzZkzR4WFhbrmmmvUt29f3Xvvvfr0009lWZZOPfVUSQ0h7fnnn++074xwONzqZ9V+DyM/r/ZnwLIsZ5RSa+ypDOzvjPZO8Q9zEViOQUVFRfrlL3+piy++WOecc45SU1N19913a/HixZozZ06n9znoKvadb2T/imPR6NGjNXv27BYfv//++9sdWCLvzhMSEhod56abbpLb7dY777zT6kgxqeG9uOSSSyRJK1as6JKF+8LhsOrr6+OuNbPPRdNmqc7qAxHLcezP6rRp03TyySe3uF2/fv0kNfQtamsuFHsYd6zhraamRs8//3xM2y5ZskRbt27Vvffeq4yMjEbTCOzatUtPPPFEzBPLtcZu1lm2bFmro4QeeughpaenNwqHds3YgAED9PDDD8f1vB988IH+/ve/t6PEMBmB5RhVXV2tOXPm6PPPP9fNN9+srKwsnXXWWRo6dKieeuqpmIdGdiaXy+V01AwGg212ZLT7srQWWOyRFHZzwrHYRBStScK+iDW9+7dHR9mTndXX16uurs6ZwyMysOTk5CgvL0+VlZXNOvU2NWvWLKWmpioYDOqtt97qhFfVeewLW3cu4mf3h8nOzlZ2dnab2ycnJ+ukk06K69idwbIs5efna9y4cSooKFBGRkazbQYNGqS77rpLH3/8sb744guVlZV12vO3JTIcttWUh96HT8QxbuvWrfr3f/933XbbbRozZowGDx6su+++u8Xq+a6UmJiohx56KO79brrpJt10001tbrd06VK98MIL7SmapIa732AwqOrq6hY7kcbCDlFJSUlyuVwqKSlpdfsVK1bos88+c55Xapiw7b777nNqHZqyv8wnTZqkSZMmRT3u/fffr7KyMpWVlSkjI0NJSUlOUPV4PBowYIAkadWqVa2WLycnR+eee66khj4NkQsZpqSkOJPCdee6NFLbSzp0pYcffrjVWZxt8UwcF/k56giv16sRI0Y4IaVp88rmzZu1bNkyDR48WFOmTJHP59PQoUM1dOhQzZ49W7t379aGDRv01VdfaceOHXGt39WRfih2rdXGjRujdtgeOnSos9zFD37wA9XW1jrBHMcmAksvUF1drT/84Q/OVO+vvfZadxepS3S0duWSSy7RGWec0UmlafDRRx+1OWFWa+VuKQTYgSVa3wD7ImHXptiBJfKLfMSIEfJ6vaqtrdXmzZtbfH6v16vbb7/dqcFav359o8enT5+uCy+8sMX9bbFMzR/rqJCm29mBpTtmPrUsS+FwuEtqIcLhsOrq6mJe6NCyLKWnpysrK0sDBw7U4MGDNWTIEOXm5jYL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mQ4ePNju97slsX5mm57LTz75RMuWLdM555yjkSNHKiEhQSUlJVq/fr1WrFihYDDYoX0Ak1HDgh5t1qxZ+s53vqORI0cqJSVFLpdLbrdbqampOumkk3TLLbcoPT1dkrR582ZJ3/ZTiDR8+HBJks/nU05OTrPH3G63tm/frkAgoPXr1ysYDCojI0ODBw9udizLsnTyySdLklavXu38ftSoUbr99ts1duxYpaWlye12KzExUUOGDNGFF16om266SQkJCc2ON3DgQF111VXq27evEhIS5PP5Wg0rktpdxq6Qnp6u22+/XePGjVNKSorz/hQUFOiWW25RSkpKo+3be566Smefy3g+s015PB7deOONKigoUFJSkjwej/r376+zzz5b3/3ud6Oel/bsA5iIGhb0WMcdd5wmTJigUCikBQsWaNOmTaqoqJDX61VOTo4uuOACpaena+zYsfrnP/+pzZs3a9asWRo8eLASEhKcan+/36/c3FyFw2FZlqVhw4Zp9+7dzvMcf/zxkuQMba2pqdGmTZs0ZswYjRs3Tjt37mxUruHDhyslJUWHDh1yjtOvXz9ddtllsixLy5Yt09q1a3X48GGnrFOmTFFeXp4uuugivfbaa42ON3r0aG3ZskXz5s1TRUVFTOemPWXsKieccILKy8s1d+5cbd26VVJDKJk1a5aSkpJ02mmnacGCBZLad57mzZun+fPn64EHHpAkPfLII6qpqZEk5eXlxVTGZ555RpL005/+VD6fT3/+85914MAB5/HOOpfxfmabKigoUH19vd58801t3rxZlmXphBNO0MyZM5Wbm6tzzjlH7777bof3AUxEDQt6rIEDB6q8vFwrV67UihUrVFZWplAopEAgoO3bt2vlypWS5NytVlZWavfu3XK5XBo6dKhznGHDhsmyLG3YsEGSGj1mWZZGjBihcDjs1NBI395Jn3DCCc2G0Y4bN06SGo1CmTRpkjwejxYuXKhFixbp0KFDCgaDqq6u1tatW/XCCy+oqqpKJ554otPx0xYKhfTOO+/EHFbaW8au9Morr2jDhg2qqalRTU2NVq9e7Tx3//79ne06cp66Umedy3g/s015PB69/vrrWrt2rQKBgGpqarRq1Sp98MEHkhrCSWJiYof3AUxEDQt6rKVLl2rp0qWSGmpJsrKylJGRoX79+ikrK0uDBg2SpEZV3l9++aUG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" alt="微信二维码" style="width:150px;height:150px;border-radius:8px;border:2px solid rgba(255,255,255,0.3);margin-top:8px;">
+      <p style="font-size:12px;opacity:0.7;margin-top:6px;">扫码添加微信</p>
+    </div>
+  </div>
+  <p class="footer-disclaimer">⚠️ 声明：本工具仅供参考，具体格式以各地法院要求为准。如需法律帮助，请联系专业律师。</p>
+</footer>
+
+<script>
+const data = [
+  {
+    name: "民间借贷纠纷",
+    cat: "合同纠纷",
+    scene: "自然人之间的借款合同纠纷，包括有息借贷和无息借贷、有无担保等情形。",
+    elements: [
+      ["借款金额", "填写实际出借的本金数额（大写+小写）"],
+      ["借款日期", "借款实际交付的日期"],
+      ["还款期限", "合同约定的还款日期或还款期限"],
+      ["约定利率", "年利率/月利率，注意是否超过法定上限"],
+      ["已还金额", "被告已归还的本金和利息总额"],
+      ["担保方式", "保证/抵押/质押/无担保"],
+      ["逾期情况", "逾期起始日期、逾期天数、逾期利息计算方式"]
+    ],
+    evidence: ["借款合同/借条", "转账记录", "催款记录（短信/微信/函件）", "利息计算明细", "担保合同（如有）"],
+    law: ["民法典第667条（借款合同）", "民法典第680条（利率限制）", "最高法院民间借贷司法解释"],
+    tips: ["注意3年诉讼时效", "保留转账凭证原件"]
+  },
+  {
+    name: "买卖合同纠纷",
+    cat: "合同纠纷",
+    scene: "因货物买卖产生的价款支付、质量瑕疵、交付违约等争议。",
+    elements: [
+      ["合同签订日期", "双方签订买卖合同的日期"],
+      ["标的物名称规格", "买卖货物的名称、型号、规格、数量"],
+      ["价款金额", "合同约定的总价款"],
+      ["付款方式", "转账/现金/分期/承兑等"],
+      ["交付时间", "约定的交付日期及实际交付情况"],
+      ["质量标准", "约定的质量标准或国家标准/行业标准"],
+      ["违约情形", "具体违约行为描述及违约责任约定"]
+    ],
+    evidence: ["买卖合同", "送货单/签收单", "转账凭证", "催款记录", "质量检验报告（如有）"],
+    law: ["民法典第595条（买卖合同）", "民法典第577条（违约责任）"],
+    tips: ["注意收货时及时验收并保留签收单", "质量问题应在合理期限内通知对方"]
+  },
+  {
+    name: "劳动争议（违法解除）",
+    cat: "劳动争议",
+    scene: "用人单位违法解除或终止劳动合同，劳动者主张赔偿金或恢复劳动关系。",
+    elements: [
+      ["入职日期", "劳动者入职用人单位的日期"],
+      ["离职日期", "劳动关系解除或终止的日期"],
+      ["月工资标准", "解除前12个月平均工资"],
+      ["工作年限", "在本单位连续工作的年限"],
+      ["解除原因", "用人单位给出的解除理由"],
+      ["社保缴纳情况", "是否依法缴纳社会保险"],
+      ["是否签书面合同", "是否签订书面劳动合同及签订时间"]
+    ],
+    evidence: ["劳动合同", "工资条/银行流水", "解除劳动合同通知书", "社保缴纳记录", "考勤记录"],
+    law: ["劳动合同法第47条（经济补偿）", "劳动合同法第87条（违法解除赔偿金）", "劳动合同法第48条（继续履行）"],
+    tips: ["劳动争议需先经劳动仲裁前置程序", "注意1年仲裁时效"]
+  },
+  {
+    name: "交通事故责任纠纷",
+    cat: "侵权纠纷",
+    scene: "机动车交通事故引发的人身损害赔偿和财产损失赔偿纠纷。",
+    elements: [
+      ["事故日期", "交通事故发生的具体日期"],
+      ["责任认定", "交警部门出具的事故责任认定书结论"],
+      ["伤残等级", "司法鉴定确定的伤残等级（如有）"],
+      ["医疗费总额", "已发生的医疗费用总额及后续治疗费"],
+      ["误工天数", "医嘱或鉴定确定的误工天数"],
+      ["护理天数", "护理期限及护理人数"],
+      ["被扶养人情况", "被扶养人人数、年龄、劳动能力等"]
+    ],
+    evidence: ["交通事故认定书", "医疗费发票及病历", "伤残鉴定报告", "误工证明", "收入证明"],
+    law: ["民法典第1179条（人身损害赔偿）", "道路交通安全法第76条"],
+    tips: ["治疗终结后再做伤残鉴定", "保留所有医疗费票据原件"]
+  },
+  {
+    name: "离婚纠纷",
+    cat: "婚姻家事",
+    scene: "夫妻一方或双方要求解除婚姻关系，涉及子女抚养、财产分割、债务承担等。",
+    elements: [
+      ["结婚日期", "登记结婚的日期"],
+      ["子女信息", "子女姓名、出生日期、目前抚养情况"],
+      ["共同财产清单", "房产、车辆、存款、股票等共同财产明细"],
+      ["共同债务", "共同债务的金额、用途、债权人"],
+      ["过错情形", "家暴/出轨/赌博等过错行为（如有）"],
+      ["抚养费主张", "主张的抚养费金额及支付方式"]
+    ],
+    evidence: ["结婚证", "子女出生证明", "财产证明（房产证、行驶证等）", "收入证明", "过错证据（如有）"],
+    law: ["民法典第1079条（离婚条件）", "民法典第1084条（子女抚养）", "民法典第1087条（财产分割）"],
+    tips: ["第一次起诉离婚如无充分证据可能不判离", "注意收集共同财产线索"]
+  },
+  {
+    name: "信用卡纠纷",
+    cat: "金融纠纷",
+    scene: "持卡人未按约定偿还信用卡透支款项，银行提起诉讼追偿。",
+    elements: [
+      ["开卡日期", "办理信用卡的日期"],
+      ["透支本金", "透支未还的本金金额"],
+      ["利息金额", "截至起诉日的利息总额"],
+      ["违约金", "产生的违约金或滞纳金金额"],
+      ["最低还款额", "每月最低应还款金额"],
+      ["最后还款日", "最后还款日及逾期起始日"]
+    ],
+    evidence: ["信用卡申请表/领用合约", "账单明细", "催收记录", "还款记录"],
+    law: ["民法典第674条（借款利息）", "商业银行信用卡业务监督管理办法"],
+    tips: ["注意核对利息和违约金计算是否正确", "可尝试与银行协商分期还款"]
+  },
+  {
+    name: "物业服务合同纠纷",
+    cat: "合同纠纷",
+    scene: "业主未按约定缴纳物业费，物业公司提起诉讼追缴欠费。",
+    elements: [
+      ["物业费标准", "合同约定的物业费单价（元/㎡/月）"],
+      ["欠费期间", "欠缴物业费的起止时间段"],
+      ["欠费金额", "欠缴物业费总额"],
+      ["服务内容", "物业公司提供的具体服务项目"],
+      ["催缴情况", "催缴通知的方式、时间、次数"]
+    ],
+    evidence: ["物业服务合同", "物业费缴费通知", "催缴函件", "房产证/购房合同"],
+    law: ["民法典第944条（物业费缴纳）", "物业管理条例"],
+    tips: ["物业服务质量不达标可作为抗辩理由", "注意收集物业服务不到位的证据"]
+  },
+  {
+    name: "知识产权侵权纠纷",
+    cat: "知产纠纷",
+    scene: "因专利、商标、著作权被他人侵犯而提起的侵权诉讼。",
+    elements: [
+      ["权利类型", "专利权/商标权/著作权"],
+      ["权利证书号", "专利号/商标注册号/著作权登记号"],
+      ["侵权行为描述", "被控侵权行为的具体表现"],
+      ["侵权获利/损失", "因侵权造成的实际损失或侵权人获利"],
+      ["合理开支", "律师费、公证费、调查费等维权费用"]
+    ],
+    evidence: ["权利证书", "侵权产品实物/截图", "公证书", "损失或获利证据", "维权合理开支凭证"],
+    law: ["著作权法第54条", "商标法第63条", "专利法第71条"],
+    tips: ["建议起诉前先做公证保全", "注意选择合适的管辖法院"]
+  },
+  {
+    name: "建设工程合同纠纷",
+    cat: "建设工程",
+    scene: "建设工程施工合同的价款结算、工期延误、质量争议等纠纷。",
+    elements: [
+      ["工程名称", "建设项目的名称和地点"],
+      ["合同价款", "合同约定的工程总价款"],
+      ["结算金额", "经审定的工程结算金额"],
+      ["已付款", "发包方已支付的工程款总额"],
+      ["欠付金额", "尚欠的工程款数额"],
+      ["竣工日期", "实际竣工验收日期"],
+      ["质量争议", "工程质量问题的具体描述（如有）"]
+    ],
+    evidence: ["施工合同", "工程结算书/审计报告", "付款凭证", "竣工验收报告", "签证单/变更单"],
+    law: ["民法典第799条（竣工验收）", "民法典第793条（工程价款）", "建工司法解释"],
+    tips: ["建设工程纠纷可主张优先受偿权", "注意28天优先受偿权行使期限"]
+  },
+  {
+    name: "公司股权转让纠纷",
+    cat: "公司股权",
+    scene: "股东之间或股东与第三人之间因股权转让产生的价款、效力等争议。",
+    elements: [
+      ["转让方", "出让股权的股东信息"],
+      ["受让方", "受让股权的主体信息"],
+      ["转让比例", "转让的股权比例或出资额"],
+      ["转让价格", "约定的股权转让价款"],
+      ["付款情况", "已付款项、付款方式、未付金额"],
+      ["工商变更情况", "是否完成工商变更登记"]
+    ],
+    evidence: ["股权转让协议", "股东会决议", "工商变更登记材料", "付款凭证", "公司章程"],
+    law: ["公司法第84条（股权转让）", "民法典第502条（合同生效）"],
+    tips: ["注意其他股东的优先购买权", "及时办理工商变更登记"]
+  },
+  {
+    name: "房屋租赁合同纠纷",
+    cat: "合同纠纷",
+    scene: "房屋租赁过程中因租金支付、违约退租、押金退还等产生的争议。",
+    elements: [
+      ["出租方/承租方", "租赁双方的姓名/名称及身份信息"],
+      ["租赁物地址", "租赁房屋的具体地址"],
+      ["租期", "租赁合同约定的起止日期"],
+      ["租金标准", "每月/每年租金金额及支付方式"],
+      ["押金金额", "租赁押金数额"],
+      ["欠付租金", "承租方欠缴的租金金额及期间"],
+      ["违约情形", "违约行为的具体描述"],
+      ["房屋现状", "房屋目前使用状态及交还情况"]
+    ],
+    evidence: ["租赁合同", "租金支付记录", "房屋交接清单", "催缴通知", "房屋现状照片"],
+    law: ["民法典第703条（租赁合同）", "民法典第722条（承租人违约）", "民法典第733条（租赁物返还）"],
+    tips: ["退租时做好房屋交接并拍照留证", "押金退还需依据合同约定"]
+  },
+  {
+    name: "追偿权纠纷",
+    cat: "合同纠纷",
+    scene: "担保人代偿债务后向原债务人行使追偿权引发的纠纷。",
+    elements: [
+      ["原债务人", "原债务的债务人信息"],
+      ["担保人", "承担担保责任的主体信息"],
+      ["代偿金额", "担保人实际代偿的金额"],
+      ["代偿日期", "担保人实际代偿的日期"],
+      ["追偿依据", "代偿行为的合同或法律依据"],
+      ["原债务金额", "原始债务的总金额及构成"]
+    ],
+    evidence: ["担保合同", "代偿凭证/转账记录", "原债务合同", "债权人出具的收据", "代偿通知"],
+    law: ["民法典第700条（保证人追偿权）", "民法典第392条（混合担保追偿）"],
+    tips: ["追偿权诉讼时效从代偿之日起算3年", "保留代偿的完整凭证"]
+  },
+  {
+    name: "生命权身体权健康权纠纷",
+    cat: "侵权纠纷",
+    scene: "因侵害他人生命权、身体权、健康权引发的人身损害赔偿纠纷。",
+    elements: [
+      ["受害人信息", "受害人的姓名、年龄、职业等基本信息"],
+      ["侵权行为描述", "侵权行为的具体经过和表现形式"],
+      ["损害后果", "造成的具体损害结果"],
+      ["医疗费总额", "已发生及后续的医疗费用"],
+      ["伤残等级", "司法鉴定确定的伤残等级"],
+      ["误工费", "因误工减少的收入"],
+      ["护理费", "护理期限及护理费用"],
+      ["精神损害", "精神损害程度及赔偿主张"]
+    ],
+    evidence: ["医疗费票据及病历", "伤残鉴定报告", "误工及收入证明", "护理费凭证", "侵权行为证据（监控/证人等）"],
+    law: ["民法典第1179条（人身损害赔偿范围）", "民法典第1183条（精神损害赔偿）"],
+    tips: ["及时报警并保留就医记录", "伤残鉴定建议在治疗终结后进行"]
+  },
+  {
+    name: "名誉权纠纷",
+    cat: "侵权纠纷",
+    scene: "因他人捏造、散布虚假事实损害名誉引发的侵权纠纷。",
+    elements: [
+      ["侵权言论内容", "被控侵权言论/文章的具体内容"],
+      ["传播范围", "侵权言论的传播渠道和影响范围"],
+      ["造成损害", "对受害人名誉造成的具体损害"],
+      ["删除请求", "要求删除/停止侵权的具体主张"],
+      ["精神损害赔偿", "主张的精神损害抚慰金金额"]
+    ],
+    evidence: ["侵权言论截图/公证", "传播范围证据", "损害后果证明", "删除通知/交涉记录"],
+    law: ["民法典第1024条（名誉权保护）", "民法典第1183条（精神损害赔偿）"],
+    tips: ["建议及时对侵权内容做公证保全", "注意区分正当评论与名誉侵权的界限"]
+  },
+  {
+    name: "遗嘱继承纠纷",
+    cat: "婚姻家事",
+    scene: "因遗嘱效力、遗产分配等引发的继承纠纷。",
+    elements: [
+      ["被继承人死亡日期", "被继承人去世的具体日期"],
+      ["遗嘱形式", "自书遗嘱/代书遗嘱/公证遗嘱/口头遗嘱"],
+      ["遗嘱内容", "遗嘱中关于遗产分配的具体内容"],
+      ["继承人信息", "法定继承人及遗嘱继承人的信息"],
+      ["遗产清单", "房产、存款、车辆等遗产明细"],
+      ["遗嘱效力争议", "对遗嘱效力存在争议的具体事项"]
+    ],
+    evidence: ["遗嘱原件", "被继承人死亡证明", "亲属关系证明", "遗产产权证明", "遗嘱见证人证言（如有）"],
+    law: ["民法典第1134-1139条（遗嘱形式）", "民法典第1123条（继承方式）", "民法典第1143条（遗嘱无效情形）"],
+    tips: ["不同形式遗嘱的效力要件不同，务必核实", "口头遗嘱仅在危急情况下有效"]
+  },
+  {
+    name: "合伙协议纠纷",
+    cat: "合同纠纷",
+    scene: "合伙人之间因出资、盈亏分配、退伙等事项产生的争议。",
+    elements: [
+      ["合伙人信息", "全体合伙人的姓名/名称及出资情况"],
+      ["出资比例", "各合伙人的出资额及比例"],
+      ["合伙期限", "合伙协议约定的经营期限"],
+      ["盈亏分配", "利润分配和亏损分担的比例及方式"],
+      ["退伙条件", "退伙的条件、程序及财产结算方式"],
+      ["争议事项", "引发纠纷的具体事项描述"]
+    ],
+    evidence: ["合伙协议", "出资凭证", "账册/财务记录", "退伙通知/协议", "盈亏分配记录"],
+    law: ["民法典第967条（合伙合同）", "民法典第972条（利润分配）", "民法典第976条（退伙）"],
+    tips: ["建议签订书面合伙协议并明确约定", "合伙清算时注意债权债务处理"]
+  },
+  {
+    name: "产品责任纠纷",
+    cat: "侵权纠纷",
+    scene: "因产品存在缺陷导致人身或财产损害引发的侵权纠纷。",
+    elements: [
+      ["产品名称型号", "缺陷产品的名称、品牌、型号"],
+      ["购买日期", "购买该产品的日期及渠道"],
+      ["缺陷描述", "产品缺陷的具体表现形式"],
+      ["损害后果", "因产品缺陷造成的损害结果"],
+      ["因果关系", "产品缺陷与损害后果之间的因果关系"],
+      ["生产者/销售者信息", "产品生产者和销售者的名称、地址"]
+    ],
+    evidence: ["购买凭证/发票", "缺陷产品实物/照片", "损害鉴定报告", "医疗记录（人身损害时）", "产品说明书/宣传材料"],
+    law: ["民法典第1202条（产品生产者责任）", "民法典第1203条（产品销售者责任）", "产品质量法"],
+    tips: ["产品责任适用无过错责任原则", "注意保留缺陷产品不要擅自处理"]
+  },
+  {
+    name: "网络侵权纠纷",
+    cat: "知产纠纷",
+    scene: "因网络平台上发生的著作权、名誉权等侵权行为引发的纠纷。",
+    elements: [
+      ["侵权平台", "实施侵权行为的网络平台名称"],
+      ["侵权内容", "被控侵权的具体内容描述"],
+      ["URL链接", "侵权内容的网页链接地址"],
+      ["公证证据", "对侵权内容进行公证保全的情况"],
+      ["损害赔偿", "因网络侵权造成的损失或侵权获利"],
+      ["删除请求", "要求平台或侵权人删除侵权内容的主张"]
+    ],
+    evidence: ["侵权内容公证书", "网页截图及URL", "权利证明文件", "损失证据", "平台通知/投诉记录"],
+    law: ["民法典第1194-1197条（网络侵权）", "信息网络传播权保护条例"],
+    tips: ["及时对侵权网页做公证保全", "可先向平台发送删除通知"]
+  },
+  {
+    name: "金融借款合同纠纷",
+    cat: "金融纠纷",
+    scene: "借款人未按金融借款合同约定偿还贷款本息，贷款人提起诉讼追偿。",
+    elements: [
+      ["贷款人信息", "发放贷款的金融机构名称及基本信息"],
+      ["借款人信息", "借款人的姓名/名称及身份信息"],
+      ["贷款金额", "合同约定的贷款本金数额"],
+      ["贷款期限", "贷款的起止日期"],
+      ["利率", "合同约定的贷款利率（固定/浮动）及计算方式"],
+      ["还款方式", "等额本息/等额本金/先息后本/一次性还本付息"],
+      ["逾期情况", "逾期起始日期、逾期金额、罚息计算"],
+      ["担保方式", "信用/保证/抵押/质押"],
+      ["抵押物信息", "抵押物名称、位置、评估价值（如有）"]
+    ],
+    evidence: ["金融借款合同", "放款凭证/转账记录", "还款明细账单", "抵押合同及登记证明", "催收通知/律师函"],
+    law: ["民法典第667条（借款合同）", "民法典第674条（利息支付）", "民法典第676条（逾期利息）"],
+    tips: ["注意银行利率是否符合监管规定", "抵押权需办理登记方可设立"]
+  },
+  {
+    name: "保证合同纠纷",
+    cat: "合同纠纷",
+    scene: "保证人未按保证合同约定承担保证责任，债权人提起诉讼要求保证人履行保证义务。",
+    elements: [
+      ["保证人信息", "承担保证责任的主体信息"],
+      ["主债务人信息", "主合同中的债务人信息"],
+      ["保证方式", "一般保证或连带责任保证"],
+      ["保证期间", "保证人承担保证责任的期间"],
+      ["保证范围", "保证担保的范围（本金/利息/违约金/实现债权费用等）"],
+      ["主债务金额", "主债务的本金及利息等总额"]
+    ],
+    evidence: ["保证合同", "主债务合同", "债务人违约证据", "催收通知", "保证人签收凭证"],
+    law: ["民法典第681条（保证合同）", "民法典第686条（保证方式）", "民法典第692条（保证期间）"],
+    tips: ["一般保证的保证人享有先诉抗辩权", "保证期间约定不明确的为主债务履行期届满之日起6个月"]
+  },
+  {
+    name: "融资租赁合同纠纷",
+    cat: "合同纠纷",
+    scene: "承租人未按融资租赁合同约定支付租金，出租人提起诉讼追偿租金或解除合同收回租赁物。",
+    elements: [
+      ["出租人信息", "出租人（融资租赁公司）名称及基本信息"],
+      ["承租人信息", "承租人名称及身份信息"],
+      ["租赁物", "租赁物的名称、型号、规格等信息"],
+      ["租金总额", "合同约定的租金总额及构成"],
+      ["租赁期限", "融资租赁的起止日期"],
+      ["残值", "租赁期满后租赁物的残值或留购价格"],
+      ["违约情形", "承租人的具体违约行为（逾期支付租金等）"]
+    ],
+    evidence: ["融资租赁合同", "租赁物交付验收凭证", "租金支付记录", "催收通知", "租赁物价值评估"],
+    law: ["民法典第735条（融资租赁合同）", "民法典第752条（租金支付）", "民法典第753条（租赁物收回）"],
+    tips: ["融资租赁与普通租赁的法律性质不同", "注意租赁物的所有权归属问题"]
+  },
+  {
+    name: "承揽合同纠纷",
+    cat: "合同纠纷",
+    scene: "承揽人未按约定完成工作或定作人未按约定支付报酬引发的纠纷。",
+    elements: [
+      ["定作人信息", "委托加工/定作的一方信息"],
+      ["承揽人信息", "承揽加工/定作的一方信息"],
+      ["工作内容", "约定的承揽工作具体内容和要求"],
+      ["报酬金额", "合同约定的报酬总额"],
+      ["交付时间", "约定的交付日期及实际交付情况"],
+      ["质量标准", "约定的质量标准或验收标准"],
+      ["违约情形", "违约行为的具体描述（逾期交付/质量不合格/未付款等）"]
+    ],
+    evidence: ["承揽合同/加工合同", "工作成果交付凭证", "验收记录", "付款凭证", "质量异议通知"],
+    law: ["民法典第770条（承揽合同）", "民法典第780条（报酬支付）", "民法典第781条（质量不合约定）"],
+    tips: ["定作人可随时解除承揽合同但应赔偿损失", "质量异议应在合理期限内提出"]
+  },
+  {
+    name: "商品房预售合同纠纷",
+    cat: "合同纠纷",
+    scene: "购房者与开发商因商品房预售合同的履行、面积差异、逾期交房等产生的纠纷。",
+    elements: [
+      ["开发商信息", "房地产开发企业名称及资质信息"],
+      ["购房者信息", "购房人姓名及身份信息"],
+      ["项目名称", "商品房项目的名称及具体位置"],
+      ["合同价款", "商品房预售合同约定的总价款"],
+      ["交付日期", "合同约定的交付日期及实际交付情况"],
+      ["面积差异", "实测面积与合同约定面积的差异"],
+      ["逾期交房", "逾期交房的天数及违约金计算"]
+    ],
+    evidence: ["商品房预售合同", "购房款支付凭证", "房屋交接通知", "面积测绘报告", "逾期交房催告函"],
+    law: ["民法典第577条（违约责任）", "城市房地产管理法第45条", "最高法院商品房买卖合同司法解释"],
+    tips: ["注意开发商是否取得预售许可证", "面积误差超过3%可要求退房或补差价"]
+  },
+  {
+    name: "医疗损害责任纠纷",
+    cat: "侵权纠纷",
+    scene: "患者在诊疗活动中受到损害，认为医疗机构存在过错而提起的损害赔偿诉讼。",
+    elements: [
+      ["患者信息", "患者的姓名、年龄、就诊情况"],
+      ["医疗机构信息", "实施诊疗行为的医疗机构名称"],
+      ["诊疗行为", "医疗机构的具体诊疗行为描述"],
+      ["损害后果", "患者因诊疗行为受到的具体损害结果"],
+      ["因果关系", "诊疗行为与损害后果之间的因果关系"],
+      ["鉴定意见", "医疗损害鉴定的结论（如有）"]
+    ],
+    evidence: ["病历资料", "医疗费票据", "医疗损害鉴定意见书", "诊断证明", "知情同意书"],
+    law: ["民法典第1218条（医疗损害责任）", "民法典第1219条（知情同意）", "民法典第1222条（推定过错）"],
+    tips: ["医疗损害鉴定是关键证据", "患者有权复制病历资料"]
+  },
+  {
+    name: "股权转让纠纷",
+    cat: "公司股权",
+    scene: "股东之间或股东与第三人之间因股权转让产生的合同履行、价款支付、工商变更等争议。",
+    elements: [
+      ["转让方", "出让股权的股东信息"],
+      ["受让方", "受让股权的主体信息"],
+      ["标的公司", "股权所在公司的基本信息"],
+      ["转让比例", "转让的股权比例或出资额"],
+      ["转让价格", "约定的股权转让价款"],
+      ["付款情况", "已付款项、付款方式、未付金额"],
+      ["工商变更", "是否完成工商变更登记"]
+    ],
+    evidence: ["股权转让协议", "股东会决议", "工商变更登记材料", "付款凭证", "公司章程"],
+    law: ["公司法第84条（股权转让）", "公司法第86条（变更登记）", "民法典第502条（合同生效）"],
+    tips: ["注意其他股东的优先购买权", "及时办理工商变更登记"]
+  },
+  {
+    name: "公司决议纠纷",
+    cat: "公司股权",
+    scene: "股东认为公司股东会或董事会决议存在效力瑕疵（无效或可撤销）而提起的诉讼。",
+    elements: [
+      ["公司名称", "作出决议的公司名称及基本信息"],
+      ["决议类型", "股东会决议/董事会决议"],
+      ["决议内容", "决议的具体内容和事项"],
+      ["决议效力争议", "主张决议无效或可撤销的具体理由"],
+      ["撤销事由", "召集程序/表决方式违反法律或章程，或决议内容违反章程"]
+    ],
+    evidence: ["公司决议文件", "公司章程", "会议通知及签到表", "股东出资证明", "工商登记信息"],
+    law: ["公司法第25条（决议无效）", "公司法第26条（决议可撤销）", "公司法第27条（决议不成立）"],
+    tips: ["撤销之诉应在决议作出之日起60日内提起", "决议无效之诉不受时效限制"]
+  },
+  {
+    name: "侵害著作权纠纷",
+    cat: "知产纠纷",
+    scene: "著作权人的作品被他人未经许可使用（复制、传播、改编等）而提起的侵权诉讼。",
+    elements: [
+      ["作品名称", "被侵权作品的名称及类型（文字/美术/软件等）"],
+      ["著作权人", "著作权权利人信息及权属证明"],
+      ["侵权行为", "侵权人实施的具体侵权行为（复制/传播/改编等）"],
+      ["侵权获利/损失", "因侵权造成的实际损失或侵权人违法所得"],
+      ["合理开支", "律师费、公证费、调查费等维权合理开支"]
+    ],
+    evidence: ["著作权登记证书/作品原件", "侵权证据（实物/截图/公证）", "损失或获利证据", "维权合理开支凭证", "权属证据（创作底稿等）"],
+    law: ["著作权法第52条（侵权责任）", "著作权法第54条（赔偿数额）", "著作权法第10条（著作权内容）"],
+    tips: ["建议起诉前先做公证保全", "注意著作权的保护期限"]
+  },
+  {
+    name: "侵害专利权纠纷",
+    cat: "知产纠纷",
+    scene: "专利权人的专利被他人未经许可实施（制造、使用、销售等）而提起的侵权诉讼。",
+    elements: [
+      ["专利号", "被侵权专利的专利号"],
+      ["专利权人", "专利权权利人信息"],
+      ["侵权产品", "被控侵权产品的名称、型号、技术特征"],
+      ["侵权行为", "侵权人实施的具体侵权行为（制造/使用/销售/许诺销售等）"],
+      ["赔偿金额", "主张的损害赔偿金额及计算依据"]
+    ],
+    evidence: ["专利证书", "侵权产品实物/购买公证", "技术对比分析报告", "损失或获利证据", "维权合理开支凭证"],
+    law: ["专利法第64条（专利权保护范围）", "专利法第71条（赔偿数额）", "专利法第11条（专利权内容）"],
+    tips: ["建议委托专业机构做技术对比分析", "可申请诉前禁令"]
+  },
+  {
+    name: "行政处罚纠纷",
+    cat: "行政纠纷",
+    scene: "行政相对人对行政机关作出的行政处罚决定不服，提起行政诉讼要求撤销或变更。",
+    elements: [
+      ["行政机关", "作出行政处罚决定的行政机关名称"],
+      ["处罚决定", "行政处罚决定的具体内容"],
+      ["处罚依据", "行政处罚所依据的法律法规条款"],
+      ["处罚金额", "罚款金额或其他处罚种类"],
+      ["违法事实", "行政机关认定的违法事实"],
+      ["复议/诉讼情况", "是否经过行政复议及复议结果"]
+    ],
+    evidence: ["行政处罚决定书", "行政复议决定书（如有）", "相关事实证据", "行政机关执法程序证据", "送达回证"],
+    law: ["行政诉讼法第12条（受案范围）", "行政处罚法第7条（陈述申辩权）", "行政处罚法第44条（告知义务）"],
+    tips: ["行政诉讼起诉期限一般为6个月", "可先申请行政复议"]
+  },
+  {
+    name: "强制执行申请",
+    cat: "执行",
+    scene: "生效法律文书确定的义务人未履行义务，权利人向人民法院申请强制执行。",
+    elements: [
+      ["执行依据", "生效判决书/调解书/仲裁裁决书等"],
+      ["被执行人", "应履行义务的当事人信息"],
+      ["执行标的", "需要执行的金钱或行为标的"],
+      ["已执行金额", "已经执行到位的金额或行为"],
+      ["未执行金额", "尚未执行到位的金额"],
+      ["财产线索", "被执行人的财产线索（银行账户/房产/车辆等）"]
+    ],
+    evidence: ["生效法律文书原件", "执行依据送达证明", "被执行人财产线索材料", "已执行部分凭证", "被执行人身份信息"],
+    law: ["民事诉讼法第247条（执行申请）", "民事诉讼法第246条（申请执行期间）", "最高法院执行司法解释"],
+    tips: ["申请执行期间为2年", "积极提供被执行人财产线索有助于执行到位"]
+  },
+  {
+    name: "不正当竞争纠纷",
+    cat: "知产纠纷",
+    scene: "经营者认为其他经营者实施了不正当竞争行为（混淆、虚假宣传、商业诋毁等）而提起的诉讼。",
+    elements: [
+      ["经营者信息", "原告和被告的经营主体信息"],
+      ["不正当竞争行为类型", "混淆/虚假宣传/商业诋毁/侵犯商业秘密等"],
+      ["损害后果", "因不正当竞争行为造成的具体损害"],
+      ["赔偿金额", "主张的损害赔偿金额及计算依据"]
+    ],
+    evidence: ["经营资质证明", "不正当竞争行为证据", "损害后果证据", "赔偿计算依据", "维权合理开支凭证"],
+    law: ["反不正当竞争法第6条（混淆行为）", "反不正当竞争法第8条（虚假宣传）", "反不正当竞争法第11条（商业诋毁）", "反不正当竞争法第17条（赔偿责任）"],
+    tips: ["不正当竞争纠纷一般由中级以上法院管辖", "注意收集竞争对手实施不正当竞争的直接证据"]
+  },
+  {
+    name: "网络服务合同纠纷",
+    cat: "合同纠纷",
+    scene: "用户与网络服务平台之间因服务内容、费用、账号管理等产生的合同纠纷。",
+    elements: [
+      ["平台名称", "提供网络服务的平台名称及运营主体"],
+      ["用户信息", "使用网络服务的用户信息"],
+      ["服务内容", "网络平台提供的具体服务项目和内容"],
+      ["费用标准", "服务费用的收费标准和支付方式"],
+      ["违约情形", "平台或用户的具体违约行为"]
+    ],
+    evidence: ["网络服务协议/用户协议", "服务使用记录", "费用支付凭证", "平台通知/公告", "沟通记录截图"],
+    law: ["民法典第491条（网络合同成立）", "民法典第496条（格式条款）", "电子商务法第48条（电子合同效力）"],
+    tips: ["注意用户协议中的格式条款效力", "电子数据证据建议做公证保全"]
+  },
+  {
+    name: "高度危险责任纠纷",
+    cat: "侵权纠纷",
+    scene: "因高度危险作业或高度危险物造成他人损害，经营者或所有人承担侵权责任的纠纷。",
+    elements: [
+      ["危险源", "高度危险作业或高度危险物的具体描述"],
+      ["经营者/所有人", "高度危险作业的经营者或危险物的所有人/管理人"],
+      ["损害事实", "因高度危险行为或物品造成的损害结果"],
+      ["因果关系", "高度危险行为与损害后果之间的因果关系"],
+      ["免责事由", "不可抗力/受害人故意/第三人过错等法定免责事由"]
+    ],
+    evidence: ["损害事实证据", "危险作业/物品相关证据", "因果关系鉴定", "医疗费票据（人身损害时）", "现场照片/监控"],
+    law: ["民法典第1236条（高度危险责任）", "民法典第1237条（核事故责任）", "民法典第1238条（民用航空器责任）", "民法典第1239条（高度危险物责任）"],
+    tips: ["高度危险责任一般适用无过错责任原则", "受害人故意可免除经营者责任"]
+  },
+  {
+    name: "保险合同纠纷",
+    cat: "金融纠纷",
+    scene: "投保人与保险人因保险合同的订立、履行、理赔等产生的纠纷，包括理赔拒赔、免责条款效力等争议。",
+    elements: [
+      ["投保人信息", "投保人的姓名/名称及身份信息"],
+      ["保险人信息", "保险公司名称及基本信息"],
+      ["险种", "财产保险/人身保险/责任保险等具体险种"],
+      ["保险金额", "合同约定的保险金额"],
+      ["事故日期", "保险事故发生的具体日期"],
+      ["理赔金额", "投保人主张的理赔金额"],
+      ["拒赔理由", "保险人拒赔的具体理由"],
+      ["免责条款", "保险合同中约定的免责条款内容及效力"]
+    ],
+    evidence: ["保险合同/保险单", "保险费缴纳凭证", "事故证明材料", "理赔申请及拒赔通知", "损失评估报告"],
+    law: ["保险法第17条（免责条款说明义务）", "保险法第23条（理赔期限）", "保险法第30条（不利解释原则）"],
+    tips: ["免责条款未尽说明义务的不产生效力", "注意保险理赔的诉讼时效"]
+  },
+  {
+    name: "民间委托理财纠纷",
+    cat: "金融纠纷",
+    scene: "委托人将资金交由受托人进行投资理财，因亏损、保底条款效力等引发的纠纷。",
+    elements: [
+      ["委托人信息", "委托理财的自然人/法人信息"],
+      ["受托人信息", "受托进行理财的主体信息"],
+      ["投资金额", "委托理财的资金数额"],
+      ["预期收益", "合同约定的预期收益率或收益金额"],
+      ["实际亏损", "理财期间实际产生的亏损金额"],
+      ["理财方式", "股票/基金/期货/外汇等具体投资方式"],
+      ["保底条款", "是否约定保底收益及条款内容"]
+    ],
+    evidence: ["委托理财协议", "资金交付凭证", "交易记录/账户流水", "亏损计算明细", "收益分配记录"],
+    law: ["民法典第919条（委托合同）", "民法典第924条（受托人报告义务）", "民法典第927条（委托物处理）"],
+    tips: ["保底条款一般认定无效", "注意区分委托理财与借贷关系"]
+  },
+  {
+    name: "租赁合同纠纷",
+    cat: "合同纠纷",
+    scene: "出租方与承租方因租赁物交付、租金支付、押金退还、违约解除等产生的纠纷。",
+    elements: [
+      ["出租方信息", "出租人的姓名/名称及身份信息"],
+      ["承租方信息", "承租人的姓名/名称及身份信息"],
+      ["租赁物", "租赁物的名称、规格、数量等描述"],
+      ["租期", "租赁合同约定的起止日期"],
+      ["租金", "租金标准、支付方式及支付周期"],
+      ["押金", "押金数额及退还条件"],
+      ["违约情形", "违约行为的具体描述"]
+    ],
+    evidence: ["租赁合同", "租金支付凭证", "押金收据", "租赁物交付验收记录", "违约通知/催告函"],
+    law: ["民法典第703条（租赁合同）", "民法典第722条（承租人违约）", "民法典第733条（租赁物返还）"],
+    tips: ["注意租赁期限不得超过20年", "押金退还需依据合同约定"]
+  },
+  {
+    name: "服务合同纠纷",
+    cat: "合同纠纷",
+    scene: "服务提供方与消费者因服务质量、服务费用、退款等产生的合同纠纷。",
+    elements: [
+      ["服务提供方信息", "提供服务的经营者名称及信息"],
+      ["消费者信息", "接受服务的消费者信息"],
+      ["服务内容", "合同约定的具体服务项目和内容"],
+      ["服务费用", "服务费用标准及支付方式"],
+      ["服务质量争议", "服务质量不达标的具体表现"],
+      ["退款主张", "消费者主张退款的金额及理由"]
+    ],
+    evidence: ["服务合同/协议", "付款凭证", "服务质量问题证据", "沟通协商记录", "消费投诉记录"],
+    law: ["民法典第577条（违约责任）", "民法典第509条（合同履行）", "消费者权益保护法第53条（预付款退还）"],
+    tips: ["注意保留服务质量问题的证据", "可向消费者协会投诉调解"]
+  },
+  {
+    name: "运输合同纠纷",
+    cat: "合同纠纷",
+    scene: "托运人与承运人因货物运输过程中发生的货损、延误、运费支付等纠纷。",
+    elements: [
+      ["托运人信息", "委托运输的自然人/法人信息"],
+      ["承运人信息", "承担运输义务的主体信息"],
+      ["货物名称", "运输货物的名称、数量、价值"],
+      ["运输方式", "公路/铁路/航空/水路等运输方式"],
+      ["运费", "约定的运费金额及支付方式"],
+      ["货损情况", "货物毁损、灭失的具体情况"],
+      ["交付时间", "约定及实际的交付时间"]
+    ],
+    evidence: ["运输合同/运单", "货物交接单据", "货损照片/检验报告", "运费支付凭证", "索赔函件"],
+    law: ["民法典第809条（运输合同）", "民法典第832条（承运人赔偿责任）", "民法典第833条（赔偿额计算）"],
+    tips: ["承运人对货物毁损承担举证责任", "注意货损索赔的时效限制"]
+  },
+  {
+    name: "教育培训合同纠纷",
+    cat: "合同纠纷",
+    scene: "学员与培训机构因课程质量、退费争议、虚假宣传等产生的合同纠纷。",
+    elements: [
+      ["培训机构信息", "培训机构的名称、资质信息"],
+      ["学员信息", "学员的姓名及身份信息"],
+      ["课程内容", "合同约定的培训课程内容及课时"],
+      ["学费金额", "已缴纳的学费总额"],
+      ["退费争议", "退费金额、退费条件及退费争议"],
+      ["虚假宣传", "培训机构虚假宣传的具体内容"]
+    ],
+    evidence: ["培训合同/协议", "学费缴纳凭证", "课程宣传材料", "上课记录", "退费沟通记录"],
+    law: ["民法典第577条（违约责任）", "消费者权益保护法第55条（欺诈赔偿）", "民办教育促进法相关规定"],
+    tips: ["培训机构停业可主张解除合同退费", "注意保留虚假宣传的证据"]
+  },
+  {
+    name: "定金合同纠纷",
+    cat: "合同纠纷",
+    scene: "当事人因定金的交付、没收、双倍返还等产生的纠纷。",
+    elements: [
+      ["给付方信息", "给付定金的一方当事人信息"],
+      ["收受方信息", "收受定金的一方当事人信息"],
+      ["定金金额", "约定的定金数额"],
+      ["主合同内容", "定金所担保的主合同内容"],
+      ["定金性质", "立约定金/成约定金/违约定金"],
+      ["没收/双倍返还", "主张没收定金或双倍返还的事实依据"]
+    ],
+    evidence: ["定金合同/收据", "主合同", "定金支付凭证", "违约事实证据", "催告通知"],
+    law: ["民法典第586条（定金担保）", "民法典第587条（定金罚则）", "民法典第588条（违约金与定金竞合）"],
+    tips: ["定金不得超过主合同标的额的20%", "注意定金与订金的法律区别"]
+  },
+  {
+    name: "法定继承纠纷",
+    cat: "婚姻家事",
+    scene: "因法定继承产生的继承人资格、继承份额、遗产分配等纠纷。",
+    elements: [
+      ["被继承人信息", "被继承人的姓名、死亡日期"],
+      ["继承人信息", "法定继承人的姓名及与被继承人的关系"],
+      ["继承份额", "各继承人应继承的份额"],
+      ["遗产清单", "房产、存款、车辆、股权等遗产明细"],
+      ["继承顺序", "第一顺序/第二顺序继承人"],
+      ["放弃继承", "是否有继承人放弃继承及声明情况"]
+    ],
+    evidence: ["被继承人死亡证明", "亲属关系证明", "遗产产权证明", "放弃继承声明（如有）", "继承人身份信息"],
+    law: ["民法典第1127条（法定继承人范围及顺序）", "民法典第1130条（遗产分配原则）", "民法典第1132条（继承人协商）"],
+    tips: ["同一顺序继承人一般均等分配", "对生活困难的继承人应予以照顾"]
+  },
+  {
+    name: "被继承人债务清偿纠纷",
+    cat: "婚姻家事",
+    scene: "被继承人死亡后，其生前债务由继承人在遗产范围内清偿引发的纠纷。",
+    elements: [
+      ["债权人信息", "被继承人生前债权人的信息"],
+      ["被继承人信息", "被继承人的姓名及死亡日期"],
+      ["继承人信息", "继承人的姓名及继承情况"],
+      ["债务金额", "被继承人生前债务的总额及构成"],
+      ["遗产范围", "被继承人遗留的财产范围"],
+      ["清偿顺序", "遗产清偿债务的顺序"]
+    ],
+    evidence: ["债权凭证（借条/合同等）", "被继承人死亡证明", "遗产清单", "继承人继承情况证明", "债务催收记录"],
+    law: ["民法典第1161条（继承人清偿责任）", "民法典第1159条（遗产分割前债务清偿）"],
+    tips: ["继承人以所得遗产实际价值为限清偿债务", "放弃继承的不承担清偿责任"]
+  },
+  {
+    name: "个人信息保护纠纷",
+    cat: "侵权纠纷",
+    scene: "信息处理者违法处理个人信息，侵害信息主体合法权益引发的纠纷。",
+    elements: [
+      ["信息主体信息", "个人信息被侵害的自然人信息"],
+      ["信息处理者信息", "处理个人信息的组织或个人信息"],
+      ["信息类型", "姓名/身份证号/生物识别/行踪轨迹等信息类型"],
+      ["侵权行为", "违法收集/使用/传输/泄露个人信息的具体行为"],
+      ["损害后果", "因个人信息被侵害造成的具体损害"]
+    ],
+    evidence: ["个人信息被处理的证据", "侵权行为截图/公证", "损害后果证明", "信息处理者身份证明", "投诉/交涉记录"],
+    law: ["民法典第1034条（个人信息保护）", "民法典第1035条（信息处理原则）", "个人信息保护法第69条（损害赔偿）"],
+    tips: ["个人信息处理应遵循合法正当必要原则", "注意收集信息处理者侵权的证据"]
+  },
+  {
+    name: "隐私权纠纷",
+    cat: "侵权纠纷",
+    scene: "他人非法侵入、窥探、公开私人生活安宁和私密空间、活动、信息引发的纠纷。",
+    elements: [
+      ["权利人信息", "隐私权被侵害的自然人信息"],
+      ["侵权人信息", "实施侵害隐私权行为的主体信息"],
+      ["隐私内容", "被侵害的私密空间/活动/信息具体内容"],
+      ["传播范围", "隐私被公开传播的渠道和范围"],
+      ["损害后果", "隐私被侵害造成的具体损害结果"]
+    ],
+    evidence: ["侵权行为证据（截图/录音等）", "传播范围证据", "损害后果证明", "公证保全文书", "交涉记录"],
+    law: ["民法典第1032条（隐私权）", "民法典第1033条（侵害隐私权行为）", "民法典第1183条（精神损害赔偿）"],
+    tips: ["建议及时对侵权内容做公证保全", "隐私权侵权可主张精神损害赔偿"]
+  },
+  {
+    name: "侵害商业秘密纠纷",
+    cat: "知产纠纷",
+    scene: "他人以不正当手段获取、披露、使用商业秘密引发的侵权纠纷。",
+    elements: [
+      ["权利人信息", "商业秘密权利人的名称及基本信息"],
+      ["秘密内容", "技术信息/经营信息等商业秘密具体内容"],
+      ["保密措施", "权利人采取的保密措施（保密协议/制度等）"],
+      ["侵权行为", "以盗窃/贿赂/欺诈/胁迫等不正当手段获取或披露的行为"],
+      ["损失计算", "因商业秘密被侵害造成的实际损失或侵权获利"]
+    ],
+    evidence: ["商业秘密载体及内容证明", "保密措施证据（保密协议/制度等）", "侵权行为证据", "损失计算依据", "技术鉴定报告"],
+    law: ["反不正当竞争法第9条（商业秘密保护）", "反不正当竞争法第17条（赔偿责任）", "刑法第219条（侵犯商业秘密罪）"],
+    tips: ["商业秘密需具备秘密性、价值性和保密性", "建议采取书面保密协议等保密措施"]
+  },
+  {
+    name: "公司盈余分配纠纷",
+    cat: "公司股权",
+    scene: "股东因公司利润分配方案、股东会决议等引发的盈余分配纠纷。",
+    elements: [
+      ["公司名称", "公司名称及基本信息"],
+      ["股东信息", "股东的姓名/名称及持股比例"],
+      ["利润总额", "公司可分配利润的总额"],
+      ["分配方案", "公司拟定的利润分配方案"],
+      ["决议情况", "股东会关于利润分配的决议情况"]
+    ],
+    evidence: ["公司章程", "股东会决议", "财务审计报告", "利润分配方案", "股东出资证明"],
+    law: ["公司法第210条（利润分配）", "公司法第211条（利润分配决议）", "公司法第89条（异议股东回购请求权）"],
+    tips: ["公司盈余分配需经股东会决议", "未分配利润的举证责任在股东"]
+  },
+  {
+    name: "公司解散纠纷",
+    cat: "公司股权",
+    scene: "公司经营管理发生严重困难，继续存续会使股东利益受到重大损失，股东请求解散公司的纠纷。",
+    elements: [
+      ["公司名称", "公司名称及基本信息"],
+      ["解散事由", "公司章程规定的解散事由或法定解散事由"],
+      ["持股比例", "提起解散之诉的股东持股比例"],
+      ["僵局情况", "公司经营管理严重困难的具体表现"],
+      ["清算请求", "是否同时请求对公司进行清算"]
+    ],
+    evidence: ["公司章程", "股东会/董事会会议记录", "公司经营困难证据", "股东持股证明", "审计报告"],
+    law: ["公司法第229条（解散事由）", "公司法第231条（司法解散）", "公司法第232条（清算义务）"],
+    tips: ["持有公司全部股东表决权10%以上的股东可请求解散", "法院会优先考虑调解"]
+  },
+  {
+    name: "海上货物运输合同纠纷",
+    cat: "海事纠纷",
+    scene: "因海上货物运输过程中发生的货损、延误、运费支付等引发的海事纠纷。",
+    elements: [
+      ["托运人信息", "托运人的名称及身份信息"],
+      ["承运人信息", "承运人的名称及船舶信息"],
+      ["货物描述", "货物名称、数量、重量、价值"],
+      ["装货港/卸货港", "货物的起运港和目的港"],
+      ["提单号", "海运提单编号"],
+      ["货损情况", "货物毁损、灭失或延误的具体情况"]
+    ],
+    evidence: ["海运提单", "货物运输合同", "货物检验报告", "货损照片", "索赔函件及回复"],
+    law: ["海商法第41条（海上货物运输合同）", "海商法第46条（承运人责任期间）", "海商法第55条（赔偿额计算）"],
+    tips: ["注意海事请求权的诉讼时效为1年", "承运人可享有单位责任限制"]
+  },
+  {
+    name: "船舶碰撞损害责任纠纷",
+    cat: "海事纠纷",
+    scene: "船舶之间发生碰撞事故，就碰撞责任划分和损害赔偿引发的纠纷。",
+    elements: [
+      ["碰撞时间地点", "船舶碰撞事故发生的时间和地点"],
+      ["碰撞船舶", "碰撞双方船舶的名称、船籍等信息"],
+      ["责任划分", "各方船舶在碰撞事故中的责任比例"],
+      ["损失金额", "因碰撞造成的船舶及货物损失金额"],
+      ["保险情况", "碰撞船舶的保险情况"]
+    ],
+    evidence: ["海事事故调查报告", "船舶碰撞事实证据", "损失评估报告", "船舶保险单", "航海日志"],
+    law: ["海商法第165条（船舶碰撞定义）", "海商法第168条（单方过失碰撞责任）", "海商法第169条（互有过失碰撞责任）"],
+    tips: ["船舶碰撞损害赔偿请求权时效为2年", "碰撞事故发生后应立即向海事部门报告"]
+  },
+  {
+    name: "环境污染责任纠纷",
+    cat: "侵权纠纷",
+    scene: "因污染环境造成他人人身或财产损害引发的侵权责任纠纷。",
+    elements: [
+      ["污染者信息", "实施污染行为的企业/个人信息"],
+      ["污染类型", "大气污染/水污染/土壤污染/噪声污染等"],
+      ["污染范围", "污染影响的地理范围和对象"],
+      ["损害后果", "因污染造成的人身损害或财产损失"],
+      ["因果关系", "污染行为与损害后果之间的因果关系"],
+      ["修复费用", "环境修复治理所需的费用"]
+    ],
+    evidence: ["环境监测报告", "污染行为证据", "损害鉴定报告", "因果关系鉴定", "修复费用评估"],
+    law: ["民法典第1229条（环境污染责任）", "民法典第1230条（举证责任倒置）", "民法典第1232条（惩罚性赔偿）"],
+    tips: ["环境污染责任适用无过错责任原则", "由污染者举证证明不存在因果关系"]
+  },
+  {
+    name: "行政许可纠纷",
+    cat: "行政纠纷",
+    scene: "行政相对人对行政机关作出的不予许可决定不服，提起行政诉讼的纠纷。",
+    elements: [
+      ["行政机关信息", "作出行政许可决定的行政机关名称"],
+      ["许可事项", "申请人申请的行政许可事项"],
+      ["申请日期", "提出行政许可申请的日期"],
+      ["不予许可理由", "行政机关不予许可的具体理由"],
+      ["法律依据", "行政机关不予许可所依据的法律条款"]
+    ],
+    evidence: ["行政许可申请材料", "不予许可决定书", "行政机关告知书", "相关法律法规依据", "复议决定书（如有）"],
+    law: ["行政许可法第38条（不予许可决定）", "行政诉讼法第12条（受案范围）", "行政许可法第7条（救济权利）"],
+    tips: ["行政诉讼起诉期限一般为6个月", "可先申请行政复议"]
+  },
+  {
+    name: "行政征收纠纷",
+    cat: "行政纠纷",
+    scene: "行政相对人对行政机关征收决定、征收补偿标准等不服引发的纠纷。",
+    elements: [
+      ["征收机关", "实施征收行为的行政机关名称"],
+      ["征收项目", "征收项目的名称和用途"],
+      ["征收范围", "征收涉及的土地/房屋范围"],
+      ["补偿标准", "征收补偿的标准和计算方式"],
+      ["安置方案", "征收安置的具体方案"]
+    ],
+    evidence: ["征收决定书", "征收补偿方案", "房屋/土地评估报告", "补偿协议", "产权证明"],
+    law: ["土地管理法第47条（征收补偿）", "国有土地上房屋征收与补偿条例第17条（补偿范围）", "行政诉讼法第12条（受案范围）"],
+    tips: ["征收补偿标准应不低于市场价格", "注意征收程序的合法性审查"]
+  },
+  {
+    name: "参与分配申请",
+    cat: "执行",
+    scene: "被执行人的财产不足以清偿全部债务，其他债权人申请参与分配的执行程序。",
+    elements: [
+      ["申请执行人信息", "申请参与分配的债权人信息"],
+      ["被执行人信息", "被执行人（债务人）的信息"],
+      ["执行法院", "主持分配的执行法院名称"],
+      ["债权金额", "申请参与分配的债权数额"],
+      ["分配财产", "被执行人可供分配的财产情况"],
+      ["优先权情况", "是否存在优先受偿权及优先权类型"]
+    ],
+    evidence: ["生效法律文书", "执行依据", "被执行人财产清单", "债权凭证", "优先权证明（如有）"],
+    law: ["最高法院民诉法解释第508条（参与分配条件）", "最高法院民诉法解释第510条（分配顺序）", "最高法院民诉法解释第511条（分配方案异议）"],
+    tips: ["参与分配应在被执行人的财产执行终结前提出", "优先权人优先于普通债权受偿"]
+  },
+  {
+    name: "遗赠纠纷",
+    cat: "婚姻家事",
+    scene: "遗赠人以遗嘱方式将个人财产赠给法定继承人以外的人，受遗赠人主张权利或产生争议。",
+    elements: [
+      ["遗赠人信息", "遗赠人的姓名、死亡日期"],
+      ["受遗赠人信息", "受遗赠人的姓名、与遗赠人的关系"],
+      ["遗赠内容", "遗嘱中关于遗赠的具体条款"],
+      ["遗赠财产", "遗赠财产的名称、数量、价值及所在地"],
+      ["遗赠效力", "遗嘱的形式要件是否符合法律规定"],
+      ["接受/放弃期限", "受遗赠人在知道受遗赠后60日内是否明确表示接受或放弃"]
+    ],
+    evidence: ["遗嘱原件", "遗赠人死亡证明", "亲属关系证明", "财产权属证明", "受遗赠人接受/放弃的书面声明"],
+    law: ["民法典第1133条第3款（遗赠）", "民法典第1124条第2款（受遗赠人接受期限）", "民法典第1143条（遗嘱效力）"],
+    tips: ["受遗赠人应在知道受遗赠后60日内明确表示接受，逾期未表示视为放弃", "遗嘱须符合法定形式要件"]
+  },
+  {
+    name: "遗赠扶养协议纠纷",
+    cat: "婚姻家事",
+    scene: "扶养人与被扶养人签订遗赠扶养协议后，因扶养义务履行或遗赠财产归属产生争议。",
+    elements: [
+      ["扶养人信息", "承担扶养义务的自然人或组织信息"],
+      ["被扶养人信息", "受扶养的自然人信息及基本情况"],
+      ["协议内容", "协议约定的扶养义务具体内容和标准"],
+      ["扶养义务履行", "扶养人实际履行扶养义务的情况"],
+      ["遗赠财产", "协议约定的遗赠财产明细"],
+      ["协议效力", "协议签订是否合法有效"]
+    ],
+    evidence: ["遗赠扶养协议原件", "扶养义务履行记录", "财产清单及权属证明", "证人证言", "费用支出凭证"],
+    law: ["民法典第1158条（遗赠扶养协议）", "民法典第1123条（继承方式及效力顺序）"],
+    tips: ["遗赠扶养协议效力优先于遗嘱继承和法定继承", "扶养人应按协议约定切实履行扶养义务"]
+  },
+  {
+    name: "旅游合同纠纷",
+    cat: "合同纠纷",
+    scene: "旅游者与旅行社因旅游行程安排、费用结算、服务质量等产生的合同争议。",
+    elements: [
+      ["旅行社信息", "旅行社名称、经营许可证号"],
+      ["旅游者信息", "旅游者的姓名及身份信息"],
+      ["旅游线路", "旅游线路、行程安排、出发和返回日期"],
+      ["旅游费用", "团费金额、支付方式、包含项目"],
+      ["行程变更", "实际行程与约定行程的偏差情况"],
+      ["损害赔偿", "因旅行社过错造成的人身或财产损害"],
+      ["退费争议", "取消行程或缩短行程的退费标准"]
+    ],
+    evidence: ["旅游合同", "行程单", "付款凭证", "行程变更通知", "现场照片/视频", "沟通记录"],
+    law: ["旅游法第65条（旅游者解除权）", "旅游法第70条（旅行社违约责任）", "旅游法第71条（地接社违约责任）"],
+    tips: ["旅行社擅自变更行程可要求赔偿", "注意保留行程变更的书面通知"]
+  },
+  {
+    name: "中介合同纠纷",
+    cat: "合同纠纷",
+    scene: "委托人与中介人因中介服务、中介费支付、跳单等产生的合同争议。",
+    elements: [
+      ["中介人信息", "中介人（中介公司/经纪人）信息"],
+      ["委托人信息", "委托人的姓名及身份信息"],
+      ["中介服务内容", "约定的中介服务事项和范围"],
+      ["中介费标准", "中介费用的计算标准和支付条件"],
+      ["促成合同情况", "中介人是否促成委托人与第三人订立合同"],
+      ["跳单争议", "委托人是否利用中介人提供的交易机会绕开中介直接订立合同"]
+    ],
+    evidence: ["中介服务合同", "中介费收据", "房源/客户信息记录", "带看记录", "沟通记录"],
+    law: ["民法典第961条（中介合同定义）", "民法典第963条（中介人报酬请求权）", "民法典第965条（跳单行为的法律后果）"],
+    tips: ["委托人利用中介人提供的交易机会绕开中介直接订立合同的，应支付中介报酬", "中介人未促成合同成立的不得请求支付报酬"]
+  },
+  {
+    name: "饲养动物损害责任纠纷",
+    cat: "侵权纠纷",
+    scene: "因饲养的动物造成他人人身或财产损害而引发的侵权责任纠纷。",
+    elements: [
+      ["饲养人/管理人信息", "动物饲养人或管理人的身份信息"],
+      ["受害人信息", "受害人的姓名及损害情况"],
+      ["动物种类", "致害动物的种类和特征"],
+      ["损害事实", "动物致人损害的具体事实和损害后果"],
+      ["因果关系", "动物行为与损害后果之间的因果关系"],
+      ["免责事由", "是否存在受害人故意或第三人过错等免责情形"]
+    ],
+    evidence: ["事发监控视频", "证人证言", "医疗诊断证明", "损失评估报告", "动物登记信息"],
+    law: ["民法典第1245条（饲养动物损害责任的一般规定）", "民法典第1246条（未对动物采取安全措施的责任）", "民法典第1247条（禁止饲养的危险动物责任）"],
+    tips: ["饲养动物损害责任一般适用无过错责任原则", "受害人故意造成损害的可减轻或免除饲养人责任"]
+  },
+  {
+    name: "建筑物和物件损害责任纠纷",
+    cat: "侵权纠纷",
+    scene: "因建筑物、构筑物、搁置物、悬挂物等脱落、坠落或倒塌造成他人损害的侵权纠纷。",
+    elements: [
+      ["物件类型", "搁置物/悬挂物/构筑物/建筑物等物件类型"],
+      ["所有人/管理人/使用人", "物件的所有人、管理人或使用人信息"],
+      ["受害人信息", "受害人的姓名及损害情况"],
+      ["损害事实", "物件脱落、坠落或倒塌致人损害的具体事实"],
+      ["过错推定", "所有人/管理人/使用人能否证明自己没有过错"]
+    ],
+    evidence: ["事故现场照片/视频", "证人证言", "医疗诊断证明", "物件权属证明", "损失评估报告"],
+    law: ["民法典第1252条（建筑物等倒塌致害责任）", "民法典第1253条（搁置物、悬挂物脱落坠落致害责任）", "民法典第1258条（公共道路妨碍通行致害责任）"],
+    tips: ["搁置物、悬挂物脱落坠落致害适用过错推定原则", "所有人或管理人需举证证明自己没有过错"]
+  },
+  {
+    name: "侵害商标权纠纷",
+    cat: "知产纠纷",
+    scene: "因未经许可使用他人注册商标，或销售侵犯注册商标专用权的商品等引发的侵权纠纷。",
+    elements: [
+      ["商标注册号", "被侵权注册商标的注册号"],
+      ["商标权人", "注册商标专用权人的信息"],
+      ["侵权商品", "被控侵权商品的名称、种类"],
+      ["侵权行为类型", "未经许可使用/销售侵权商品/制造侵权商品等"],
+      ["赔偿金额", "因侵权造成的损失或侵权获利金额"]
+    ],
+    evidence: ["商标注册证", "侵权商品实物/购买凭证", "公证书", "侵权获利证据", "维权合理开支凭证"],
+    law: ["商标法第57条（侵犯注册商标专用权的行为）", "商标法第63条（侵犯商标专用权的赔偿数额）", "商标法第64条（不承担赔偿责任的情形）"],
+    tips: ["建议起诉前进行公证购买保全证据", "赔偿数额可按实际损失、侵权获利或法定赔偿确定"]
+  },
+  {
+    name: "破产债权确认纠纷",
+    cat: "公司股权",
+    scene: "债权人申报的债权未被管理人确认或对债权性质认定有异议，债权人提起确认之诉。",
+    elements: [
+      ["债权人信息", "申报债权的债权人名称及身份信息"],
+      ["债务人信息", "被申请破产的债务人名称及基本信息"],
+      ["债权金额", "申报的债权数额及计算依据"],
+      ["债权性质", "优先债权/普通债权/劣后债权的性质认定"],
+      ["破产受理法院", "受理破产申请的人民法院名称"],
+      ["债权申报情况", "债权申报的时间、管理人审查意见"]
+    ],
+    evidence: ["债权申报材料", "管理人审查意见书", "债权凭证（合同、判决书等）", "破产受理裁定书", "债权人会议决议"],
+    law: ["企业破产法第57条（债权审查）", "企业破产法第58条（债权确认）", "企业破产法第82条（债权人分组）"],
+    tips: ["对管理人编制的债权表记载有异议的，可在债权人会议核查后向法院提起债权确认之诉", "注意债权确认之诉的起诉期限"]
+  },
+  {
+    name: "破产重整申请",
+    cat: "公司股权",
+    scene: "债务人或债权人依法向人民法院申请对债务人进行破产重整的程序。",
+    elements: [
+      ["申请人信息", "申请重整的债务人或债权人信息"],
+      ["被申请人信息", "被申请重整的债务人基本信息"],
+      ["重整原因", "企业不能清偿到期债务且资不抵债或明显缺乏清偿能力的具体情况"],
+      ["重整价值", "债务人是否具有重整价值和重整可能性"],
+      ["债权人情况", "主要债权人及债权金额概况"],
+      ["重整计划草案", "重整计划的主要内容和可行性分析"]
+    ],
+    evidence: ["重整申请书", "债务人资产负债表", "债权人清单", "重整可行性分析报告", "经营状况说明"],
+    law: ["企业破产法第70条（重整申请主体）", "企业破产法第71条（法院审查受理）", "企业破产法第81条（重整计划草案内容）"],
+    tips: ["债权人和债务人均可提出重整申请", "法院审查重点在于债务人是否具有重整价值和重整可能性"]
+  },
+  {
+    name: "刑事自诉-侵占罪",
+    cat: "刑事自诉",
+    scene: "将代为保管的他人财物非法占为己有，数额较大且拒不退还的，被害人可提起刑事自诉。",
+    elements: [
+      ["自诉人信息", "财物被侵占的被害人（自诉人）身份信息"],
+      ["被告人信息", "实施侵占行为的被告人身份信息"],
+      ["侵占事实", "被告人将代为保管物/遗忘物/埋藏物非法占为己有的具体事实"],
+      ["侵占金额", "被侵占财物的数额（需达到数额较大标准）"],
+      ["拒不归还", "自诉人要求退还而被告人拒不退还的具体情况"],
+      ["证据材料", "证明侵占事实和拒不退还的证据清单"]
+    ],
+    evidence: ["财物保管协议或委托关系证明", "财产权属证明", "要求退还的催告记录", "被告人拒不退还的证据", "财物价值评估报告"],
+    law: ["刑法第270条（侵占罪）", "刑事诉讼法第210条（自诉案件范围）"],
+    tips: ["侵占罪属于告诉才处理的犯罪，只能通过自诉程序追诉", "需先收集充分证据再向法院提起自诉"]
+  },
+  {
+    name: "刑事自诉-侮辱诽谤罪",
+    cat: "刑事自诉",
+    scene: "以暴力或其他方法公然侮辱他人或捏造事实诽谤他人，情节严重且严重危害社会秩序和国家利益除外的，被害人可提起刑事自诉。",
+    elements: [
+      ["自诉人信息", "被侮辱诽谤的被害人（自诉人）身份信息"],
+      ["被告人信息", "实施侮辱诽谤行为的被告人身份信息"],
+      ["侮辱/诽谤行为", "被告人实施的具体侮辱或诽谤行为"],
+      ["传播范围", "侮辱诽谤信息的传播范围和受众人数"],
+      ["损害后果", "对自诉人名誉、精神、生活等造成的具体损害后果"],
+      ["情节严重", "达到情节严重标准的具体表现"]
+    ],
+    evidence: ["侮辱诽谤内容截图/录音/视频", "传播范围证据（转发量、浏览量）", "证人证言", "精神损害鉴定（如有）", "公证书"],
+    law: ["刑法第246条（侮辱罪、诽谤罪）", "刑事诉讼法第210条（自诉案件范围）", "最高法院关于办理利用信息网络实施诽谤等刑事案件适用法律若干问题的解释第2条"],
+    tips: ["利用信息网络诽谤他人，同一诽谤信息被点击浏览次数达到5000次以上或被转发次数达到500次以上的，属于情节严重", "严重危害社会秩序和国家利益的由公诉机关追诉"]
+  },
+  {
+    name: "国家赔偿申请",
+    cat: "国家赔偿",
+    scene: "国家机关及其工作人员在行使职权时侵犯公民、法人合法权益造成损害，受害人依法申请国家赔偿。",
+    elements: [
+      ["赔偿请求人信息", "合法权益受到侵害的赔偿请求人身份信息"],
+      ["赔偿义务机关信息", "实施侵权行为的国家机关信息"],
+      ["侵权行为类型", "错误拘留/错误逮捕/错误判决/违法查封扣押等"],
+      ["羁押天数", "被错误羁押的实际天数（如适用）"],
+      ["损害赔偿", "人身自由损害赔偿金、生命健康损害赔偿金、财产损害赔偿金及精神损害抚慰金"]
+    ],
+    evidence: ["撤销案件决定书/不起诉决定书/无罪判决书", "羁押执行凭证", "损害后果证明", "财产损失评估报告", "精神损害证据"],
+    law: ["国家赔偿法第3条（侵犯人身权的行政赔偿）", "国家赔偿法第17条（刑事赔偿范围）", "国家赔偿法第33条（侵犯人身自由的赔偿标准）"],
+    tips: ["赔偿请求人应先向赔偿义务机关提出赔偿申请", "对赔偿决定不服的可向上一级机关申请复议或向法院赔偿委员会申请"]
+  },
+  {
+    name: "农村土地承包合同纠纷",
+    cat: "合同纠纷",
+    scene: "发包方与承包方因土地承包经营、承包费缴纳、合同解除等产生的合同争议。",
+    elements: [
+      ["发包方信息", "发包方（村集体经济组织或村民委员会）信息"],
+      ["承包方信息", "承包方（农户或个人）信息"],
+      ["承包土地", "承包土地的位置、面积、四至范围"],
+      ["承包期限", "合同约定的承包起止日期"],
+      ["承包费", "承包费金额及支付方式"],
+      ["违约情形", "发包方或承包方的违约行为及违约责任"]
+    ],
+    evidence: ["土地承包合同/承包经营权证书", "土地权属证明", "承包费缴纳凭证", "土地现状照片", "违约事实证据"],
+    law: ["农村土地承包法第22条（承包合同）", "农村土地承包法第21条（承包期限）", "民法典第331条（土地承包经营权）"],
+    tips: ["耕地承包期为30年，草地为30至50年，林地为30至70年", "发包方不得违法收回、调整承包地"]
+  },
+  {
+    name: "商品房销售合同纠纷",
+    cat: "合同纠纷",
+    scene: "买受人与开发商因商品房买卖合同签订、履行、违约等产生的合同争议。",
+    elements: [
+      ["开发商信息", "房地产开发企业的名称及资质信息"],
+      ["买受人信息", "购房人的姓名及身份信息"],
+      ["项目名称", "商品房项目的名称及具体坐落位置"],
+      ["合同价款", "房屋总价款及付款方式"],
+      ["交付条件", "合同约定的房屋交付条件和交付日期"],
+      ["面积差异", "合同约定面积与实测面积的差异及处理方式"],
+      ["产权办理", "房屋产权证书的办理期限和违约责任"]
+    ],
+    evidence: ["商品房买卖合同", "付款凭证/贷款合同", "房屋交付通知", "面积测绘报告", "逾期交房/办证证据"],
+    law: ["民法典第595条（买卖合同）", "最高法院关于审理商品房买卖合同纠纷案件适用法律若干问题的解释第14条（面积差异处理）", "最高法院关于审理商品房买卖合同纠纷案件适用法律若干问题的解释第15条（逾期交房）"],
+    tips: ["面积误差超过3%的买受人有权解除合同", "逾期交房超过约定期限的买受人可主张解除合同或要求违约金"]
+  }
+];
+
+const grid = document.getElementById('cardsGrid');
+const searchInput = document.getElementById('searchInput');
+const filterBar = document.getElementById('filterBar');
+const modalOverlay = document.getElementById('modalOverlay');
+let activeCat = 'all';
+
+function renderCards() {
+  const keyword = searchInput.value.trim().toLowerCase();
+  grid.innerHTML = '';
+  let visible = 0;
+  data.forEach((item, idx) => {
+    if (activeCat !== 'all' && item.cat !== activeCat) return;
+    if (keyword && !item.name.toLowerCase().includes(keyword) && !item.scene.toLowerCase().includes(keyword) && !item.cat.toLowerCase().includes(keyword)) return;
+    visible++;
+    const lawSummary = item.law ? item.law.slice(0, 2).join('；') : '';
+    const evidenceCount = item.evidence ? item.evidence.length : 0;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-header">
+        <h3>${item.name}</h3>
+        <span class="tag">${item.cat}</span>
+      </div>
+      <div class="card-body">
+        <p class="scene">${item.scene}</p>
+        ${lawSummary ? `<p class="law-summary">📜 ${lawSummary}</p>` : ''}
+        <p class="arrow">点击展开要素清单</p>
+      </div>
+      <div class="card-detail" id="detail-${idx}">
+        <table>
+          <thead><tr><th>要素名称</th><th>填写说明</th></tr></thead>
+          <tbody>${item.elements.map(e => `<tr><td>${e[0]}</td><td>${e[1]}</td></tr>`).join('')}</tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        ${evidenceCount > 0 ? `<p class="evidence-count">📋 ${evidenceCount}项关键证据</p>` : ''}
+        <button class="btn-detail" onclick="event.stopPropagation(); openModal(${idx})">📋 查看详细模板</button>
+      </div>
+    `;
+    card.addEventListener('click', () => {
+      const detail = document.getElementById('detail-' + idx);
+      detail.classList.toggle('open');
+      const arrow = card.querySelector('.arrow');
+      arrow.textContent = detail.classList.contains('open') ? '点击收起要素清单' : '点击展开要素清单';
+    });
+    grid.appendChild(card);
+  });
+  if (visible === 0) {
+    grid.innerHTML = '<p style="text-align:center;color:#999;padding:40px;font-size:16px;">未找到匹配的案由，请尝试其他关键词</p>';
+  }
+}
+
+function openModal(idx) {
+  const item = data[idx];
+  let html = `
+    <table>
+      <thead><tr><th>要素名称</th><th>填写说明</th></tr></thead>
+      <tbody>${item.elements.map((e, i) => `<tr><td><strong>${i+1}. ${e[0]}</strong></td><td>${e[1]}</td></tr>`).join('')}</tbody>
+    </table>
+  `;
+  if (item.evidence && item.evidence.length > 0) {
+    html += `
+    <div class="modal-section">
+      <h3>📂 关键证据清单</h3>
+      <ul>${item.evidence.map(e => `<li>${e}</li>`).join('')}</ul>
+    </div>`;
+  }
+  if (item.law && item.law.length > 0) {
+    html += `
+    <div class="modal-section">
+      <h3>📜 主要法律依据</h3>
+      ${item.law.map(l => `<div class="law-item">${l}</div>`).join('')}
+    </div>`;
+  }
+  if (item.tips && item.tips.length > 0) {
+    html += `
+    <div class="modal-section">
+      <h3>💡 实务提示</h3>
+      ${item.tips.map(t => `<div class="tip-item">${t}</div>`).join('')}
+    </div>`;
+  }
+  html += `
+    <div class="modal-hint">💡 提示：以上要素为常见填写项目，实际起诉时请根据当地法院发布的最新要素式起诉状模板进行填写。</div>
+    <button class="btn-print" onclick="window.print()">🖨️ 打印此模板</button>
+  `;
+  document.getElementById('modalTitle').textContent = item.name + ' — 要素清单';
+  document.getElementById('modalBody').innerHTML = html;
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modalOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  const answer = el.nextElementSibling;
+  if (el.classList.contains('open')) {
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  } else {
+    answer.style.maxHeight = '0';
+  }
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+
+filterBar.addEventListener('click', e => {
+  if (!e.target.classList.contains('filter-btn')) return;
+  filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  activeCat = e.target.dataset.cat;
+  renderCards();
+});
+
+searchInput.addEventListener('input', renderCards);
+
+renderCards();
+</script>
+</body>
+</html>

@@ -125,6 +125,24 @@ footer { background: #1a365d; color: #fff; padding: 40px 24px 24px; }
   .step-card { max-width: 100%; }
   .hero .stats { gap: 16px; }
 }
+
+/* 官方模板样式 */
+.official-template { font-family: SimSun, '宋体', serif; line-height: 1.8; }
+.template-header { text-align: center; margin-bottom: 30px; }
+.template-header h2 { font-size: 24px; margin-bottom: 10px; }
+.template-header .case-type { font-size: 18px; }
+.template-section { margin-bottom: 25px; border: 1px solid #333; }
+.template-section .section-title { background: #f0f0f0; padding: 10px 15px; font-weight: bold; font-size: 16px; border-bottom: 1px solid #333; }
+.template-section .section-content { padding: 15px; }
+.template-section table { width: 100%; border-collapse: collapse; }
+.template-section table td { padding: 10px; border: 1px solid #666; vertical-align: top; }
+.template-section table td.label { width: 200px; background: #f9f9f9; font-weight: bold; }
+.template-section .warning { background: #fff3cd; padding: 10px; border-left: 4px solid #ffc107; margin-top: 15px; }
+.template-footer { margin-top: 30px; text-align: right; }
+.template-footer p { margin: 5px 0; }
+.btn-download { background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+.btn-download:hover { background: #218838; }
+
 </style>
 </head>
 <body>
@@ -290,6 +308,312 @@ const data = [
     evidence: ["借款合同/借条", "转账记录", "催款记录（短信/微信/函件）", "利息计算明细", "担保合同（如有）"],
     law: ["民法典第667条（借款合同）", "民法典第680条（利率限制）", "最高法院民间借贷司法解释"],
     tips: ["注意3年诉讼时效", "保留转账凭证原件"],
+    officialTemplate: `<!-- 官方要素式起诉状模板格式 -->
+<div class="official-template">
+  <div class="template-header">
+    <h2>民事起诉状</h2>
+    <p class="case-type">（民间借贷纠纷）</p>
+  </div>
+  
+  <div class="template-section">
+    <div class="section-title">说明</div>
+    <div class="section-content">
+      <p>为了方便您参加诉讼，保护您的合法权利，请填写本表。</p>
+      <ol>
+        <li>起诉时需向人民法院提交证明您身份的材料，如身份证复印件、营业执照复印件等。</li>
+        <li>本表所列内容是您提起诉讼以及人民法院查明案件事实所需，请务必如实填写。</li>
+        <li>本表所涉内容系针对民间借贷纠纷案件，有些内容可能与您的案件无关，您认为与案件无关的项目可以填"无"或不填；对于本表中勾选项可以在对应项打"√"；您认为另有重要内容需要列明的，可以在本表尾部或者另附页填写。</li>
+      </ol>
+      <p class="warning">★特别提示★<br>
+      《中华人民共和国民事诉讼法》第十三条第一款规定："民事诉讼应当遵循诚信原则。"<br>
+      如果诉讼参加人违反上述规定，进行虚假诉讼、恶意诉讼，人民法院将视违法情形依法追究责任。</p>
+    </div>
+  </div>
+
+  <div class="template-section">
+    <div class="section-title">当事人信息</div>
+    <div class="section-content">
+      <table class="info-table">
+        <tr>
+          <td class="label">原告(自然人)</td>
+          <td>
+            姓名：<br>
+            性别：男□ 女□<br>
+            出生日期：_____年_____月_____日 &nbsp;&nbsp; 民族：<br>
+            工作单位：___________ &nbsp;&nbsp; 职务：___________ &nbsp;&nbsp; 联系电话：<br>
+            住所地(户籍所在地)：<br>
+            经常居住地：<br>
+            证件类型：<br>
+            证件号码：
+          </td>
+        </tr>
+        <tr>
+          <td class="label">原告(法人、非法人组织)</td>
+          <td>
+            名称：<br>
+            住所地(主要办事机构所在地)：<br>
+            注册地/登记地：<br>
+            法定代表人/主要负责人：___________ &nbsp;&nbsp; 职务：___________ &nbsp;&nbsp; 联系电话：<br>
+            统一社会信用代码：<br>
+            类型：有限责任公司□ 股份有限公司□ 上市公司□ 其他企业法人□ 事业单位□ 社会团体□ 基金会□ 社会服务机构□<br>
+            机关法人□ 农村集体经济组织法人□ 城镇农村的合作经济组织法人□ 基层群众性自治组织法人□<br>
+            个人独资企业□ 合伙企业□ 不具有法人资格的专业服务机构□<br>
+            国有□（控股□ 参股□）民营□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">委托诉讼代理人</td>
+          <td>
+            有□<br>
+            姓名：<br>
+            单位：___________ &nbsp;&nbsp; 职务：___________ &nbsp;&nbsp; 联系电话：<br>
+            代理权限：一般授权□ &nbsp;&nbsp; 特别授权□<br>
+            无□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">送达地址及收件人、电话</td>
+          <td>
+            地址：<br>
+            收件人：<br>
+            电话：<br>
+            <small>（所填信息除书面特别声明更改外，适用于案件一审、二审、再审所有后续程序）</small>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">是否接受电子送达</td>
+          <td>
+            是□ &nbsp;&nbsp; 方式：短信_____ 微信_____ 传真_____ 邮箱_____ 其他_____<br>
+            否□
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="template-section">
+    <div class="section-title">诉讼请求和依据</div>
+    <div class="section-content">
+      <table class="request-table">
+        <tr>
+          <td class="label">1.本金</td>
+          <td>截至_____年_____月_____日止，尚欠本金_________元（人民币，下同；如外币需特别注明）</td>
+        </tr>
+        <tr>
+          <td class="label">2.利息</td>
+          <td>
+            截至_____年_____月_____日止，欠利息_____元；计算方式：<br>
+            是否请求支付至实际清偿之日止：是□ 否□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">3.是否要求提前还款或解除合同</td>
+          <td>
+            是□ &nbsp;&nbsp; 提前还款(加速到期)□ / 解除合同□<br>
+            否□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">4.是否主张担保权利</td>
+          <td>
+            是□ &nbsp;&nbsp; 内容：<br>
+            否□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">5.是否主张实现债权的费用</td>
+          <td>
+            是□ &nbsp;&nbsp; 明细：<br>
+            否□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">6.其他请求</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="label">7.标的总额</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="label">8.请求依据</td>
+          <td>
+            合同约定：<br>
+            法律规定：
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="template-section">
+    <div class="section-title">约定管辖和诉讼保全</div>
+    <div class="section-content">
+      <table class="jurisdiction-table">
+        <tr>
+          <td class="label">1.有无仲裁、法院管辖约定</td>
+          <td>
+            有□ &nbsp;&nbsp; 合同条款及内容：<br>
+            无□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">2.是否申请财产保全措施</td>
+          <td>
+            已经诉前保全：是□ 否□<br>
+            申请诉讼保全：是□ 否□<br>
+            保全法院：___________ &nbsp;&nbsp; 保全时间：
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="template-section">
+    <div class="section-title">事实和理由</div>
+    <div class="section-content">
+      <table class="facts-table">
+        <tr>
+          <td class="label">1.合同签订情况</td>
+          <td>（名称、编号、签订时间、地点等）</td>
+        </tr>
+        <tr>
+          <td class="label">2.签订主体</td>
+          <td>
+            贷款人：<br>
+            借款人：
+          </td>
+        </tr>
+        <tr>
+          <td class="label">3.借款金额</td>
+          <td>
+            约定：<br>
+            实际提供：
+          </td>
+        </tr>
+        <tr>
+          <td class="label">4.借款期限</td>
+          <td>
+            是否到期：是□ 否□<br>
+            约定期限：_____年_____月_____日起至_____年_____月_____日止
+          </td>
+        </tr>
+        <tr>
+          <td class="label">5.借款利率</td>
+          <td>利率_____% /年(季/月)（合同条款：第_____条）</td>
+        </tr>
+        <tr>
+          <td class="label">6.借款提供时间</td>
+          <td>_____年_____月_____日，_________元</td>
+        </tr>
+        <tr>
+          <td class="label">7.还款方式</td>
+          <td>
+            等额本息□ &nbsp;&nbsp; 等额本金□ &nbsp;&nbsp; 到期一次性还本付息□<br>
+            按月计息、到期一次性还本□ &nbsp;&nbsp; 按季计息、到期一次性还本□ &nbsp;&nbsp; 按年计息、到期一次性还本□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">8.还款情况</td>
+          <td>
+            已还本金：_________元<br>
+            已还利息：_________元，还息至_____年_____月_____日
+          </td>
+        </tr>
+        <tr>
+          <td class="label">9.是否存在逾期还款</td>
+          <td>
+            是□ &nbsp;&nbsp; 逾期时间：_____ 至今已逾期_____<br>
+            否□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">10.是否签订物的担保合同</td>
+          <td>
+            是□ &nbsp;&nbsp; 签订时间：<br>
+            否□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">11.担保人、担保物</td>
+          <td>
+            担保人：<br>
+            担保物：
+          </td>
+        </tr>
+        <tr>
+          <td class="label">12.是否最高额担保</td>
+          <td>
+            是□ &nbsp;&nbsp; 担保债权的确定时间：___________ &nbsp;&nbsp; 担保额度：<br>
+            否□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">13.是否办理抵押、质押登记</td>
+          <td>
+            是□ &nbsp;&nbsp; 正式登记□ &nbsp;&nbsp; 预告登记□<br>
+            否□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">14.是否签订保证合同</td>
+          <td>
+            是□ &nbsp;&nbsp; 签订时间：___________ &nbsp;&nbsp; 保证人：___________ &nbsp;&nbsp; 主要内容：<br>
+            否□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">15.保证方式</td>
+          <td>
+            一般保证□ &nbsp;&nbsp; 连带责任保证□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">16.其他担保方式</td>
+          <td>
+            是□ &nbsp;&nbsp; 形式：___________ &nbsp;&nbsp; 签订时间：<br>
+            否□
+          </td>
+        </tr>
+        <tr>
+          <td class="label">17.其他需要说明的内容</td>
+          <td>（可另附页）</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="template-section">
+    <div class="section-title">证据清单</div>
+    <div class="section-content">
+      <p>（可另附页）</p>
+      <table class="evidence-table">
+        <thead>
+          <tr>
+            <th>证据名称</th>
+            <th>证据种类</th>
+            <th>证据来源</th>
+            <th>证明目的</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="template-footer">
+    <p>具状人（签字、盖章）：</p>
+    <p>日期：</p>
+  </div>
+</div>
+`,
     template: `民事起诉状
 
 原告：[姓名]，[性别]，[出生日期]，[民族]，住[地址]，联系方式：[电话]。
@@ -1518,8 +1842,13 @@ function openModal(idx) {
   const item = data[idx];
   let html = '';
   
-  // 起诉状模板
-  if (item.template) {
+  // 官方模板（如果有）
+  if (item.officialTemplate) {
+    html += item.officialTemplate;
+    html += `<button class="btn-download" onclick="downloadTemplate(${idx})">📥 下载Word模板</button>`;
+    html += `<button class="btn-print" onclick="printTemplate(${idx})" style="margin-left:10px;">🖨️ 打印</button>`;
+  } else if (item.template) {
+    // 叙述式模板（备用）
     html += `
     <div class="modal-section">
       <h3>📄 起诉状模板</h3>
@@ -1569,6 +1898,14 @@ function openModal(idx) {
   document.body.style.overflow = 'hidden';
 }
 
+function downloadTemplate(idx) {
+  // 下载官方Word模板
+  const link = document.createElement('a');
+  link.href = '要素式民事起诉状答辩状示范文本.docx';
+  link.download = '要素式民事起诉状答辩状示范文本.docx';
+  link.click();
+}
+
 function printTemplate(idx) {
   const item = data[idx];
   const printWindow = window.open('', '_blank');
@@ -1582,7 +1919,25 @@ function printTemplate(idx) {
         h1 { text-align: center; font-size: 22px; margin-bottom: 30px; }
         .content { white-space: pre-wrap; }
         @media print { body { padding: 20px; } }
-      </style>
+      
+/* 官方模板样式 */
+.official-template { font-family: SimSun, '宋体', serif; line-height: 1.8; }
+.template-header { text-align: center; margin-bottom: 30px; }
+.template-header h2 { font-size: 24px; margin-bottom: 10px; }
+.template-header .case-type { font-size: 18px; }
+.template-section { margin-bottom: 25px; border: 1px solid #333; }
+.template-section .section-title { background: #f0f0f0; padding: 10px 15px; font-weight: bold; font-size: 16px; border-bottom: 1px solid #333; }
+.template-section .section-content { padding: 15px; }
+.template-section table { width: 100%; border-collapse: collapse; }
+.template-section table td { padding: 10px; border: 1px solid #666; vertical-align: top; }
+.template-section table td.label { width: 200px; background: #f9f9f9; font-weight: bold; }
+.template-section .warning { background: #fff3cd; padding: 10px; border-left: 4px solid #ffc107; margin-top: 15px; }
+.template-footer { margin-top: 30px; text-align: right; }
+.template-footer p { margin: 5px 0; }
+.btn-download { background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+.btn-download:hover { background: #218838; }
+
+</style>
     </head>
     <body>
       <div class="content">${item.template}</div>

@@ -3,1045 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>余正洪律师 · 涉外法律服务 | Yu Zhenghong Law Firm</title>
-    <meta name="description" content="余正洪律师，江苏三诚律师事务所，专注涉外法律服务，包括外企劳动争议、涉外合同纠纷、外企知产保护。">
-    <meta name="keywords" content="涉外律师,无锡涉外律师,外企法律顾问,涉外劳动争议,涉外合同纠纷">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>律师AI超级大脑 | 34个专业技能</title>
+    <meta name="description" content="面向诉讼律师的AI工作系统，34个专业技能覆盖办案全流程。">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --navy: #0a1628;
-            --dark-blue: #1a2a4a;
-            --gold: #c9a96e;
-            --light-gold: #d4b87a;
-            --white: #ffffff;
-            --light-gray: #f8f9fa;
-            --text: #333333;
-            --text-light: #666666;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #0f1923;
+            color: #e0e0e0;
             line-height: 1.6;
-            color: var(--text);
-            background-color: var(--white);
         }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         
-        /* 导航栏 */
-        nav {
-            background: var(--navy);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 0 60px;
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #1a365d 0%, #0f2440 100%);
         }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 0;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+        .badge {
+            display: inline-block;
+            background: rgba(255,215,0,0.15);
+            color: #ffd700;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 14px;
             font-weight: 600;
-            color: var(--gold);
-            text-decoration: none;
             letter-spacing: 2px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,215,0,0.3);
         }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 35px;
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
         }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 400;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-        
-        /* 英雄区 - 照片+文字左右布局 */
-        .hero {
-            padding-top: 80px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: var(--navy);
-        }
-        
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 80px 60px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-        
-        .hero-content {
-            color: var(--white);
-        }
-        
-        .hero-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--gold);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-        
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.8rem;
-            font-weight: 600;
-            color: var(--white);
-            line-height: 1.15;
+        h1 span { color: #ffd700; }
+        .subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 18px;
             margin-bottom: 30px;
         }
-        
-        .hero h1 span {
-            color: var(--gold);
-        }
-        
-        .hero p {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.75);
-            max-width: 500px;
-            margin-bottom: 45px;
-            font-weight: 300;
-            line-height: 1.9;
-        }
-        
-        .hero-buttons {
+        .stats {
             display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        .stat { text-align: center; }
+        .stat-num {
+            color: #ffd700;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        .stat-label {
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+        }
+        
+        /* Skills Grid */
+        .skills-section {
+            padding: 40px 0;
+        }
+        .section-title {
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
-        
-        .btn-primary {
-            display: inline-block;
-            padding: 20px 50px;
-            background: var(--gold);
-            color: var(--navy);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            transition: all 0.3s;
+        .skill-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
         }
-        
-        .btn-primary:hover {
-            background: var(--light-gold);
+        .skill-card:hover {
+            border-color: #ffd700;
+            background: rgba(255,215,0,0.05);
             transform: translateY(-2px);
         }
-        
-        .btn-secondary {
+        .skill-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .skill-desc {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.5;
+        }
+        .skill-category {
             display: inline-block;
-            padding: 20px 50px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--white);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .hero-image {
-            position: relative;
-        }
-        
-        .hero-image img {
-            width: 100%;
-            height: 550px;
-            object-fit: contain;
-            object-position: top;
-        }
-        
-        .hero-image::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            right: -30px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--gold);
-            z-index: -1;
-        }
-        
-        /* 统计数据 */
-        .stats {
-            background: var(--white);
-            padding: 0 60px;
-            margin-top: -60px;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .stats-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            background: var(--white);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        }
-        
-        .stat-item {
-            padding: 40px 30px;
-            text-align: center;
-            border-right: 1px solid #eee;
-        }
-        
-        .stat-item:last-child {
-            border-right: none;
-        }
-        
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-        
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            letter-spacing: 1px;
-        }
-        
-        /* 服务领域 */
-        .services {
-            padding: 120px 60px;
-            background: var(--light-gray);
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-        
-        .section-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--gold);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-        
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 20px;
-        }
-        
-        .section-line {
-            width: 60px;
-            height: 3px;
-            background: var(--gold);
-            margin: 0 auto;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .service-card {
-            padding: 45px 35px;
-            background: var(--white);
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-        }
-        
-        .service-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-        }
-        
-        .service-icon {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-        
-        .service-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--navy);
+            font-size: 12px;
+            color: #ffd700;
+            background: rgba(255,215,0,0.1);
+            padding: 2px 10px;
+            border-radius: 10px;
             margin-bottom: 12px;
         }
         
-        .service-card p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-        
-        /* 关于律师 - 照片+文字左右布局 */
-        .about {
-            padding: 120px 60px;
-            background: var(--white);
-        }
-        
-        .about-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 100px;
-            align-items: center;
-        }
-        
-        .about-image {
-            position: relative;
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-        }
-        
-        .about-image::before {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: -20px;
-            width: 200px;
-            height: 200px;
-            border: 3px solid var(--gold);
-            z-index: -1;
-        }
-        
-        .about-text h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 25px;
-        }
-        
-        .about-text h3 span {
-            color: var(--gold);
-        }
-        
-        .about-text p {
-            font-size: 1.15rem;
-            line-height: 2;
-            color: var(--text-light);
-            margin-bottom: 20px;
-        }
-        
-        .about-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 35px;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .feature-icon {
-            color: var(--gold);
-            font-size: 1.2rem;
-        }
-        
-        .feature-text {
-            font-size: 1.1rem;
-            color: var(--navy);
-            font-weight: 500;
-        }
-        
-        /* 联系我们 */
-        .contact {
-            padding: 120px 60px;
-            background: var(--light-gray);
-        }
-        
-        .contact-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-        }
-        
-        .contact-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 35px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .contact-icon {
-            font-size: 1.3rem;
-            color: var(--gold);
-            margin-top: 3px;
-        }
-        
-        .contact-details h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 5px;
-        }
-        
-        .contact-details p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-        }
-        
-        .contact-details a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .contact-details a:hover {
-            color: var(--gold);
-        }
-        
-        /* 微信二维码区域 */
-        .wechat-section {
-            margin-top: 40px;
-            padding: 35px;
-            background: var(--white);
-            border: 1px solid #eee;
-        }
-        
-        .wechat-section h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .qr-code {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto;
-        }
-        
-        .qr-code img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .wechat-tip {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-        
-        /* 联系表单 */
-        .contact-form {
-            background: var(--white);
-            padding: 50px;
-        }
-        
-        .contact-form h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 30px;
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid #ddd;
-            font-size: 1.1rem;
-            font-family: 'Inter', sans-serif;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-        
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-        
-        .btn-submit {
-            width: 100%;
-            padding: 16px;
-            background: var(--navy);
-            color: var(--white);
-            border: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .btn-submit:hover {
-            background: var(--dark-blue);
-        }
-        
-        /* 页脚 */
+        /* Footer */
         footer {
-            background: var(--navy);
-            color: var(--white);
-            padding: 80px 60px 30px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-bottom: 50px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .footer-about h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-        
-        .footer-about p {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-        }
-        
-        .footer-links h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            color: var(--white);
-            letter-spacing: 1px;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-        
-        .footer-bottom {
             text-align: center;
-            padding-top: 30px;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.5);
+            padding: 40px 20px;
+            color: rgba(255,255,255,0.3);
+            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
-        
-        /* 响应式设计 */
-        @media (max-width: 1024px) {
-            nav {
-                padding: 0 30px;
-            }
-            
-            .hero-container {
-                grid-template-columns: 1fr;
-                padding: 60px 30px;
-            }
-            
-            .hero-image {
-                order: -1;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .about-container {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
         }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-            }
-            
-            .stats-container {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .services,
-            .about,
-            .contact {
-                padding: 80px 30px;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
+        footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">YU ZHENGHONG</a>
-            <ul class="nav-links">
-                <li><a href="#services">服务领域 Services</a></li>
-                <li><a href="#about">关于律师 About</a></li>
-                <li><a href="#contact">联系我们 Contact</a></li>
-            </ul>
+    <header>
+        <div class="badge">HERMES AGENT</div>
+        <h1>律师<span>AI超级大脑</span></h1>
+        <p class="subtitle">34个专业技能 · 覆盖办案全流程 · 效率提升10倍</p>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-num">34</div>
+                <div class="stat-label">专业技能</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">201</div>
+                <div class="stat-label">MCP工具</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">10x</div>
+                <div class="stat-label">效率提升</div>
+            </div>
         </div>
-    </nav>
+    </header>
     
-    <!-- 英雄区 - 照片+文字左右布局 -->
-    <section class="hero" id="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-subtitle">International Legal Services</div>
-                <h1>涉外法律服务 <span>顾问</span></h1>
-                <p>专注涉外法律服务，为外资企业提供专业、高效、可靠的法律解决方案。精通跨境争议解决，熟悉国际商业规则。</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn-primary">专业法律咨询</a>
-                    <a href="#services" class="btn-secondary">了解更多</a>
+    <div class="container">
+        <section class="skills-section">
+            <h2 class="section-title">📋 办案流程技能</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span class="skill-category">案件分析</span>
+                    <div class="skill-name">litigation-case-analysis</div>
+                    <div class="skill-desc">案件分析与请求权基础分析，自动生成法律分析报告</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">证据组织</span>
+                    <div class="skill-name">evidence-organization</div>
+                    <div class="skill-desc">证据组织与四性验证，自动提取关键证据要素</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">法律检索</span>
+                    <div class="skill-name">legal-research</div>
+                    <div class="skill-desc">法律检索与案例研究，对接北大法宝、元典智库</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">文书撰写</span>
+                    <div class="skill-name">legal-document-drafting</div>
+                    <div class="skill-desc">法律文书撰写，起诉状、答辩状、代理词自动生成</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">庭前准备</span>
+                    <div class="skill-name">trial-preparation</div>
+                    <div class="skill-desc">庭前准备，质证要点、发问提纲、对方抗辩预判</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">庭审应对</span>
+                    <div class="skill-name">trial-response</div>
+                    <div class="skill-desc">庭审应对，法庭辩论技巧、临场应变、调解策略</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">当事人沟通</span>
+                    <div class="skill-name">client-communication</div>
+                    <div class="skill-desc">当事人沟通，案情通俗化表达、风险告知、预期管理</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">案件管理</span>
+                    <div class="skill-name">case-management</div>
+                    <div class="skill-desc">案件管理，时效/期限管控、文书档案、进度追踪</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">期限监控</span>
+                    <div class="skill-name">case-deadline-monitor</div>
+                    <div class="skill-desc">案件期限自动监控，开庭/举证/上诉提醒</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">赔偿计算</span>
+                    <div class="skill-name">compensation-calculator</div>
+                    <div class="skill-desc">交通事故/工伤/劳动纠纷赔偿计算，支持31省份标准</div>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="images/a5d7756219a5eef0277fdbc376db9137.jpg" alt="余正洪律师">
-            </div>
-        </div>
-    </section>
-    
-    <!-- 统计数据 -->
-    <section class="stats">
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-number">10+</div>
-                <div class="stat-label">年执业经验</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">代理案件</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">客户满意度</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">100+</div>
-                <div class="stat-label">服务客户</div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- 服务领域 -->
-    <section class="services" id="services">
-        <div class="section-header">
-            <div class="section-label">Practice Areas</div>
-            <h2 class="section-title">专业服务领域</h2>
-            <div class="section-line"></div>
-        </div>
-                <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🚢</div>
-                <h3>企业出海</h3>
-                <p class="en-title">Enterprise Going Global</p>
-                <p class="fr-title">Internationalisation des Entreprises</p>
-                <p class="ar-title">توسع الشركات عالمياً</p>
-                <p>为中国企业海外拓展提供法律支持，包括海外市场准入、合规经营、风险防控。</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📄</div>
-                <h3>涉外合同纠纷</h3>
-                <p class="en-title">Cross-border Contract Disputes</p>
-                <p class="fr-title">Litiges Contractuels Transfrontaliers</p>
-                <p class="ar-title">نزاعات العقود العابرة للحدود</p>
-                <p>跨境合同审查、贸易纠纷、国际货物买卖、信用证纠纷等，提供专业法律意见和争议解决方案。</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🤝</div>
-                <h3>跨境投资与并购</h3>
-                <p class="en-title">Cross-border Investment & M&A</p>
-                <p class="fr-title">Investissement Transfrontalier & Fusions-Acquisitions</p>
-                <p class="ar-title">الاستثمار العابر للحدود والاندماج والاستحواذ</p>
-                <p>跨境投资架构设计、并购尽职调查、交易文件起草、投后管理等全流程法律服务。</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">⚖️</div>
-                <h3>跨境争议解决</h3>
-                <p class="en-title">Cross-border Dispute Resolution</p>
-                <p class="fr-title">Résolution des Litiges Transfrontaliers</p>
-                <p class="ar-title">حل النزاعات العابرة للحدود</p>
-                <p>国际商事仲裁、跨境诉讼、调解谈判，为跨国纠纷提供专业高效的争议解决方案。</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🔒</div>
-                <h3>外企知产保护</h3>
-                <p class="en-title">IP Protection for Foreign Enterprises</p>
-                <p class="fr-title">Protection de la Propriété Intellectuelle</p>
-                <p class="ar-title">حماية الملكية الفكرية للمؤسسات الأجنبية</p>
-                <p>商标、专利、著作权保护，商业秘密维权，为外资企业在中国的知识产权提供全方位保护。</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">💼</div>
-                <h3>外企合规咨询</h3>
-                <p class="en-title">Compliance Consulting</p>
-                <p class="fr-title">Conseil en Conformité</p>
-                <p class="ar-title">استشارات الامتثال</p>
-                <p>公司治理、合规审查、风险防控，帮助外资企业在中国合法合规经营。</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">👨‍👩‍👧‍👦</div>
-                <h3>私人财富管理与家事法</h3>
-                <p class="en-title">Private Wealth Management & Family Law</p>
-                <p class="fr-title">Gestion de Patrimoine & Droit de la Famille</p>
-                <p class="ar-title">إدارة الثروة الخاصة وقانون الأسرة</p>
-                <p>家族财富传承规划、婚姻财产协议、继承纠纷、跨境资产配置等法律服务。</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">⚖️</div>
-                <h3>外企劳动争议</h3>
-                <p class="en-title">Foreign Enterprise Labor Disputes</p>
-                <p class="fr-title">Litiges du Travail des Entreprises Étrangères</p>
-                <p class="ar-title">نزاعات العمل في المؤسسات الأجنبية</p>
-                <p>处理外资企业劳动纠纷，包括劳动合同、薪酬争议、解雇纠纷等，熟悉中国劳动法与国际惯例。</p>
-            </div>
-        </div></div>
-    </section>
-    
-    <!-- 关于律师 -->
-    <section class="about" id="about">
-        <div class="section-header">
-            <div class="section-label">About The Lawyer</div>
-            <h2 class="section-title" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 600;">关于律师</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="about-container">
-            <div class="about-image">
-                <img src="images/53cf9ca97a0323e3d54d6d9269872ea9.jpg" alt="余正洪律师">
-            </div>
-            <div class="about-text">
-                <h3>余正洪 <span>律师</span></h3>
-                <p>江苏三诚律师事务所合伙人，专注民商事诉讼、知识产权、公司法/商事合规领域。执业以来，代理了大量合同纠纷、劳动争议、知产案件，积累了丰富的诉讼经验。</p>
-                <p>近年来，随着无锡外企数量增加，开始专注涉外法律服务，为外资企业提供专业法律解决方案。善于运用AI工具提升办案效率，结合谈判策略专家，为客户提供高质量的法律服务。</p>
-                <div class="about-features">
-                    <div class="feature-item">
-                        <div class="feature-icon">✦</div>
-                        <div class="feature-text">精通中英双语</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✦</div>
-                        <div class="feature-text">熟悉国际商业规则</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✦</div>
-                        <div class="feature-text">AI赋能高效办案</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✦</div>
-                        <div class="feature-text">谈判策略专家</div>
-                    </div>
+        </section>
+        
+        <section class="skills-section">
+            <h2 class="section-title">🧠 知识管理技能</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span class="skill-category">知识沉淀</span>
+                    <div class="skill-name">knowledge-accumulation</div>
+                    <div class="skill-desc">知识沉淀与复用，案件归档、裁判规则积累</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">知识库丰容</span>
+                    <div class="skill-name">knowledge-base-enrichment</div>
+                    <div class="skill-desc">知识库审计与丰容，扫描缺口、批量创建知识卡片</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">知识库自动化</span>
+                    <div class="skill-name">obsidian-knowledge-pipeline</div>
+                    <div class="skill-desc">Obsidian知识库自动化，每日速报+知识沉淀</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">错误教训</span>
+                    <div class="skill-name">legal-analysis-pitfalls</div>
+                    <div class="skill-desc">法律分析常见错误与教训，避免踩坑</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">搜索指南</span>
+                    <div class="skill-name">case-search-sources</div>
+                    <div class="skill-desc">法律案例搜索源指南，多平台搜索技巧</div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- 联系我们 -->
-    <section class="contact" id="contact">
-        <div class="section-header">
-            <div class="section-label">Contact Us</div>
-            <h2 class="section-title">联系我们</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>联系方式</h3>
-                <div class="contact-item">
-                    <div class="contact-icon">📞</div>
-                    <div class="contact-details">
-                        <h4>电话咨询</h4>
-                        <p><a href="tel:13601539126">136-0153-9126</a></p>
-                    </div>
+        </section>
+        
+        <section class="skills-section">
+            <h2 class="section-title">💼 业务拓展技能</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span class="skill-category">案源开发</span>
+                    <div class="skill-name">business-development</div>
+                    <div class="skill-desc">案源开发与品牌建设，专业领域定位、IP打造</div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <div class="contact-details">
-                        <h4>邮箱咨询</h4>
-                        <p><a href="mailto:yuzhenghong86@icloud.com">yuzhenghong86@icloud.com</a></p>
-                    </div>
+                <div class="skill-card">
+                    <span class="skill-category">抖音直播</span>
+                    <div class="skill-name">lawyer-douyin-livestream</div>
+                    <div class="skill-desc">律师抖音直播助手，话术模板、违禁词检测</div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div class="contact-details">
-                        <h4>办公地址</h4>
-                        <p>无锡市清扬路金匮苑31-3（地铁一号线华清大桥站一号出口）</p>
-                    </div>
+                <div class="skill-card">
+                    <span class="skill-category">网站建设</span>
+                    <div class="skill-name">lawyer-website-development</div>
+                    <div class="skill-desc">律师个人网站开发，HTML/CSS、动画展示</div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">💼</div>
-                    <div class="contact-details">
-                        <h4>执业机构</h4>
-                        <p>江苏三诚律师事务所</p>
-                    </div>
+                <div class="skill-card">
+                    <span class="skill-category">公众号文章</span>
+                    <div class="skill-name">wechat-lawyer-article</div>
+                    <div class="skill-desc">微信公众号文章撰写，19条质量标准、降AI味</div>
                 </div>
-                
-                <!-- 微信二维码 -->
-                <div class="wechat-section">
-                    <h4>📱 微信咨询</h4>
-                    <div class="qr-code">
-                        <img src="images/二维码.jpg" alt="微信二维码">
-                    </div>
-                    <p class="wechat-tip">扫码添加微信，获取专业法律咨询</p>
+                <div class="skill-card">
+                    <span class="skill-category">涉外文章</span>
+                    <div class="skill-name">wechat-legal-article</div>
+                    <div class="skill-desc">涉外律师公众号文章，法条核实、HTML预览</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">涉外执业</span>
+                    <div class="skill-name">foreign-related-legal-practice</div>
+                    <div class="skill-desc">涉外律师执业技能，跨境争议、国际商事</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">Vibe Coding</span>
+                    <div class="skill-name">vibe-coding-legal-tools</div>
+                    <div class="skill-desc">Vibe Coding法律工具开发，自然语言写代码</div>
                 </div>
             </div>
-            <div class="contact-form">
-                <h3>在线预约咨询</h3>
-                <form id="consultationForm" onsubmit="handleSubmit(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>姓名 *</label>
-                            <input type="text" name="name" placeholder="请输入您的姓名" required>
-                        </div>
-                        <div class="form-group">
-                            <label>电话 *</label>
-                            <input type="tel" name="phone" placeholder="请输入您的电话" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>邮箱</label>
-                        <input type="email" name="email" placeholder="请输入您的邮箱">
-                    </div>
-                    <div class="form-group">
-                        <label>咨询类型</label>
-                        <select name="type" style="width:100%;padding:14px 16px;border:1px solid #ddd;font-size:0.95rem;font-family:'Inter',sans-serif;">
-                            <option>请选择咨询类型</option>
-                            <option>企业出海</option>
-                            <option>涉外合同纠纷</option>
-                            <option>跨境投资与并购</option>
-                            <option>跨境争议解决</option>
-                            <option>外企知产保护</option>
-                            <option>外企合规咨询</option>
-                            <option>私人财富管理与家事法</option>
-                            <option>外企劳动争议</option>
-                            <option>其他法律问题</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>咨询内容 *</label>
-                        <textarea name="message" placeholder="请描述您的法律问题" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">提交预约</button>
-                    <div id="formSuccess" style="display:none;margin-top:20px;padding:15px;background:#d4edda;color:#155724;border:1px solid #c3e6cb;text-align:center;">
-                        ✅ 预约已提交成功！我们将尽快与您联系。
-                    </div>
-                </form>
+        </section>
+        
+        <section class="skills-section">
+            <h2 class="section-title">📚 专业领域技能</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span class="skill-category">中国法律实务</span>
+                    <div class="skill-name">chinese-legal-practice</div>
+                    <div class="skill-desc">中国法律实务技能集，争议解决、商事合同、公司并购</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">庭审辅助</span>
+                    <div class="skill-name">court-trial-realtime</div>
+                    <div class="skill-desc">庭审实时辅助，秒级检索法条/案例/企业信息</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">注册会计师</span>
+                    <div class="skill-name">cpa-accounting</div>
+                    <div class="skill-desc">注册会计师知识技能，会计准则、审计实务</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">注册税务师</span>
+                    <div class="skill-name">cta-tax</div>
+                    <div class="skill-desc">注册税务师知识技能，税法体系、税务筹划</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">并购重组</span>
+                    <div class="skill-name">ma-restructuring</div>
+                    <div class="skill-desc">并购重组知识技能，股权收购、尽职调查</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">破产清算</span>
+                    <div class="skill-name">bankruptcy-liquidation</div>
+                    <div class="skill-desc">破产清算知识技能，债权申报、重整计划</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">证券合规</span>
+                    <div class="skill-name">securities-compliance</div>
+                    <div class="skill-desc">证券合规知识技能，IPO、信息披露、内幕交易</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">房产交易</span>
+                    <div class="skill-name">real-estate-transaction</div>
+                    <div class="skill-desc">房产交易知识技能，二手房、新房、商铺交易</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">劳动补偿</span>
+                    <div class="skill-name">labor-compensation</div>
+                    <div class="skill-desc">劳动补偿知识技能，经济补偿、赔偿金、社保</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">司法会计</span>
+                    <div class="skill-name">forensic-accounting</div>
+                    <div class="skill-desc">司法会计鉴定知识技能，损失计算、审计报告</div>
+                </div>
+                <div class="skill-card">
+                    <span class="skill-category">双平台同步</span>
+                    <div class="skill-name">claude-code-sync</div>
+                    <div class="skill-desc">Claude Code与Hermes双平台同步知识库</div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
     
-    <script>
-        function handleSubmit(e) {
-            e.preventDefault();
-            const form = document.getElementById('consultationForm');
-            const formData = new FormData(form);
-            
-            // 构建邮件内容
-            const name = formData.get('name');
-            const phone = formData.get('phone');
-            const email = formData.get('email') || '未提供';
-            const type = formData.get('type');
-            const message = formData.get('message');
-            
-            const subject = encodeURIComponent('法律咨询预约 - ' + name);
-            const body = encodeURIComponent(
-                '姓名: ' + name + '\n' +
-                '电话: ' + phone + '\n' +
-                '邮箱: ' + email + '\n' +
-                '咨询类型: ' + type + '\n' +
-                '咨询内容:\n' + message
-            );
-            
-            // 打开邮件客户端
-            window.open('mailto:yuzhenghong86@icloud.com?subject=' + subject + '&body=' + body);
-            
-            // 显示成功提示
-            document.getElementById('formSuccess').style.display = 'block';
-            form.reset();
-            
-            // 3秒后隐藏提示
-            setTimeout(function() {
-                document.getElementById('formSuccess').style.display = 'none';
-            }, 5000);
-        }
-    </script>
-    
-    <!-- 页脚 -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-about">
-                <h3>YU ZHENGHONG</h3>
-                <p>专注涉外法律服务，为外资企业提供专业、高效、可靠的法律解决方案。精通跨境争议解决，熟悉国际商业规则。</p>
-            </div>
-            <div class="footer-links">
-                <h4>快速链接</h4>
-                <ul>
-                    <li><a href="#services">服务领域 Services</a></li>
-                    <li><a href="#about">关于律师 About</a></li>
-                    <li><a href="#contact">联系我们 Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>服务领域</h4>
-                <ul>
-                    <li><a href="#">外企劳动争议</a></li>
-                    <li><a href="#">涉外合同纠纷</a></li>
-                    <li><a href="#">外企知产保护</a></li>
-                    <li><a href="#">外企合规咨询</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 余正洪律师 · 江苏三诚律师事务所 · 版权所有</p>
-        </div>
+        <p>Powered by <a href="https://hermes-agent.nousresearch.com">Hermes Agent</a></p>
+        <p style="margin-top: 10px;">
+            <a href="https://github.com/wxlawyers/lawyer-knowledge-graph">GitHub</a> · 
+            <a href="https://lawyer-yu.netlify.app">Website</a>
+        </p>
     </footer>
 </body>
 </html>
-<style>
-.en-title {
-    font-size: 0.8rem;
-    color: var(--gold);
-    margin-top: 5px;
-    font-style: italic;
-}
-
-.fr-title {
-    font-size: 0.75rem;
-    color: var(--text-light);
-    margin-top: 3px;
-    font-style: italic;
-}
-
-.ar-title {
-    font-size: 0.75rem;
-    color: var(--text-light);
-    margin-top: 3px;
-    direction: rtl;
-    font-style: italic;
-}
-</style>

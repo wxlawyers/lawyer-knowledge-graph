@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.8; color: #333; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 680px; margin: 0 auto; background: #fff; padding: 30px 25px; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+        h1 { font-size: 22px; font-weight: bold; color: #1a1a1a; text-align: center; margin-bottom: 20px; line-height: 1.4; }
+        .summary { background: #f8f9fa; border-left: 4px solid #1890ff; padding: 12px 16px; margin-bottom: 25px; font-size: 14px; color: #666; }
+        .content { font-size: 16px; line-height: 2; }
+        .content p { margin-bottom: 18px; text-align: justify; }
+        .content strong { color: #1a1a1a; }
+        h2 { font-size: 18px; font-weight: bold; color: #1a1a1a; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 2px solid #1890ff; }
+        .highlight-box { background: #fff7e6; border: 1px solid #ffd591; border-radius: 6px; padding: 15px 18px; margin: 20px 0; font-size: 15px; }
+        .highlight-box strong { color: #d4380d; }
+        .case-box { background: #f6ffed; border: 1px solid #b7eb8f; border-radius: 6px; padding: 15px 18px; margin: 20px 0; }
+        .case-box .case-no { font-weight: bold; color: #389e0d; margin-bottom: 8px; }
+        .quote { background: #f0f5ff; border-left: 4px solid #1890ff; padding: 15px 18px; margin: 20px 0; font-size: 15px; font-style: italic; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+        th { background: #1890ff; color: #fff; padding: 10px 12px; text-align: left; }
+        td { padding: 10px 12px; border-bottom: 1px solid #e8e8e8; }
+        tr:nth-child(even) { background: #fafafa; }
+        .advice-item { margin-bottom: 15px; }
+        .advice-item strong { color: #1890ff; font-size: 16px; }
+        .summary-box { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; border-radius: 8px; padding: 20px; margin: 25px 0; text-align: center; font-size: 18px; font-weight: bold; line-height: 1.6; }
+        .disclaimer { background: #f5f5f5; border-radius: 6px; padding: 15px 18px; margin-top: 30px; font-size: 13px; color: #999; }
+        .author-info { text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px solid #e8e8e8; font-size: 14px; color: #666; }
+        .author-info strong { color: #1a1a1a; }
+        .tags { text-align: center; margin-top: 15px; font-size: 13px; color: #1890ff; }
+        .interaction { text-align: center; margin-top: 25px; font-size: 14px; color: #666; font-style: italic; }
+        .source { font-size: 13px; color: #999; margin-top: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><!-- 标题 --></h1>
+        <div class="summary"><strong>摘要：</strong><!-- 摘要120字以内 --></div>
+        <div class="content">
+            <p><!-- 开头：用真实案例引入 --></p>
+            <h2><!-- 一、痛点/风险 --></h2>
+            <div class="highlight-box"><strong><!-- 风险标题 --></strong><br><br><!-- 风险内容 --></div>
+            <h2><!-- 二、真实案例 --></h2>
+            <div class="case-box">
+                <div class="case-no">案号：<!-- 案号 --></div>
+                <p><!-- 案例内容 --></p>
+                <div class="source">📰 数据来源：<!-- 来源 --></div>
+            </div>
+            <h2><!-- 三、法律依据 --></h2>
+            <div class="quote"><!-- 法条引用 --></div>
+            <table><!-- 对比表格 --></table>
+            <h2><!-- 四、实操建议 --></h2>
+            <div class="advice-item"><strong>第一，<!-- 建议 --></strong><!-- 说明 --></div>
+            <div class="advice-item"><strong>第二，<!-- 建议 --></strong><!-- 说明 --></div>
+            <div class="advice-item"><strong>第三，<!-- 建议 --></strong><!-- 说明 --></div>
+            <h2>五、一句话记住</h2>
+            <div class="summary-box"><!-- 金句 --></div>
+        </div>
+        <div class="disclaimer"><strong>免责声明：</strong>本文仅供学习交流，不构成法律意见，具体案件请咨询专业律师。文中案例均已脱敏处理，案号来源于公开裁判文书。</div>
+        <div class="author-info"><strong>作者：余正洪律师</strong><br>江苏三诚律师事务所合伙人 | 执业15年</div>
+        <div class="tags">#关键词1 #关键词2 #关键词3</div>
+        <div class="interaction">觉得有用？点个「赞」和「在看」，让更多老板看到。</div>
+    </div>
+</body>
+</html>

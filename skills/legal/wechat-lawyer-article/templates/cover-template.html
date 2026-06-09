@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f0f2f5; padding: 20px; }
+        .cover {
+            width: 900px; height: 383px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: 12px; overflow: hidden; position: relative;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .risk-badge { position: absolute; top: 25px; left: 30px; background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: #fff; padding: 8px 20px; border-radius: 25px; font-size: 16px; font-weight: bold; z-index: 1; }
+        .law-badge { position: absolute; top: 25px; right: 30px; background: linear-gradient(135deg, #4834d4, #686de0); color: #fff; padding: 8px 20px; border-radius: 25px; font-size: 14px; z-index: 1; }
+        .title { font-size: 36px; font-weight: bold; color: #fff; text-align: center; line-height: 1.4; margin-bottom: 15px; text-shadow: 0 4px 8px rgba(0,0,0,0.3); position: relative; z-index: 1; }
+        .title .highlight { color: #ffd700; text-decoration: underline; text-underline-offset: 8px; }
+        .subtitle { font-size: 18px; color: rgba(255,255,255,0.8); text-align: center; margin-bottom: 25px; position: relative; z-index: 1; }
+        .tags { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
+        .tag { background: rgba(255,255,255,0.15); color: #fff; padding: 6px 16px; border-radius: 20px; font-size: 14px; border: 1px solid rgba(255,255,255,0.2); }
+        .author { position: absolute; bottom: 25px; right: 30px; color: rgba(255,255,255,0.6); font-size: 14px; z-index: 1; }
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <!-- 修改以下内容 -->
+        <div class="risk-badge">⚠️ 风险警示</div>
+        <div class="law-badge">新公司法 2024.7.1施行</div>
+        <div class="title">注册资本填太高<br><span class="highlight">老板差点坐牢</span></div>
+        <div class="subtitle">15年执业律师亲办案例 · 江苏法院真实裁判 · 企业家必看</div>
+        <div class="tags">
+            <span class="tag">#注册资本</span>
+            <span class="tag">#实缴</span>
+            <span class="tag">#虚假出资</span>
+            <span class="tag">#企业合规</span>
+        </div>
+        <div class="author">余正洪律师 | 江苏三诚律师事务所</div>
+    </div>
+</body>
+</html>

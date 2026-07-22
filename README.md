@@ -1,54 +1,167 @@
-# ⚖️ 律师AI超级大脑
+# ⚖️ Lawyer Knowledge Graph
 
-> **34个专业技能 · 覆盖办案全流程 · 让律师效率提升10倍**
+> **律师知识图谱 — 让办过的每一个案子，都成为未来办案的资产**
 
-[![Skills](https://img.shields.io/badge/技能-34-blue)](#技能清单)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![Hermes Agent](https://img.shields.io/badge/Powered%20by-Hermes%20Agent-purple)](https://hermes-agent.nousresearch.com)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11-green)](https://python.org)
+[![Docker](https://img.shields.io/badge/Docker-Compose-blue)](docker-compose.yml)
 
-**这不是又一个法律AI工具。这是一套为诉讼律师打造的AI工作系统。**
+一套面向诉讼律师的 AI 个人知识管理系统 + 34个专业技能集。两个模块互补协作：
 
----
-
-## 🎯 解决什么问题？
-
-| 痛点 | 传统方式 | 用这套技能 |
-|------|----------|-----------|
-| 案件法律分析 | 翻法条+查案例，2-3小时 | 对话式检索，2分钟出报告 |
-| 庭审质证 | 临场反应，容易遗漏 | 秒级检索法条+案例，实时辅助 |
-| 知识积累 | 办完案子就忘 | 自动沉淀到知识库，可复用 |
-| 做网站/写文章 | 找外包，几千到几万 | Vibe Coding，自己用AI做 |
+- **知识图谱系统**：案件经验自动沉淀 → 向量检索 → 类案秒级匹配
+- **技能集**：覆盖办案全流程的 Hermes Agent 技能，对话即用
 
 ---
 
-## ⚡ 核心能力
+## 一个痛点
 
-### 🔍 法律检索
-- 对接北大法宝（9个工具）、元典智库（5个工具）
-- 法条原文秒查，案例交叉验证
-- 支持自然语言查询："查一下江苏地区近三年建设工程纠纷案例"
+做了十五年民商事诉讼律师，手上有几百个办过的案子。
 
-### 📊 企业尽调
-- 企查查180个工具全覆盖
-- 股东穿透、风险扫描、诉讼记录、知识产权
-- 一句话查企业："查一下XX公司的实际控制人和诉讼风险"
+几年前遇到一个买卖合同纠纷，案件事实和五年前办过的另一个案子几乎一模一样——同样的争议焦点，同样的法律适用问题。但翻遍文件夹也没找到当时的详细记录，只记得"好像办过类似的"，最后从头研究，多花了三天。
 
-### 📝 知识沉淀
-- 自动提取案件要素、裁判规则、实务经验
-- Obsidian双向链接，零断链
-- 每日法律速报自动分类沉淀
+律师的办案经验，正在被浪费。每办一个案子积累的理解——争议焦点怎么抓、证据链怎么组织、法院对同类问题持什么态度——这些经验要么散落在 Word 文档里，要么沉睡在记忆中。
 
-### ⚖️ 庭审辅助
-- 开庭时秒级检索法条和案例
-- 质证要点自动生成
-- 对方抗辩即时反驳建议
+**这就是 Lawyer Knowledge Graph 的起点。**
 
 ---
 
-## 📦 技能清单（34个）
+## 项目架构
+
+```
+lawyer-knowledge-graph/
+├── backend/              # 模块一：知识图谱系统后端（FastAPI）
+│   ├── main.py           # API 入口
+│   ├── models.py         # 数据模型（SQLAlchemy + pgvector）
+│   ├── services.py       # 核心逻辑：知识提取、向量化、检索
+│   ├── database.py       # 数据库连接
+│   ├── init.sql          # 数据库初始化脚本
+│   ├── requirements.txt
+│   └── Dockerfile
+├── frontend/             # 模块一：知识图谱系统前端（Streamlit）
+│   ├── app.py            # 交互界面
+│   ├── requirements.txt
+│   └── Dockerfile
+├── scripts/              # 独立可运行脚本
+│   ├── extract_cards.py  # 知识卡片提取
+│   └── vector_search.py  # 向量检索
+├── skills/legal/         # 模块二：34个律师专业技能
+├── docs/                 # 项目文档
+├── docker-compose.yml    # 一键启动
+├── .env.example          # 环境变量模板
+└── LICENSE               # Apache 2.0
+```
+
+---
+
+## 模块一：知识图谱系统
+
+### 核心逻辑
+
+```
+输入案件材料 → AI 自动提取知识卡片 → 存入向量数据库 → 新案发生时一键检索相似案例
+```
+
+### 三大核心功能
+
+#### 1. 案件知识自动沉淀
+
+粘贴裁判文书或案卷摘要，AI 自动提取结构化知识卡片：
+
+| 卡片类型 | 说明 | 示例 |
+|----------|------|------|
+| 争议焦点 | 本案的核心争议问题 | "违约金过高是否应调减" |
+| 裁判规则 | 法院对此类问题的裁判标准 | "违约金调减以实际损失的30%为参考上限" |
+| 法条适用 | 精确到具体法条编号和要点 | "民法典第585条：违约金调整规则" |
+| 办案经验 | 律师视角的实务技巧 | "此类案件应重点收集实际损失证明、行业利润率数据" |
+
+每张知识卡片自动生成向量索引，存入 pgvector 数据库。录入的案件越多，系统积累的知识越丰富。
+
+#### 2. 类案智能检索
+
+接到新案件时，在搜索框输入案件描述，系统基于**语义相似度**（而非关键词匹配）检索历史案件中所有相关的知识卡片：
+
+```
+输入：买卖合同中卖方交付的货物质量不符合约定，买方拒付货款并要求赔偿损失
+
+输出：
+  相似度 0.89 → （2025）苏02民初456号 · 买卖合同纠纷
+  相似度 0.82 → （2024）苏02民初789号 · 承揽合同纠纷
+  相似度 0.76 → 民法典第615条 · 标的物质量不符合要求的处理
+  相似度 0.71 → 民法典第582条 · 违约责任承担方式
+```
+
+#### 3. 法规动态追踪（规划中）
+
+设置关注领域（如"合同纠纷""劳动争议"），自动检索新增的司法解释和指导性案例，生成更新摘要推送。
+
+已预留接口：北大法宝（PKULAW）、华宇元典（YUANDIAN），配置 API Key 即可启用。
+
+### 技术架构
+
+| 组件 | 技术选型 | 说明 |
+|------|----------|------|
+| 后端框架 | FastAPI | 异步高性能，自动生成 API 文档 |
+| 数据库 | PostgreSQL 16 + pgvector | 结构化数据 + 向量检索 |
+| 向量模型 | text2vec-large-chinese | 中文语义向量化，768 维 |
+| 大语言模型 | DeepSeek V3 / Qwen2.5 | 知识卡片提取、摘要生成 |
+| 前端 | Streamlit | 快速构建交互界面 |
+| 部署 | Docker Compose | 一键启动所有服务 |
+
+### 快速开始
+
+```bash
+# 1. 克隆项目
+git clone https://github.com/wxlawyers/lawyer-knowledge-graph.git
+cd lawyer-knowledge-graph
+
+# 2. 配置环境变量
+cp .env.example .env
+# 编辑 .env，填入你的 LLM API Key
+
+# 3. 一键启动（需安装 Docker）
+docker-compose up -d
+
+# 4. 打开浏览器
+# 前端：http://localhost:8501
+# API 文档：http://localhost:8000/docs
+```
+
+系统启动后自动初始化数据库表结构，无需手动执行任何 SQL。
+
+### 最低硬件要求
+
+| 配置 | 要求 |
+|------|------|
+| CPU | 4 核及以上 |
+| 内存 | 8 GB（推荐 16 GB） |
+| 硬盘 | 20 GB 可用空间 |
+| Docker | Docker Engine 24+ & Docker Compose v2 |
+| 网络 | 需访问 LLM API（DeepSeek/Qwen） |
+
+### 独立脚本使用
+
+不想启动完整服务？两个核心脚本可独立运行：
+
+```bash
+# 知识卡片提取（需配置 LLM_API_KEY）
+python scripts/extract_cards.py --file 判决书.txt --output cards.json
+
+# 向量检索（需启动 PostgreSQL + 向量模型）
+python scripts/vector_search.py --query "买卖合同违约金过高" --top-k 5
+```
+
+---
+
+## 模块二：律师专业技能集（34个）
+
+> 需要 [Hermes Agent](https://hermes-agent.nousresearch.com) 运行环境。
+
+知识图谱系统解决的是"经验存储与检索"，技能集解决的是"日常办案效率"。两者互补：技能集在日常对话中调用法律检索、文书撰写等能力，知识图谱系统则把每次办案的经验自动沉淀下来。
+
+### 技能分类
 
 <details>
-<summary><strong>📋 办案流程技能（点击展开）</strong></summary>
+<summary><strong>办案流程技能（10个）</strong></summary>
 
 | 技能 | 功能 |
 |------|------|
@@ -66,7 +179,7 @@
 </details>
 
 <details>
-<summary><strong>🧠 知识管理技能（点击展开）</strong></summary>
+<summary><strong>知识管理技能（5个）</strong></summary>
 
 | 技能 | 功能 |
 |------|------|
@@ -79,7 +192,7 @@
 </details>
 
 <details>
-<summary><strong>💼 业务拓展技能（点击展开）</strong></summary>
+<summary><strong>业务拓展技能（7个）</strong></summary>
 
 | 技能 | 功能 |
 |------|------|
@@ -94,7 +207,7 @@
 </details>
 
 <details>
-<summary><strong>📚 专业领域技能（点击展开）</strong></summary>
+<summary><strong>专业领域技能（12个）</strong></summary>
 
 | 技能 | 功能 |
 |------|------|
@@ -109,14 +222,11 @@
 | labor-compensation | 劳动补偿 |
 | forensic-accounting | 司法会计鉴定 |
 | claude-code-sync | Claude Code与Hermes双平台同步 |
+| lawyer-wechat-article | 律师微信公众号文章（扩展） |
 
 </details>
 
----
-
-## 🚀 快速开始
-
-### 1. 安装技能
+### 技能集安装
 
 ```bash
 # 克隆仓库
@@ -126,70 +236,23 @@ git clone https://github.com/wxlawyers/lawyer-knowledge-graph.git
 cp -r lawyer-knowledge-graph/skills/legal/* ~/.hermes/skills/legal/
 ```
 
-### 2. 配置MCP工具
-
-在 `~/.hermes/config.yaml` 中添加：
+在 `~/.hermes/config.yaml` 中配置 MCP 工具：
 
 ```yaml
 mcp:
   servers:
-    # 北大法宝
-    pkulaw:
+    pkulaw:        # 北大法宝
       command: "node"
       args: ["~/.hermes/mcp-servers/pkulaw/index.js"]
-    
-    # 元典智库
-    yuandian:
+    yuandian:      # 元典智库
       command: "node"
       args: ["~/.hermes/mcp-servers/yuandian/index.js"]
-    
-    # 企查查
-    qcc:
+    qcc:           # 企查查
       command: "node"
       args: ["~/.hermes/mcp-servers/qcc/index.js"]
 ```
 
-### 3. 开始使用
-
-```bash
-# 通过飞书/终端对话
-"帮我分析这个案件的请求权基础"
-"查一下民法典关于违约责任的规定"
-"帮我准备一期关于劳动纠纷的直播脚本"
-"做一个涉外律师的个人网站"
-```
-
----
-
-## 💡 使用场景
-
-### 场景1：案件分析
-```
-你：帮我分析一下这个建设工程合同纠纷的请求权基础
-AI：[自动检索相关法条和案例，生成分析报告]
-```
-
-### 场景2：庭审辅助
-```
-你：[拍照对方证据] 这个证据怎么质证？
-AI：[OCR识别 + 法条检索 + 质证要点生成]
-```
-
-### 场景3：知识积累
-```
-你：把这个案件的裁判规则沉淀到知识库
-AI：[自动提取要素，生成知识卡片，建立双向链接]
-```
-
-### 场景4：品牌建设
-```
-你：帮我写一篇关于合同纠纷的公众号文章
-AI：[按19条质量标准生成，自动降AI味]
-```
-
----
-
-## 🔧 集成工具
+### 集成工具
 
 | 工具 | 数量 | 用途 |
 |------|------|------|
@@ -201,46 +264,80 @@ AI：[按19条质量标准生成，自动降AI味]
 
 ---
 
-## 📊 数据
+## 适用场景
 
-- **技能总数**：34个
-- **覆盖领域**：民商事、刑事、知产、公司法、劳动法、房产、证券
-- **集成工具**：201个MCP工具
-- **知识库**：273篇知识卡片（持续增长）
+| 场景 | 模块 | 效果 |
+|------|------|------|
+| 新案接手 | 技能集 | 对话式分析请求权基础，2分钟出报告 |
+| 新案接手 | 知识图谱 | 输入案情描述，5秒找到历史相似案件 |
+| 办案小结 | 知识图谱 | 粘贴判决书，AI 自动生成知识卡片 |
+| 庭审质证 | 技能集 | 拍照对方证据，秒级生成质证要点 |
+| 法规追踪 | 知识图谱 | 自动推送新司法解释和指导性案例 |
+| 品牌建设 | 技能集 | AI 写公众号文章、做个人网站 |
+| 团队协作 | 知识图谱 | （规划中）多位律师共享知识库 |
 
 ---
 
-## 🤔 常见问题
+## 当前状态与路线图
 
-**Q：需要什么基础才能用？**
-A：不需要编程基础。只要会用飞书/微信发消息就行。
+### 知识图谱系统
+
+- [x] 数据模型设计
+- [x] 知识卡片提取脚本（独立可运行）
+- [x] 向量检索脚本（独立可运行）
+- [x] API 接口设计
+- [x] Docker Compose 配置
+- [x] FastAPI 后端（案件录入、检索、卡片管理）
+- [x] Streamlit 前端界面
+- [ ] 法规追踪模块
+- [ ] 团队协作功能
+
+### 技能集
+
+- [x] 34个技能已发布
+- [ ] 持续迭代优化
+
+---
+
+## 常见问题
+
+**Q：知识图谱系统需要编程基础吗？**
+A：不需要。Docker 一键启动后，浏览器打开页面即可使用。
+
+**Q：技能集需要什么环境？**
+A：需要 Hermes Agent 运行环境。只要会发消息就能使用，无需编程。
 
 **Q：支持哪些大模型？**
-A：支持小米MiMo、Claude、GPT-4等主流模型。推荐小米MiMo（性价比最高）。
+A：知识图谱系统支持 DeepSeek V3 / Qwen2.5（通过 OpenAI 兼容 API）。技能集支持小米 MiMo、Claude、GPT-4 等主流模型。
 
 **Q：数据安全吗？**
-A：所有数据存储在本地Obsidian知识库，不上传第三方。法条检索通过MCP工具调用，不暴露案件信息。
+A：知识图谱系统数据完全私有，部署在自己服务器上。技能集数据存储在本地 Obsidian 知识库，不上传第三方。
 
-**Q：可以定制技能吗**
-A：可以。每个技能都是一个SKILL.md文件，用自然语言描述工作流程，AI会按流程执行。
-
----
-
-## 📄 License
-
-[MIT](LICENSE)
+**Q：可以定制技能吗？**
+A：可以。每个技能都是一个 SKILL.md 文件，用自然语言描述工作流程，AI 按流程执行。
 
 ---
 
-## 👨‍⚖️ 作者
+## License
+
+[Apache License 2.0](LICENSE)
+
+---
+
+## 仓库地址
+
+- **GitHub**：https://github.com/wxlawyers/lawyer-knowledge-graph
+- **Gitee（国内镜像）**：https://gitee.com/wxlawyers/lawyer-knowledge-graph
+
+---
+
+## 作者
 
 **余正洪律师** | 江苏三诚律师事务所
 
 - 执业领域：民商事诉讼 · 刑事诉讼 · 知识产权 · 公司法/商事合规
-- 微信：wuxilawyers
-- 电话：132-7625-9126
 - 网站：[lawyer-yu.netlify.app](https://lawyer-yu.netlify.app)
 
 ---
 
-**如果这个项目对你有帮助，请点个 ⭐ Star 支持一下！**
+**如果这个项目对你有帮助，请点个 Star 支持一下！欢迎提交 Issue 和 PR。一个人的力量有限，但如果有更多律师和开发者一起参与，这个工具会变得更好。**

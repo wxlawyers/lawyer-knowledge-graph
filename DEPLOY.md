@@ -1,6 +1,7 @@
 # 律师知识图谱 - 部署指南（零基础版）
 
-> 本指南面向没有任何编程基础的律师，跟着做就行，大约 15 分钟。
+> 本指南面向没有任何编程基础的律师，跟着做就行。
+> 首次部署约 20-30 分钟（含 Docker 安装和模型下载），之后日常启动只需 1 分钟。
 
 ---
 
@@ -135,7 +136,13 @@ Docker 没装好或没启动。打开 Docker Desktop 应用，等鲸鱼图标变
 
 ### Q：启动后浏览器打不开 localhost:8501
 
-服务可能还在启动中，等 30 秒再刷新。如果还不行，终端运行 `docker-compose ps` 看看四个服务是否都是 running 状态。
+首次启动时，向量服务需要下载 AI 模型（约 1.3GB），可能需要 5-10 分钟。终端运行 `docker-compose ps` 看看四个服务状态：
+
+- `db`、`vector`、`backend`、`frontend` 都显示 running 且 healthy 才算就绪
+- 如果 vector 显示 `starting`，说明模型还在下载，耐心等待
+- 也可以运行 `docker-compose logs vector` 查看下载进度
+
+非首次启动一般 30 秒内即可访问。
 
 ### Q：粘贴判决书后提示"提取失败"
 
@@ -155,6 +162,10 @@ LLM_MODEL=kimi-k3                           # 改成对应的模型名
 ### Q：数据存在哪里
 
 所有数据存在 Docker 的 PostgreSQL 容器中。只要不删除 Docker 卷，数据不会丢失。建议定期备份（导出数据库）。
+
+### Q：首次启动很慢正常吗
+
+正常。首次 `docker-compose up -d` 需要下载三个基础镜像（PostgreSQL、Python、Streamlit）和 AI 模型文件，总计约 3-5 GB。之后再启动只需 30 秒左右。
 
 ---
 

@@ -49,6 +49,7 @@ EXTRACT_PROMPT = """你是一位资深民商事律师的助手。请从以下案
 def extract_cards(text: str, area: str = "") -> dict:
     """从案件原文中提取知识卡片"""
     api_key = os.getenv("LLM_API_KEY", "")
+    # 支持 DeepSeek V4 Pro / Kimi K3 / GLM 5.2，均兼容 OpenAI API 格式
     base_url = os.getenv("LLM_BASE_URL", "https://api.deepseek.com/v1")
     model = os.getenv("LLM_MODEL", "deepseek-chat")
 

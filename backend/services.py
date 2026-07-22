@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from models import Case, KnowledgeCard
 
 LLM_API_KEY = os.getenv("LLM_API_KEY", "")
+# 支持 DeepSeek V4 Pro / Kimi K3 / GLM 5.2，均兼容 OpenAI API 格式
 LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://api.deepseek.com/v1")
 LLM_MODEL = os.getenv("LLM_MODEL", "deepseek-chat")
 VECTOR_API_URL = os.getenv("VECTOR_API_URL", "http://localhost:9998")

@@ -103,7 +103,7 @@ lawyer-knowledge-graph/
 | 后端框架 | FastAPI | 异步高性能，自动生成 API 文档 |
 | 数据库 | PostgreSQL 16 + pgvector | 结构化数据 + 向量检索 |
 | 向量模型 | text2vec-large-chinese | 中文语义向量化，768 维 |
-| 大语言模型 | DeepSeek V3 / Qwen2.5 | 知识卡片提取、摘要生成 |
+| 大语言模型 | DeepSeek V4 Pro / Kimi K3 / GLM 5.2 | 知识卡片提取、摘要生成 |
 | 前端 | Streamlit | 快速构建交互界面 |
 | 部署 | Docker Compose | 一键启动所有服务 |
 
@@ -136,7 +136,7 @@ docker-compose up -d
 | 内存 | 8 GB（推荐 16 GB） |
 | 硬盘 | 20 GB 可用空间 |
 | Docker | Docker Engine 24+ & Docker Compose v2 |
-| 网络 | 需访问 LLM API（DeepSeek/Qwen） |
+| 网络 | 需访问 LLM API（DeepSeek/Kimi/GLM） |
 
 ### 独立脚本使用
 
@@ -308,7 +308,7 @@ A：不需要。Docker 一键启动后，浏览器打开页面即可使用。
 A：需要 Hermes Agent 运行环境。只要会发消息就能使用，无需编程。
 
 **Q：支持哪些大模型？**
-A：知识图谱系统支持 DeepSeek V3 / Qwen2.5（通过 OpenAI 兼容 API）。技能集支持小米 MiMo、Claude、GPT-4 等主流模型。
+A：知识图谱系统支持 DeepSeek V4 Pro / Kimi K3 / GLM 5.2（通过 OpenAI 兼容 API）。技能集支持小米 MiMo、Claude、GPT-4 等主流模型。
 
 **Q：数据安全吗？**
 A：知识图谱系统数据完全私有，部署在自己服务器上。技能集数据存储在本地 Obsidian 知识库，不上传第三方。

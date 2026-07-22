@@ -121,6 +121,7 @@ API 文档（技术同学用）：http://localhost:8000/docs
 | 启动服务 | `docker-compose up -d` |
 | 查看状态 | `docker-compose ps` |
 | 查看日志 | `docker-compose logs -f` |
+| 重新构建 | `docker-compose up -d --build` |
 
 > 日常使用不需要反复部署。第一次部署好之后，以后只需要打开 Docker，然后终端执行 `docker-compose up -d` 即可。
 

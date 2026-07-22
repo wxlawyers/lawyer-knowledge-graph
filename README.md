@@ -37,6 +37,10 @@ lawyer-knowledge-graph/
 │   ├── init.sql          # 数据库初始化脚本
 │   ├── requirements.txt
 │   └── Dockerfile
+├── vector/               # 向量编码服务（text2vec HTTP API）
+│   ├── server.py         # FastAPI 向量服务
+│   ├── requirements.txt
+│   └── Dockerfile
 ├── frontend/             # 模块一：知识图谱系统前端（Streamlit）
 │   ├── app.py            # 交互界面
 │   ├── requirements.txt
@@ -46,6 +50,8 @@ lawyer-knowledge-graph/
 │   └── vector_search.py  # 向量检索
 ├── skills/legal/         # 模块二：34个律师专业技能
 ├── docs/                 # 项目文档
+├── deploy.sh             # 一键部署脚本
+├── DEPLOY.md             # 零基础部署指南
 ├── docker-compose.yml    # 一键启动
 ├── .env.example          # 环境变量模板
 └── LICENSE               # Apache 2.0
@@ -109,6 +115,25 @@ lawyer-knowledge-graph/
 
 ### 快速开始
 
+**方式一：一键部署脚本（推荐）**
+
+```bash
+# 1. 克隆项目
+git clone https://github.com/wxlawyers/lawyer-knowledge-graph.git
+cd lawyer-knowledge-graph
+
+# 2. 运行部署脚本（自动引导配置 AI 模型和 API Key）
+bash deploy.sh
+
+# 3. 打开浏览器
+# 前端：http://localhost:8501
+# API 文档：http://localhost:8000/docs
+```
+
+> 零基础用户请阅读 [部署指南](DEPLOY.md)，图文步骤从安装 Docker 开始。
+
+**方式二：手动启动**
+
 ```bash
 # 1. 克隆项目
 git clone https://github.com/wxlawyers/lawyer-knowledge-graph.git
@@ -126,7 +151,7 @@ docker-compose up -d
 # API 文档：http://localhost:8000/docs
 ```
 
-系统启动后自动初始化数据库表结构，无需手动执行任何 SQL。
+系统启动后自动初始化数据库表结构，无需手动执行任何 SQL。向量服务首次启动需下载模型（约 1-2 分钟），请耐心等待。
 
 ### 最低硬件要求
 

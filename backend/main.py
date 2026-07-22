@@ -3,18 +3,29 @@ import uuid
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, Depends, HTTPException, Query
-from sqlalchemy import select, func
+from sqlalchemy import select, func, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from database import get_db, engine, Base
 from models import Case, KnowledgeCard, LawUpdate, PracticeArea
 from services import extract_cards_from_text, create_case_with_cards, search_similar_cards
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # 启动时自动建表 + 确保 pgvector 扩展存在
+    async with engine.begin() as conn:
+        await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
+        await conn.run_sync(Base.metadata.create_all)
+    yield
+
 app = FastAPI(
     title="Lawyer Knowledge Graph API",
     description="面向诉讼律师的 AI 个人知识管理系统",
     version="0.1.0",
+    lifespan=lifespan,
 )
 
 
@@ -213,9 +224,4 @@ async def health():
     return {"status": "ok", "version": "0.1.0"}
 
 
-@app.on_event("startup")
-async def startup():
-    """启动时自动建表（开发模式）"""
-    async with engine.begin() as conn:
-        await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
-        await conn.run_sync(Base.metadata.create_all)
+

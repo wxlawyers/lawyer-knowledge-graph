@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: pgvector/pgvector:pg16
@@ -19,12 +17,19 @@ services:
       retries: 5
 
   vector:
-    image: shibing624/text2vec:latest
+    build: ./vector
     ports:
       - "9998:9998"
-    command: --model_name=text2vec-large-chinese --port=9998
+    environment:
+      - MODEL_NAME=text2vec-large-chinese
     volumes:
       - vectordata:/root/.cache/torch
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9998/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 120s
 
   backend:
     build: ./backend
@@ -33,13 +38,14 @@ services:
     environment:
       - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/lawkg
       - VECTOR_API_URL=http://vector:9998
-    env_file:
-      - .env
+      - LLM_API_KEY=${LLM_API_KEY:-}
+      - LLM_BASE_URL=${LLM_BASE_URL:-https://api.deepseek.com/v1}
+      - LLM_MODEL=${LLM_MODEL:-deepseek-chat}
     depends_on:
       db:
         condition: service_healthy
       vector:
-        condition: service_started
+        condition: service_healthy
 
   frontend:
     build: ./frontend

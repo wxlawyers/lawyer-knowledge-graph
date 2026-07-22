@@ -136,7 +136,7 @@ Docker 没装好或没启动。打开 Docker Desktop 应用，等鲸鱼图标变
 
 ### Q：启动后浏览器打不开 localhost:8501
 
-首次启动时，向量服务需要下载 AI 模型（约 1.3GB），可能需要 5-10 分钟。终端运行 `docker-compose ps` 看看四个服务状态：
+首次启动时，向量服务需要安装依赖（含 PyTorch CPU 版）并下载 AI 模型，可能需要 10-20 分钟。终端运行 `docker-compose ps` 看看四个服务状态：
 
 - `db`、`vector`、`backend`、`frontend` 都显示 running 且 healthy 才算就绪
 - 如果 vector 显示 `starting`，说明模型还在下载，耐心等待

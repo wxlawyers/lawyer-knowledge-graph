@@ -1,0 +1,13 @@
+{
+  "skill": "legal-document-drafting",
+  "description": "法律文书撰写技能触发测试",
+  "triggers": [
+    "帮我写一份起诉状",
+    "起草答辩状",
+    "这份法律意见书怎么写"
+  ],
+  "negative": [
+    "帮我检索类案",
+    "帮我组织一下证据"
+  ]
+}

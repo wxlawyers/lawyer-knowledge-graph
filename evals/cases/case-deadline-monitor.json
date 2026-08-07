@@ -1,0 +1,12 @@
+{
+  "skill": "case-deadline-monitor",
+  "description": "案件期限自动监控技能触发测试",
+  "triggers": [
+    "监控一下这个案子的上诉期限",
+    "帮我设置开庭提醒",
+    "从Obsidian提取案件信息设置提醒"
+  ],
+  "negative": [
+    "检索裁判规则"
+  ]
+}

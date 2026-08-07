@@ -1,0 +1,36 @@
+name: skill-check
+
+on:
+  push:
+    branches: [main]
+    paths: [skills/**, scripts/validate_skills.py, evals/**]
+  pull_request:
+    branches: [main]
+    paths: [skills/**, scripts/validate_skills.py, evals/**]
+
+jobs:
+  validate-frontmatter:
+    name: Frontmatter validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install PyYAML
+        run: pip install pyyaml
+      - name: Validate all skill frontmatter
+        run: python scripts/validate_skills.py
+
+  run-evals:
+    name: Skill trigger evals
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install PyYAML
+        run: pip install pyyaml
+      - name: Run trigger test cases
+        run: python evals/run_evals.py

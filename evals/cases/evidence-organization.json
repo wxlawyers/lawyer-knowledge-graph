@@ -1,0 +1,12 @@
+{
+  "skill": "evidence-organization",
+  "description": "证据组织与四性验证技能触发测试",
+  "triggers": [
+    "帮我组织一下证据",
+    "四性验证一下这份证据",
+    "帮我整理证据并构建证据链"
+  ],
+  "negative": [
+    "计算工伤赔偿金额"
+  ]
+}

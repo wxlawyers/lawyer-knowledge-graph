@@ -1,0 +1,12 @@
+{
+  "skill": "litigation-case-analysis",
+  "description": "诉讼案件分析与请求权基础技能触发测试",
+  "triggers": [
+    "分析一下这个案件的请求权基础",
+    "帮我做案件分析",
+    "生成知识卡片"
+  ],
+  "negative": [
+    "帮我写一份起诉状"
+  ]
+}

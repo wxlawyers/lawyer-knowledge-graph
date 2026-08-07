@@ -1,6 +1,13 @@
 ---
 name: claude-code-sync
 description: Claude Code 与 Hermes 双平台同步知识库 — 案件记忆、反馈规则、插件配置、同步机制
+version: 1.0.0
+author: 余正洪律师
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [legal, sync, claude-code, hermes, knowledge]
 ---
 
 # Claude Code ↔ Hermes 同步知识库

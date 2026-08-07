@@ -3,6 +3,13 @@ name: securities-compliance
 description: >-
   证券合规知识技能——IPO、信息披露、内幕交易、操纵市场、投资者索赔、上市公司治理。
   适用于律师处理证券案件：虚假陈述民事赔偿、内幕交易行政处罚/刑事辩护、操纵市场案件。
+version: 1.0.0
+author: 余正洪律师
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [legal, securities, compliance, capital-market]
 auto_invoke: true
 examples:
   - "虚假陈述怎么认定"

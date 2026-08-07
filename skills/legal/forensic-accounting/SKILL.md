@@ -3,6 +3,13 @@ name: forensic-accounting
 description: >-
   司法会计鉴定知识技能——损失计算、利润分配争议、审计报告审查、财务证据质证、鉴定意见审查。
   适用于律师处理涉及司法会计鉴定的案件：经济损失计算、利润分配纠纷、财务造假认定、审计报告质证。
+version: 1.0.0
+author: 余正洪律师
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [legal, forensic-accounting, audit, evidence]
 auto_invoke: true
 examples:
   - "司法会计鉴定怎么审查"

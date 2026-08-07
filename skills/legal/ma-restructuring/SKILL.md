@@ -3,6 +3,13 @@ name: ma-restructuring
 description: >-
   并购重组（M&A）知识技能——股权收购、资产收购、合并分立、尽职调查、对赌协议、估值谈判。
   适用于律师处理公司并购案件：尽调清单、交易结构设计、对赌条款、反稀释、拖拽权/随售权等。
+version: 1.0.0
+author: 余正洪律师
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [legal, ma, restructuring, merger, acquisition]
 auto_invoke: true
 examples:
   - "帮我列一份股权收购的尽调清单"

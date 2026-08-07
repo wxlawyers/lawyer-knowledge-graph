@@ -4,6 +4,13 @@ description: >-
   注册会计师（CPA）知识技能——会计准则、审计实务、财务报表分析、内部控制、企业估值。
   适用于律师处理涉及财务问题的案件：财务造假诉讼、审计责任纠纷、股权估值争议、破产清算、
   公司并购尽调等场景。当事人咨询财务问题时可秒级响应。
+version: 1.0.0
+author: 余正洪律师
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [legal, accounting, cpa, audit, finance]
 auto_invoke: true
 examples:
   - "当事人问财务造假怎么认定"

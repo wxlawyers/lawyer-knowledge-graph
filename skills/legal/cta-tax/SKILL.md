@@ -4,6 +4,13 @@ description: >-
   注册税务师（CTA）知识技能——税法体系、各税种计算、税务筹划、税务稽查、涉税争议解决。
   适用于律师处理涉税案件：税务行政诉讼、偷逃税辩护、股权转让税务、企业重组税务、
   个人所得税筹划等场景。当事人咨询税务问题时可秒级响应。
+version: 1.0.0
+author: 余正洪律师
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [legal, tax, cta, taxation, dispute]
 auto_invoke: true
 examples:
   - "当事人问偷税怎么认定"

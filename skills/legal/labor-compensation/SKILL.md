@@ -3,6 +3,13 @@ name: labor-compensation
 description: >-
   劳动补偿知识技能——经济补偿、赔偿金、社保公积金、工伤赔偿、加班费、年假工资计算。
   适用于律师处理劳动争议案件：辞退赔偿计算、工伤赔偿计算、社保补缴、加班费争议。
+version: 1.0.0
+author: 余正洪律师
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [legal, labor, employment, compensation]
 auto_invoke: true
 examples:
   - "违法辞退的赔偿金怎么算"

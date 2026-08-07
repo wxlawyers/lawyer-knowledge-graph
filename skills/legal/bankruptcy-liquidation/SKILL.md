@@ -3,6 +3,13 @@ name: bankruptcy-liquidation
 description: >-
   破产清算知识技能——破产申请、债权申报、重整计划、清算分配、管理人职责、破产撤销权。
   适用于律师处理破产案件：代理债权人/债务人/管理人，债权确认、财产分配、重整方案设计。
+version: 1.0.0
+author: 余正洪律师
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [legal, bankruptcy, insolvency, liquidation]
 auto_invoke: true
 examples:
   - "破产申请的条件是什么"

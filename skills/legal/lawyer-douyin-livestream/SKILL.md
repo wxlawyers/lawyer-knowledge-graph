@@ -5,6 +5,13 @@ description: >-
   支持直播前选题策划、直播中实时辅助（关键词触发案例/违禁词预警）、直播后复盘分析。
   集成北大法宝+元典智库+快查企业数据+企查查MCP工具，输入关键词即返回相关法条、案例、企业信息。
   适用于律师法律科普直播、在线咨询直播、案源拓展直播等场景。
+version: 1.0.0
+author: 余正洪律师
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [legal, lawyer, douyin, livestream, marketing]
 auto_invoke: true
 examples:
   - "帮我准备一期关于劳动纠纷的直播脚本"

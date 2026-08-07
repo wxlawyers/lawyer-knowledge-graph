@@ -5,6 +5,13 @@ description: >-
   对方抗辩即时反驳，赔偿计算速查，程序异议依据，代理词/辩护词框架生成。
   深度集成北大法宝+元典智库+企查查+快查MCP工具，输入关键词即毫秒级返回结果。
   适用于原告代理、被告代理、刑事辩护等各类庭审场景。
+version: 1.0.0
+author: 余正洪律师
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [legal, trial, realtime, courtroom, litigation]
 auto_invoke: true
 examples:
   - "对方提到了民法典第584条，帮我秒查原文和相关案例"

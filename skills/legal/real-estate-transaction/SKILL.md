@@ -3,6 +3,13 @@ name: real-estate-transaction
 description: >-
   房产交易知识技能——二手房、新房、商铺交易流程、税费计算、限购政策、产权登记、纠纷处理。
   适用于律师处理房产案件：房屋买卖合同纠纷、产权争议、限购政策解读、税费计算。
+version: 1.0.0
+author: 余正洪律师
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [legal, real-estate, property, transaction]
 auto_invoke: true
 examples:
   - "二手房交易要交哪些税"

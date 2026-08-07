@@ -2,11 +2,9 @@ name: skill-check
 
 on:
   push:
-    branches: [main]
-    paths: [skills/**, scripts/validate_skills.py, evals/**]
+    branches: [master]
   pull_request:
-    branches: [main]
-    paths: [skills/**, scripts/validate_skills.py, evals/**]
+    branches: [master]
 
 jobs:
   validate-frontmatter:

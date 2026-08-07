@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, trial, preparation, litigation]
+auto_invoke: true
+examples:
+  - "梳理一下质证要点"
+  - "设计发问提纲"
+  - "预判对方抗辩制定庭审策略"
 ---
 
 # 庭前准备技能

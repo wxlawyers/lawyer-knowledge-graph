@@ -7,6 +7,11 @@ platforms: [macos]
 metadata:
   hermes:
     tags: [obsidian, knowledge-base, legal-research, enrichment, audit]
+auto_invoke: true
+examples:
+  - "审计一下我的Obsidian知识库"
+  - "按执业领域批量创建知识卡片"
+  - "更新知识库导航中心"
 ---
 
 # 法律知识库审计与丰容技能

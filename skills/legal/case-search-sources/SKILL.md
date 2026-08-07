@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, case-law, search, court]
+auto_invoke: true
+examples:
+  - "中国裁判文书网怎么检索案例"
+  - "江苏法院网搜索案例的URL怎么构造"
+  - "在元典智库搜索类案"
 ---
 
 # 法律案例搜索源指南

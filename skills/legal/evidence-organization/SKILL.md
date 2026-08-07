@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, evidence, verification, litigation]
+auto_invoke: true
+examples:
+  - "帮我组织一下证据"
+  - "四性验证一下这份证据"
+  - "帮我整理证据并构建证据链"
 ---
 
 # 证据组织与四性验证技能

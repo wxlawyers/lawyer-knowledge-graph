@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, litigation, case-analysis, evidence, research]
+auto_invoke: true
+examples:
+  - "分析一下这个案件的请求权基础"
+  - "帮我做案件分析"
+  - "生成知识卡片"
 ---
 
 # 诉讼案件分析技能

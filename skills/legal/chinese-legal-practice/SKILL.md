@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, china, litigation, corporate, ip, compliance]
+auto_invoke: true
+examples:
+  - "中国法律实务之争议解决怎么做"
+  - "商事合同纠纷实务要点"
+  - "知识产权诉讼实务"
 ---
 
 # 中国法律实务技能集

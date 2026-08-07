@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, trial, response, litigation]
+auto_invoke: true
+examples:
+  - "法庭辩论有什么技巧"
+  - "庭审临场应变怎么做"
+  - "调解谈判策略"
 ---
 
 # 庭审应对技能

@@ -2,6 +2,11 @@
 name: wechat-legal-article
 description: 涉外律师公众号文章撰写技能——19条质量标准、法条核实流程、HTML预览、降AI味技巧。
 version: 1.0.0
+auto_invoke: true
+examples:
+  - "写涉外律师公众号文章"
+  - "文章里法条怎么核实"
+  - "降AI味的排版技巧"
 ---
 
 # 涉外律师公众号文章撰写技能

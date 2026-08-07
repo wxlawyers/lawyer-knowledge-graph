@@ -67,14 +67,40 @@ def skill_reference(skill_dir):
     return " ".join(parts)
 
 
-def main():
-    case_files = sorted(CASES.glob("*.json"))
-    if not case_files:
-        print(f"[evals] no case files found under {CASES}")
-        return 1
+def check_examples_drift():
+    """Every example in every skill must overlap its own description."""
+    failures = []
+    checked = 0
+    for path in sorted(SKILLS.glob("*/*/SKILL.md")):
+        text = path.read_text(encoding="utf-8")
+        m = re.match(r"^---\s*\n(.*?)\n---\s*", text, re.S)
+        fm = yaml.safe_load(m.group(1)) if m else {}
+        desc = fm.get("description")
+        examples = fm.get("examples", [])
+        if not desc or not isinstance(examples, list) or not examples:
+            continue
+        desc_tokens = tokens(str(desc))
+        for ex in examples:
+            ex_str = str(ex)
+            checked += 1
+            if not (desc_tokens & tokens(ex_str)):
+                failures.append(
+                    f"example '{ex_str}' ({path.parent.name}) has no overlap with its description"
+                )
+    return failures, checked
 
+
+def main():
     failures = []
     total_triggers = total_negatives = 0
+
+    drift_failures, drift_checked = check_examples_drift()
+    failures.extend(drift_failures)
+
+    case_files = sorted(CASES.glob("*.json"))
+    if not case_files:
+        failures.append(f"no case files found under {CASES}")
+
     for case_file in case_files:
         case = json.loads(case_file.read_text(encoding="utf-8"))
         skill = case["skill"]
@@ -108,7 +134,7 @@ def main():
 
     print(
         f"[evals] {len(case_files)} cases, {total_triggers} triggers, "
-        f"{total_negatives} negatives"
+        f"{total_negatives} negatives, {drift_checked} example-drift checks"
     )
     if failures:
         for f in failures:

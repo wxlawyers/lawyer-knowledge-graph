@@ -1,6 +1,6 @@
 ---
 name: vibe-coding-legal-tools
-description: "Vibe coding for legal tools — use natural language to build calculators, templates, and automation tools for lawyers."
+description: "Vibe coding for legal tools — 用自然语言让AI构建赔偿计算器、合同模板、法律文书工具等律师专用自动化工具，无需编程。Use natural language to build calculators, templates, and automation tools for lawyers."
 version: 1.0.0
 author: Hermes Agent
 platforms: [linux, macos]

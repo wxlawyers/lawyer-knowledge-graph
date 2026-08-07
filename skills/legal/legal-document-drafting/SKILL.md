@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, document, drafting, litigation]
+auto_invoke: true
+examples:
+  - "帮我写一份起诉状"
+  - "起草答辩状"
+  - "这份法律意见书怎么写"
 ---
 
 # 法律文书撰写技能

@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, pitfalls, litigation, lessons-learned]
+auto_invoke: true
+examples:
+  - "法律分析常见的错误有哪些"
+  - "诉讼策略的血泪教训"
+  - "法条引用容易犯什么错"
 ---
 
 # 法律分析常见错误与教训

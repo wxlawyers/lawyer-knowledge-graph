@@ -2,6 +2,11 @@
 name: lawyer-wechat-article
 description: 律师微信公众号文章撰写技能——19条质量标准、降AI味、排版规范。用于撰写涉外法律、商事诉讼、公司法等领域的公众号文章。
 version: 1.0.0
+auto_invoke: true
+examples:
+  - "写一篇涉外法律公众号文章"
+  - "公众号文章怎么降AI味"
+  - "按19条质量标准写文章"
 ---
 
 # 律师微信公众号文章撰写技能

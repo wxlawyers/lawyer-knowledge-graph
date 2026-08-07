@@ -1,6 +1,6 @@
 ---
 name: compensation-calculator
-description: "交通事故·工伤·劳动纠纷赔偿计算器 — 三大模块合一，支持31省份标准，数据来源权威。"
+description: "交通事故·工伤·劳动纠纷·违法辞退赔偿计算器 — 三大模块合一，支持31省份标准，十级伤残与月工资速算，数据来源权威。"
 version: 2.0.0
 author: 余正洪律师
 license: MIT

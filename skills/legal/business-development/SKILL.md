@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, business, development, marketing]
+auto_invoke: true
+examples:
+  - "怎么开发案源定位专业领域"
+  - "帮我规划法律科普内容输出"
+  - "如何维护客户关系拓展案源"
 ---
 
 # 案源开发与品牌建设技能

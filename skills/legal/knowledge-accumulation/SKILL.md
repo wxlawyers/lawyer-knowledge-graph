@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, knowledge, accumulation, litigation]
+auto_invoke: true
+examples:
+  - "案件归档怎么做"
+  - "裁判规则积累方法"
+  - "维护文书模板库"
 ---
 
 # 知识沉淀与复用技能

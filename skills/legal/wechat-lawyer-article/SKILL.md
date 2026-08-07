@@ -10,6 +10,11 @@ metadata:
   hermes:
     tags: [微信公众号, 法律科普, 内容营销, 律师品牌, 降AI味]
     related_skills: ["obsidian", "excalidraw", "legal-research", "obsidian-knowledge-pipeline"]
+auto_invoke: true
+examples:
+  - "写一篇公司法领域公众号文章"
+  - "公众号封面图怎么设计"
+  - "用19条质量标准写法律文章"
 ---
 
 # 律师微信公众号文章撰写技能

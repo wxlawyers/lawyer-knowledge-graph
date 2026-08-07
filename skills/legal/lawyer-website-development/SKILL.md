@@ -6,6 +6,11 @@ author: 余正洪律师
 metadata:
   hermes:
     tags: [legal, website, branding, deployment]
+auto_invoke: true
+examples:
+  - "帮我开发律师个人形象网站"
+  - "律师网站案例展示页怎么做"
+  - "GitHub Pages部署个人网站"
 ---
 
 # 律师个人形象网站开发技能

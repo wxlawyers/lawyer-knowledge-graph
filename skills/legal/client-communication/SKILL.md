@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, client, communication, litigation]
+auto_invoke: true
+examples:
+  - "怎么跟当事人通俗解释案情"
+  - "如何坦诚告知当事人风险"
+  - "当事人预期管理怎么做"
 ---
 
 # 当事人沟通技能

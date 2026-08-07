@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, sync, claude-code, hermes, knowledge]
+auto_invoke: true
+examples:
+  - "怎么同步Claude Code和Hermes的知识库"
+  - "案件记忆如何跨平台同步"
+  - "插件配置同步机制是什么"
 ---
 
 # Claude Code ↔ Hermes 同步知识库

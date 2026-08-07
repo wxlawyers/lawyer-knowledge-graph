@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, research, case-law, statute, mcp]
+auto_invoke: true
+examples:
+  - "帮我检索一下民法典第585条的法条原文"
+  - "找找同类案件的裁判规则"
+  - "类案检索：买卖合同纠纷中违约金调减标准"
 ---
 
 # 法律检索与案例研究技能

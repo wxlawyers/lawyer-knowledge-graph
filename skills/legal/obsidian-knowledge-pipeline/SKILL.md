@@ -10,6 +10,11 @@ metadata:
   hermes:
     tags: [Obsidian, Excalidraw, 法律知识, 自动化, 定时任务]
     related_skills: ["obsidian", "excalidraw", "legal-research"]
+auto_invoke: true
+examples:
+  - "今天的法律知识速报"
+  - "Obsidian知识沉淀怎么做"
+  - "生成Excalidraw配图"
 ---
 
 # Obsidian知识库自动化流水线

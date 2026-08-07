@@ -7,6 +7,11 @@ platforms: [macos]
 metadata:
   hermes:
     tags: [calendar, deadline, case-management, apple-calendar, legal]
+auto_invoke: true
+examples:
+  - "监控一下这个案子的上诉期限"
+  - "帮我设置开庭提醒"
+  - "从Obsidian提取案件信息设置提醒"
 ---
 
 # 案件期限自动监控技能

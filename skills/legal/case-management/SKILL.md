@@ -8,6 +8,11 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [legal, case, management, litigation]
+auto_invoke: true
+examples:
+  - "帮我管理案件进度"
+  - "这个案子的时效期限怎么管控"
+  - "整理一下案件文书档案"
 ---
 
 # 案件管理技能

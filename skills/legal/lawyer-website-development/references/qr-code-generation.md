@@ -74,7 +74,7 @@ else:
 │     • 跨境争议解决            │
 │                              │
 │  ┌────────────────────────┐  │
-│  │  电话: 136-0153-9126    │  │  ← 深蓝底白字
+│  │  电话: 138-0000-0000    │  │  ← 深蓝底白字
 │  │  邮箱: xxx@icloud.com   │  │
 │  │  地址: 无锡市清扬路...   │  │
 │  └────────────────────────┘  │
@@ -202,8 +202,8 @@ for i, s in enumerate(services):
 
 # 底部联系方式
 draw.rectangle([0, height-130, width, height], fill='#1a2a4a')
-draw.text((width//2, height-100), "电话: 136-0153-9126", fill='#ffffff', font=SMALL_FONT, anchor='mm')
-draw.text((width//2, height-70), "邮箱: yuzhenghong86@icloud.com", fill='#ffffff', font=SMALL_FONT, anchor='mm')
+draw.text((width//2, height-100), "电话: 138-0000-0000", fill='#ffffff', font=SMALL_FONT, anchor='mm')
+draw.text((width//2, height-70), "邮箱: your@example.com", fill='#ffffff', font=SMALL_FONT, anchor='mm')
 draw.text((width//2, height-40), "地址: 无锡市清扬路金匮苑31-3", fill='#cccccc', font=SMALL_FONT, anchor='mm')
 
 # 底部金色装饰线

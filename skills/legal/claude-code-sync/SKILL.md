@@ -57,7 +57,7 @@ examples:
 |------|--------------|------|
 | 昊特电缆股东损害债权人利益纠纷 | `01-案件笔记/昊特电缆诉南通朝利及江潮欠款纠纷.md` | 一审结果、上诉思路、关键时间线 |
 | 昊特电缆买卖合同纠纷 | `01-案件笔记/昊特电缆诉华中建筑买卖合同纠纷.md` | 合同纠纷详情 |
-| 华都琥珀诉双烨环保合同纠纷 | `01-案件笔记/华都琥珀诉双烨环保合同纠纷/` | 抗辩要点、类案规则、文书清单 |
+| 华都琥珀诉被告合同纠纷 | `01-案件笔记/华都琥珀诉被告合同纠纷/` | 抗辩要点、类案规则、文书清单 |
 
 ### 同步方法
 
@@ -155,7 +155,7 @@ examples:
 3. **定期检查**：对比各平台 memory/配置与本技能文件的差异
 
 ### 文件位置
-- Claude Code 记忆：`~/.claude/projects/-Users-yuzhenghong/memory/`
+- Claude Code 记忆：`~/.claude/projects/-Users-USERNAME/memory/`
 - Hermes 技能：`~/.hermes/skills/claude-code-sync/`
 - Codex / ChatGPT 桌面端配置：`~/.codex/config.toml`（模型、MCP 共用）
 - Codex 技能：`~/.agents/skills/`、`~/.codex/skills/`

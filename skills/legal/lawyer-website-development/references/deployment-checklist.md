@@ -99,7 +99,7 @@ git push origin main
 ## 域名配置（可选）
 
 ### 自定义域名
-1. 购买域名（如：yuzhenghong.com）
+1. 购买域名（如：yourdomain.com）
 2. 配置DNS：CNAME指向 `wxlawyers.github.io`
 3. GitHub设置：Custom domain填入域名
 4. 启用HTTPS

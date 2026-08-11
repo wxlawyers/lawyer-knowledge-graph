@@ -124,8 +124,8 @@ for i, service in enumerate(services):
 
 # 底部联系方式
 draw.rectangle([0, height-140, width, height], fill='#1a2a4a')
-draw.text((width//2, height-110), "电话: 136-0153-9126", fill='#ffffff', font=small_font, anchor='mm')
-draw.text((width//2, height-80), "邮箱: yuzhenghong86@icloud.com", fill='#ffffff', font=small_font, anchor='mm')
+draw.text((width//2, height-110), "电话: 138-0000-0000", fill='#ffffff', font=small_font, anchor='mm')
+draw.text((width//2, height-80), "邮箱: your@example.com", fill='#ffffff', font=small_font, anchor='mm')
 draw.text((width//2, height-50), "地址: 无锡市清扬路金匮苑31-3", fill='#cccccc', font=small_font, anchor='mm')
 draw.rectangle([0, height-5, width, height], fill='#c9a96e')
 

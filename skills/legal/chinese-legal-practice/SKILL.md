@@ -347,7 +347,7 @@ with open(config_path, 'w') as f:
 ### 配置来源
 - **Claude Code 原始配置**：`~/.claude/settings.json` → `mcpServers` 节
 - **Hermes 配置**：`~/.hermes/config.yaml` → `mcp_servers` 节
-- **北大法宝参考**：`~/.claude/projects/-Users-yuzhenghong/memory/reference_pkulaw_mcp.md`
+- **北大法宝参考**：`~/.claude/projects/-Users-USERNAME/memory/reference_pkulaw_mcp.md`
 
 ### 常见 Pitfalls
 1. **config.yaml 受保护**：不能用 patch/write_file 编辑，必须用 terminal + venv Python

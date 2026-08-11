@@ -200,7 +200,7 @@ async function main() {
     await page.setViewport({ width: WIDTH, height: HEIGHT });
 
     // 加载HTML文件（修改为实际路径）
-    const htmlPath = path.resolve('/Users/yuzhenghong/Desktop/涉外律师形象展示片.html');
+    const htmlPath = path.resolve('~//Desktop/涉外律师形象展示片.html');
     await page.goto(`file://${htmlPath}`, { waitUntil: 'networkidle0', timeout: 30000 });
     await sleep(1000);
 
@@ -261,7 +261,7 @@ main().catch(err => { console.error(err); process.exit(1); });
 **执行命令**：
 ```bash
 # 1. 运行截图脚本
-NODE_PATH=/Users/yuzhenghong/.local/lib/node_modules node /tmp/capture-html-video.js
+NODE_PATH=~//.local/lib/node_modules node /tmp/capture-html-video.js
 
 # 2. 重命名帧文件（确保连续编号）
 cd /tmp/html-frames && i=0; for f in $(ls frame_*.png | sort); do
@@ -288,7 +288,7 @@ rm -rf /tmp/html-frames /tmp/capture-html-video.js
 | 场景切换时画面半透明 | CSS opacity过渡1秒，截图抓到中间状态 | 先 `await sleep(1200)` 等过渡完成再截图 |
 | ffmpeg报错找不到帧文件 | 帧编号不连续（有跳号） | 回填过渡期帧 + 重新编号为连续序列 |
 | `ffprobe: command not found` | ffprobe可能未安装或不在PATH | 用 `ffmpeg -i file.mp4` 代替查看视频信息 |
-| NODE_PATH找不到模块 | 全局npm模块路径未设置 | 运行时加 `NODE_PATH=/Users/yuzhenghong/.local/lib/node_modules` |
+| NODE_PATH找不到模块 | 全局npm模块路径未设置 | 运行时加 `NODE_PATH=~//.local/lib/node_modules` |
 | 截图太暗/太亮 | 无头模式渲染差异 | 在Chrome args中加 `--force-device-scale-factor=1` |
 
 ### 输出规格
@@ -361,7 +361,7 @@ CRF越大文件越小（28为中等质量）。
 
 ## 参考示例
 
-完整示例见：`/Users/yuzhenghong/Desktop/涉外律师形象展示片.html`
+完整示例见：`~//Desktop/涉外律师形象展示片.html`
 
 该示例包含：
 - 6个完整场景（开场→资质→服务→优势→数据→结尾）

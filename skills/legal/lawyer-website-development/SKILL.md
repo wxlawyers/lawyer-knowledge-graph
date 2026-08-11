@@ -392,7 +392,7 @@ function handleSubmit(e) {
         '咨询内容:\n' + formData.get('message')
     );
     
-    window.open('mailto:yuzhenghong86@icloud.com?subject=' + subject + '&body=' + body);
+    window.open('mailto:your@example.com?subject=' + subject + '&body=' + body);
     
     document.getElementById('formSuccess').style.display = 'block';
     form.reset();
@@ -428,7 +428,7 @@ function handleSubmit(e) {
 5. **成功案例**（10-15秒）：数据可视化
 6. **结尾**（10-15秒）：联系方式、CTA
 
-**完整示例**：`/Users/yuzhenghong/Desktop/涉外律师形象展示片.html`
+**完整示例**：`~//Desktop/涉外律师形象展示片.html`
 
 **导出MP4**：推荐 puppeteer-core + ffmpeg 自动化导出（逐帧截图→编码），详见 `references/html-animated-showcase.md` § 导出为MP4视频
 

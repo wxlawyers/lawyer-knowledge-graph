@@ -40,7 +40,7 @@ license: Apache-2.0
 # 扫描各模块文件数量
 import os
 
-VAULT = "/Users/yuzhenghong/Library/Mobile Documents/iCloud~md~obsidian/Documents/法律知识库"
+VAULT = "~//Library/Mobile Documents/iCloud~md~obsidian/Documents/法律知识库"
 modules = {
     "01-案件笔记": "案件",
     "02-法律知识": "法条",

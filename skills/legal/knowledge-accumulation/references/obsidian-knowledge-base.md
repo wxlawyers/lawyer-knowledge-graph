@@ -1,7 +1,7 @@
 # 律师AI知识库结构（2026-06-02）
 
 ## 位置
-`/Users/yuzhenghong/Documents/律师AI知识库/`
+`~//Documents/律师AI知识库/`
 
 ## 目录结构
 ```

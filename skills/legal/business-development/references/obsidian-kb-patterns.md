@@ -121,5 +121,5 @@ XX-领域名称/
 2. **README 是入口** — 用户从这里开始浏览
 3. **文档自包含** — 每个文档独立可读，但通过链接串联
 4. **表格优先** — 能用表格呈现的用表格
-5. **使用 Obsidian vault 路径** — `/Users/yuzhenghong/Library/Mobile Documents/iCloud~md~obsidian/Documents/法律知识库/`
+5. **使用 Obsidian vault 路径** — `~//Library/Mobile Documents/iCloud~md~obsidian/Documents/法律知识库/`
 6. **Excalidraw 可视化** — 复杂知识体系配可视化图表，上传后在文档中附链接

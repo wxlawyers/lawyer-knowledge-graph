@@ -215,7 +215,7 @@ function handleSubmit(e) {
         '咨询内容:\n' + message
     );
     
-    window.open('mailto:yuzhenghonglawyer@163.com?subject=' + subject + '&body=' + body);
+    window.open('mailto:lawyer@example.com?subject=' + subject + '&body=' + body);
     
     document.getElementById('formSuccess').style.display = 'block';
     form.reset();
@@ -255,4 +255,4 @@ function handleSubmit(e) {
 
 ## 收件人邮箱
 
-`yuzhenghonglawyer@163.com`（余律师的邮箱）
+`lawyer@example.com`（余律师的邮箱）

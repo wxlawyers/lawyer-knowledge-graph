@@ -67,7 +67,7 @@ import os
 import re
 from datetime import datetime, timedelta
 
-VAULT_PATH = "/Users/yuzhenghong/Library/Mobile Documents/iCloud~md~obsidian/Documents/法律知识库"
+VAULT_PATH = "~//Library/Mobile Documents/iCloud~md~obsidian/Documents/法律知识库"
 CASE_DIR = os.path.join(VAULT_PATH, "01-案件笔记")
 
 def scan_case_files():

@@ -10,7 +10,7 @@
 ## 用户信息
 
 - Git 用户名：律见法度
-- Git 邮箱：17124052+wxlawyers@user.noreply.gitee.com
+- Git 邮箱：your-id@users.noreply.gitee.com
 - SSH 密钥：已配置（GitHub + Gitee 均可 SSH 推送）
 
 ## 推送流程

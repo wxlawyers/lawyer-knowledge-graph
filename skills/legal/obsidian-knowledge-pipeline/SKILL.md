@@ -238,7 +238,7 @@ examples:
 ```python
 from hermes_tools import write_file
 
-base = "/Users/yuzhenghong/Library/Mobile Documents/iCloud~md~obsidian/Documents/法律知识库"
+base = "~//Library/Mobile Documents/iCloud~md~obsidian/Documents/法律知识库"
 date_str = "2026-06-05"
 report_link = f"[[{date_str}]]"
 

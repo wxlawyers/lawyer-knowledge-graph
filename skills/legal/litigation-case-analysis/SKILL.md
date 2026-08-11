@@ -235,7 +235,7 @@ mcp_pkulaw_case_search_search_case(text="案由 争议焦点")
 **错误**：在技能文件中写入 API Key、Token、当事人信息
 **正确**：技能文件中只引用 MCP 工具名，不包含任何凭证
 **示例**：
-- ❌ `mcp_yuandian_search_fagui(keyword="民法典", api_key="sk_lBO...nSFo")`
+- ❌ `mcp_yuandian_search_fagui(keyword="民法典", api_key="sk-XXXX")`
 - ✅ `mcp_yuandian_search_fagui(keyword="民法典")`
 
 ### 3. 法律检索结果未验证

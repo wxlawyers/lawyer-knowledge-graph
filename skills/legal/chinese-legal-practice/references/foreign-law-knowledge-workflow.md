@@ -7,7 +7,7 @@
 
 ### 1. 创建文件夹结构
 ```python
-base_path = "/Users/yuzhenghong/Library/Mobile Documents/iCloud~md~obsidian/Documents/法律知识库/{编号}-{领域}"
+base_path = "~//Library/Mobile Documents/iCloud~md~obsidian/Documents/法律知识库/{编号}-{领域}"
 folders = ["01-诉讼流程", "02-非诉业务", "03-法律法规", "04-司法解释",
            "05-客户接待", "06-文书模板", "07-案例研究", "08-实务指南"]
 ```

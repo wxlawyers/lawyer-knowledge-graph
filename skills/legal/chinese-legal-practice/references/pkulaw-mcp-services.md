@@ -1,7 +1,7 @@
 # 北大法宝 MCP 服务配置参考
 
 ## Token
-`c6564a25-a26e-3e3d-aef7-dc6e2d1b6ccc`
+`<你的北大法宝Token>`
 认证方式：`Authorization: Bearer <token>`
 
 ## 9个 HTTP 服务端点
@@ -31,7 +31,7 @@ mcp_servers:
     url: https://apim-gateway.pkulaw.com/mcp-law-search-service
     headers:
       Content-Type: application/json
-      Authorization: Bearer c6564a25-a26e-3e3d-aef7-dc6e2d1b6ccc
+      Authorization: Bearer <你的北大法宝Token>
   # ... 其余8个服务类似
 ```
 
@@ -76,4 +76,4 @@ with open(config_path, 'w') as f:
 
 ## Claude Code 原始配置位置
 `~/.claude/settings.json` → `mcpServers` 节
-参考记忆文件：`~/.claude/projects/-Users-yuzhenghong/memory/reference_pkulaw_mcp.md`
+参考记忆文件：`~/.claude/projects/-Users-USERNAME/memory/reference_pkulaw_mcp.md`

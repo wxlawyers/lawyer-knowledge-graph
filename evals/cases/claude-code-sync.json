@@ -1,10 +1,11 @@
 {
   "skill": "claude-code-sync",
-  "description": "Claude Code 与 Hermes 同步知识库触发测试",
+  "description": "Codex/ChatGPT/WorkBuddy/Claude Code/Hermes 多平台同步知识库触发测试",
   "triggers": [
-    "Claude Code 同步知识库",
-    "Hermes 双平台同步",
-    "案件记忆同步机制"
+    "Codex 同步知识库",
+    "ChatGPT 多平台同步",
+    "WorkBuddy 案件记忆同步",
+    "案件记忆跨平台同步机制"
   ],
   "negative": [
     "抖音直播违禁词",

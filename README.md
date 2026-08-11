@@ -246,7 +246,7 @@ python scripts/vector_search.py --query "买卖合同违约金过高" --top-k 5
 | real-estate-transaction | 房产交易 |
 | labor-compensation | 劳动补偿 |
 | forensic-accounting | 司法会计鉴定 |
-| claude-code-sync | Claude Code与Hermes双平台同步 |
+| claude-code-sync | Codex/ChatGPT/WorkBuddy/Claude Code/Hermes 多平台知识同步 |
 | lawyer-wechat-article | 律师微信公众号文章（扩展） |
 
 </details>

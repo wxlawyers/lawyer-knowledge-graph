@@ -1,0 +1,13 @@
+{
+  "skill": "real-estate-transaction",
+  "description": "房产交易知识技能触发测试",
+  "triggers": [
+    "二手房交易流程",
+    "房屋买卖合同纠纷",
+    "房产税费计算"
+  ],
+  "negative": [
+    "推荐一部电影",
+    "破产重整方案"
+  ]
+}

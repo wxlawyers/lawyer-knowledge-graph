@@ -1,0 +1,13 @@
+{
+  "skill": "vibe-coding-legal-tools",
+  "description": "Vibe coding 法律工具技能触发测试",
+  "triggers": [
+    "vibe coding法律工具",
+    "用AI构建赔偿计算器",
+    "合同模板自动生成"
+  ],
+  "negative": [
+    "庭审话术",
+    "证券合规审查"
+  ]
+}

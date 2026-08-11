@@ -1,0 +1,13 @@
+{
+  "skill": "labor-compensation",
+  "description": "劳动补偿知识技能触发测试",
+  "triggers": [
+    "经济补偿金怎么算",
+    "工伤赔偿计算",
+    "加班费争议"
+  ],
+  "negative": [
+    "IPO信息披露",
+    "商标驳回复审"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "skill": "securities-compliance",
+  "description": "证券合规知识技能触发测试",
+  "triggers": [
+    "虚假陈述民事赔偿",
+    "内幕交易行政处罚",
+    "上市公司信息披露"
+  ],
+  "negative": [
+    "劳动补偿计算",
+    "房产限购政策"
+  ]
+}

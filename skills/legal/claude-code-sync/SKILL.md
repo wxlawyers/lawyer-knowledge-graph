@@ -3,7 +3,7 @@ name: claude-code-sync
 description: Claude Code 与 Hermes 双平台同步知识库 — 案件记忆、反馈规则、插件配置、同步机制
 version: 1.0.0
 author: 余正洪律师
-license: MIT
+license: Apache-2.0
 platforms: [linux, macos]
 metadata:
   hermes:
@@ -203,3 +203,9 @@ examples:
 - Claude Code 记忆：`~/.claude/projects/-Users-yuzhenghong/memory/`
 - Hermes 技能：`~/.hermes/skills/claude-code-sync/`
 - 共享知识库：Obsidian 法律知识库
+
+## 事实核验原则
+
+- 任何法条、案例、案号、金额与事实结论，必须可回源到真实材料或实际检索结果；禁止编造或凭记忆补全。
+- 来源缺失或无法核验时，输出 `[待补: ...]` 占位符，并说明缺什么、应去哪里查找。
+- 正式交付前由使用者复核全部引用与数字；AI 不得把未核验内容表述为已核验依据。

@@ -1,0 +1,13 @@
+{
+  "skill": "foreign-related-legal-practice",
+  "description": "涉外律师执业技能触发测试",
+  "triggers": [
+    "涉外法律服务怎么开拓",
+    "外商投资法律",
+    "国际贸易纠纷处理"
+  ],
+  "negative": [
+    "今天股市行情如何",
+    "帮我写个python脚本"
+  ]
+}

@@ -12,6 +12,7 @@ examples:
   - "帮我做一个赔偿计算器"
   - "做一个合同模板生成器"
   - "帮我写一个法律文书工具"
+license: Apache-2.0
 ---
 
 # Vibe Coding for Legal Tools
@@ -245,3 +246,9 @@ Build professional lawyer websites using vibe coding — from design to deployme
 - 基础SEO（Meta标签、Open Graph、关键词策略）
 - GEO优化（JSON-LD结构化数据、FAQ schema）
 - 多平台内容分发（知乎、小红书、百度知道、公众号）
+
+## 事实核验原则
+
+- 任何法条、案例、案号、金额与事实结论，必须可回源到真实材料或实际检索结果；禁止编造或凭记忆补全。
+- 来源缺失或无法核验时，输出 `[待补: ...]` 占位符，并说明缺什么、应去哪里查找。
+- 正式交付前由使用者复核全部引用与数字；AI 不得把未核验内容表述为已核验依据。

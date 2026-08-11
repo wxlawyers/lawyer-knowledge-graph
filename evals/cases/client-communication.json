@@ -1,0 +1,13 @@
+{
+  "skill": "client-communication",
+  "description": "当事人沟通技能触发测试",
+  "triggers": [
+    "当事人沟通话术",
+    "案情通俗化解释",
+    "风险告知怎么说"
+  ],
+  "negative": [
+    "破产清算分配方案",
+    "IPO信息披露要求"
+  ]
+}

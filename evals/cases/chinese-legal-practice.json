@@ -1,0 +1,13 @@
+{
+  "skill": "chinese-legal-practice",
+  "description": "中国法律实务技能集触发测试",
+  "triggers": [
+    "中国法律实务要点",
+    "商事合同审查",
+    "公司并购法律问题"
+  ],
+  "negative": [
+    "美国庭审程序",
+    "今天天气怎么样"
+  ]
+}

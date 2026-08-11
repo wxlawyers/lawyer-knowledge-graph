@@ -1,0 +1,13 @@
+{
+  "skill": "wechat-legal-article",
+  "description": "涉外律师公众号文章撰写技能触发测试",
+  "triggers": [
+    "涉外公众号文章",
+    "法条核实流程",
+    "降AI味技巧"
+  ],
+  "negative": [
+    "质证提纲",
+    "劳动补偿计算"
+  ]
+}

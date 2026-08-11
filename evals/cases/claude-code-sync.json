@@ -1,0 +1,13 @@
+{
+  "skill": "claude-code-sync",
+  "description": "Claude Code 与 Hermes 同步知识库触发测试",
+  "triggers": [
+    "Claude Code 同步知识库",
+    "Hermes 双平台同步",
+    "案件记忆同步机制"
+  ],
+  "negative": [
+    "抖音直播违禁词",
+    "证券虚假陈述赔偿"
+  ]
+}

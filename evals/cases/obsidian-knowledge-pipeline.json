@@ -1,0 +1,13 @@
+{
+  "skill": "obsidian-knowledge-pipeline",
+  "description": "Obsidian知识库自动化流水线触发测试",
+  "triggers": [
+    "Obsidian知识库自动化",
+    "每日速报生成",
+    "知识沉淀流水线"
+  ],
+  "negative": [
+    "庭审抗辩",
+    "税务筹划"
+  ]
+}

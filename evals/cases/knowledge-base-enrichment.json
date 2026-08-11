@@ -1,0 +1,13 @@
+{
+  "skill": "knowledge-base-enrichment",
+  "description": "法律知识库审计与丰容技能触发测试",
+  "triggers": [
+    "知识库缺口识别",
+    "知识卡片批量创建",
+    "Obsidian知识库审计"
+  ],
+  "negative": [
+    "质证要点梳理",
+    "破产撤销权"
+  ]
+}

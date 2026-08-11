@@ -1,0 +1,13 @@
+{
+  "skill": "trial-preparation",
+  "description": "庭前准备技能触发测试",
+  "triggers": [
+    "质证要点梳理",
+    "发问提纲设计",
+    "庭审策略制定"
+  ],
+  "negative": [
+    "今天天气怎么样",
+    "财务报表分析"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "skill": "legal-analysis-pitfalls",
+  "description": "法律分析常见错误与教训技能触发测试",
+  "triggers": [
+    "法律分析常见错误",
+    "法条引用教训",
+    "举证责任误区"
+  ],
+  "negative": [
+    "直播违禁词检测",
+    "帮我订个餐厅"
+  ]
+}

@@ -5,7 +5,7 @@ description: >-
   适用于律师处理劳动争议案件：辞退赔偿计算、工伤赔偿计算、社保补缴、加班费争议。
 version: 1.0.0
 author: 余正洪律师
-license: MIT
+license: Apache-2.0
 platforms: [linux, macos]
 metadata:
   hermes:
@@ -280,3 +280,9 @@ examples:
 - [[cta-tax]] — 社保公积金计算
 - [[legal-document-drafting]] — 劳动仲裁申请书
 - [[trial-preparation]] — 劳动争议庭前准备
+
+## 事实核验原则
+
+- 任何法条、案例、案号、金额与事实结论，必须可回源到真实材料或实际检索结果；禁止编造或凭记忆补全。
+- 来源缺失或无法核验时，输出 `[待补: ...]` 占位符，并说明缺什么、应去哪里查找。
+- 正式交付前由使用者复核全部引用与数字；AI 不得把未核验内容表述为已核验依据。

@@ -3,7 +3,7 @@ name: wechat-lawyer-article
 description: "律师微信公众号文章撰写技能——选题护城河、19条质量标准、降AI味技巧、封面图设计、HTML排版导出。集成北大法宝+元典智库交叉验证，确保法条/案例/数据权威可溯源。"
 version: 1.0.0
 author: Hermes Agent
-license: MIT
+license: Apache-2.0
 dependencies: []
 platforms: [macos]
 metadata:
@@ -304,3 +304,9 @@ delegate_task:
 - `templates/article-template.md` — 文章Markdown模板（含结构指引）
 - `templates/article-template.html` — 公众号HTML排版模板（可直接粘贴到编辑器）
 - `templates/cover-template.html` — 封面图HTML模板（900×383px）
+
+## 事实核验原则
+
+- 任何法条、案例、案号、金额与事实结论，必须可回源到真实材料或实际检索结果；禁止编造或凭记忆补全。
+- 来源缺失或无法核验时，输出 `[待补: ...]` 占位符，并说明缺什么、应去哪里查找。
+- 正式交付前由使用者复核全部引用与数字；AI 不得把未核验内容表述为已核验依据。

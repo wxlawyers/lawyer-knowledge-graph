@@ -1,0 +1,13 @@
+{
+  "skill": "knowledge-accumulation",
+  "description": "知识沉淀与复用技能触发测试",
+  "triggers": [
+    "案件归档怎么做",
+    "裁判规则积累",
+    "文书模板库维护"
+  ],
+  "negative": [
+    "庭审实时检索",
+    "抖音直播话术"
+  ]
+}

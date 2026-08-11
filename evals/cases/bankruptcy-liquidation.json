@@ -1,0 +1,13 @@
+{
+  "skill": "bankruptcy-liquidation",
+  "description": "破产清算知识技能触发测试",
+  "triggers": [
+    "破产申请怎么提",
+    "债权申报流程怎么走",
+    "重整计划草案要点"
+  ],
+  "negative": [
+    "帮我写房屋买卖合同",
+    "帮我订个餐厅"
+  ]
+}

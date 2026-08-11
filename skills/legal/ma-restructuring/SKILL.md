@@ -5,7 +5,7 @@ description: >-
   适用于律师处理公司并购案件：尽调清单、交易结构设计、对赌条款、反稀释、拖拽权/随售权等。
 version: 1.0.0
 author: 余正洪律师
-license: MIT
+license: Apache-2.0
 platforms: [linux, macos]
 metadata:
   hermes:
@@ -163,3 +163,9 @@ examples:
 - [[cpa-accounting]] — 企业估值
 - [[cta-tax]] — 股权转让税费
 - [[legal-document-drafting]] — 并购协议起草
+
+## 事实核验原则
+
+- 任何法条、案例、案号、金额与事实结论，必须可回源到真实材料或实际检索结果；禁止编造或凭记忆补全。
+- 来源缺失或无法核验时，输出 `[待补: ...]` 占位符，并说明缺什么、应去哪里查找。
+- 正式交付前由使用者复核全部引用与数字；AI 不得把未核验内容表述为已核验依据。

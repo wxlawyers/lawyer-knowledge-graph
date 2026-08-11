@@ -3,7 +3,7 @@ name: chinese-legal-practice
 description: "中国法律实务技能集 — 争议解决、商事合同、公司并购、知识产权、劳动用工、隐私数据、产品合规、监管合规、AI治理、法律诊所、法学教育。覆盖江苏三诚律师事务所全部执业领域。"
 version: 1.0.0
 author: 余正洪律师
-license: MIT
+license: Apache-2.0
 platforms: [linux, macos]
 metadata:
   hermes:
@@ -446,3 +446,9 @@ server-name:
 - tesseract + chi_sim：已安装
 - 语言包修复：从 jsdelivr CDN 下载（GitHub 会超时）
 - 详见：`references/evidence-photo-ocr.md`
+
+## 事实核验原则
+
+- 任何法条、案例、案号、金额与事实结论，必须可回源到真实材料或实际检索结果；禁止编造或凭记忆补全。
+- 来源缺失或无法核验时，输出 `[待补: ...]` 占位符，并说明缺什么、应去哪里查找。
+- 正式交付前由使用者复核全部引用与数字；AI 不得把未核验内容表述为已核验依据。

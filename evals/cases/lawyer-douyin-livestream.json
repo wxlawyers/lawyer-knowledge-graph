@@ -1,0 +1,13 @@
+{
+  "skill": "lawyer-douyin-livestream",
+  "description": "律师抖音直播全流程技能触发测试",
+  "triggers": [
+    "律师抖音直播话术",
+    "直播违禁词检测",
+    "法律直播案源转化"
+  ],
+  "negative": [
+    "翻译英文邮件",
+    "帮我订个餐厅"
+  ]
+}

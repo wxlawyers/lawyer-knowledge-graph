@@ -1,0 +1,13 @@
+{
+  "skill": "lawyer-website-development",
+  "description": "律师个人形象网站开发技能触发测试",
+  "triggers": [
+    "律师个人网站开发",
+    "GitHub Pages部署",
+    "法律科普博客怎么做"
+  ],
+  "negative": [
+    "债权申报流程",
+    "离婚财产分割"
+  ]
+}

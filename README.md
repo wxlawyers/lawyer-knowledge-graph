@@ -6,7 +6,7 @@
 [![Python](https://img.shields.io/badge/Python-3.11-green)](https://python.org)
 [![Docker](https://img.shields.io/badge/Docker-Compose-blue)](docker-compose.yml)
 
-一套面向诉讼律师的 AI 个人知识管理系统 + 34个专业技能集。两个模块互补协作：
+一套面向诉讼律师的 AI 个人知识管理系统 + 39个专业技能集。两个模块互补协作：
 
 - **知识图谱系统**：案件经验自动沉淀 → 向量检索 → 类案秒级匹配
 - **技能集**：覆盖办案全流程的 Hermes Agent 技能，对话即用
@@ -48,7 +48,7 @@ lawyer-knowledge-graph/
 ├── scripts/              # 独立可运行脚本
 │   ├── extract_cards.py  # 知识卡片提取
 │   └── vector_search.py  # 向量检索
-├── skills/legal/         # 模块二：34个律师专业技能
+├── skills/legal/         # 模块二：39个律师专业技能
 ├── docs/                 # 项目文档
 ├── deploy.sh             # 一键部署脚本
 ├── DEPLOY.md             # 零基础部署指南
@@ -177,7 +177,7 @@ python scripts/vector_search.py --query "买卖合同违约金过高" --top-k 5
 
 ---
 
-## 模块二：律师专业技能集（34个）
+## 模块二：律师专业技能集（39个）
 
 > 需要 [Hermes Agent](https://hermes-agent.nousresearch.com) 运行环境。
 
@@ -186,7 +186,7 @@ python scripts/vector_search.py --query "买卖合同违约金过高" --top-k 5
 ### 技能分类
 
 <details>
-<summary><strong>办案流程技能（10个）</strong></summary>
+<summary><strong>办案流程技能（15个）</strong></summary>
 
 | 技能 | 功能 |
 |------|------|
@@ -200,6 +200,11 @@ python scripts/vector_search.py --query "买卖合同违约金过高" --top-k 5
 | case-management | 案件管理 |
 | case-deadline-monitor | 案件期限自动监控 |
 | compensation-calculator | 交通事故/工伤/劳动纠纷赔偿计算 |
+| contract-review | 合同审查与风险分级（民商事合同全要素） |
+| lawsuit-filing | 立案与管辖分析（级别/地域/专属/协议管辖） |
+| preservation-execution | 保全与强制执行全流程 |
+| lawyer-letter | 律师函起草（催告/解约/侵权警告） |
+| statute-limitation | 诉讼时效与期间计算 |
 
 </details>
 
@@ -319,8 +324,48 @@ mcp:
 
 ### 技能集
 
-- [x] 34个技能已发布
+- [x] 39个技能已发布
 - [ ] 持续迭代优化
+
+---
+
+## 生态调研：GitHub 法律技能开源现状
+
+> 2026-08 调研结论：本仓库与全球头部法律技能仓库的定位差异与互补点。
+
+### GitHub 法律/律师技能仓库 Top 10（按 Star 数）
+
+| 排名 | 仓库 | Star | 特点 |
+|------|------|------|------|
+| 1 | anthropics/claude-for-legal | 9.2k | Anthropic 官方法律插件套件（商业/诉讼/合规/隐私等 15 个插件） |
+| 2 | zubair-trabzada/ai-legal-claude | 1.7k | AI 法律助手：合同审查、风险分析、NDA 生成 |
+| 3 | lawve-ai/awesome-legal-skills | 662 | 238 个法律 Agent Skills 精选清单 |
+| 4 | cat-xierluo/legal-skills | 594 | 面向中文法律人的技能集合（60+） |
+| 5 | gfodor/legal-skills | 375 | "用 Markdown 文件取代律师"的方法论实验 |
+| 6 | zhou210712/claude-for-legal-ZH | 198 | 面向中国法律实务的 Claude 工作层 |
+| 7 | zh-xx/legal-assistant-skills | 165 | 兼容 Claude Code / Codex 的法律技能 |
+| 8 | lilialla/awesome-legal-ai-zh | 128 | 中国律师/法务开源 AI 工具地图（200+ 仓库） |
+| 9 | akunikkola/claude-for-legal-finland | 101 | 芬兰法律区域技能（参考） |
+| 10 | ZekaiSuni/claude-for-legal-turkish | 100 | 土耳其法律区域技能（参考） |
+
+### 差距分析与本次更新
+
+对照头部仓库后，本次为技能集补充了 5 个中国民商事律师最高频、此前缺失的能力：
+
+- **contract-review**：合同审查（借鉴 anthropics/commercial-legal、zh-xx/contract-review、awesome-legal-skills 的合同审查方法论）
+- **lawsuit-filing**：立案与管辖分析（中国民事诉讼起步环节）
+- **preservation-execution**：保全与强制执行（胜诉权益落地的关键环节）
+- **lawyer-letter**：律师函起草（日常高频非诉文书）
+- **statute-limitation**：诉讼时效与期间计算（起诉前必检项）
+
+### 差异化定位
+
+相比海外头部仓库（聚焦通用合同/合规/隐私，且以欧美法为主），本仓库的差异：
+
+1. **中国法实务**：全部技能基于中国法律体系，覆盖民商事诉讼全流程
+2. **诉讼实战**：庭审准备/庭审应对/证据组织等庭审能力是海外仓库普遍缺失的
+3. **知识沉淀**：案件经验 → 知识图谱 → 类案复用的闭环，非单纯提示词集合
+4. **多平台可用**：技能同时适配 Hermes / Codex / ChatGPT / Claude Code / WorkBuddy
 
 ---
 

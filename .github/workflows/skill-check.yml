@@ -32,3 +32,20 @@ jobs:
         run: pip install pyyaml
       - name: Run trigger test cases
         run: python evals/run_evals.py
+
+  version-check:
+    name: Skill version bump check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # 需要历史提交才能和基线比较
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check that changed skills bumped their version
+        env:
+          # PR 用基线分支的 SHA；push 用推送前的 SHA
+          BASE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: python scripts/check_versions.py --base "$BASE_REF"

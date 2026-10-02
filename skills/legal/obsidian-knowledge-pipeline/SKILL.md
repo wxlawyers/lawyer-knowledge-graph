@@ -1,7 +1,7 @@
 ---
 name: obsidian-knowledge-pipeline
 description: "Obsidian知识库自动化流水线 — 每日速报+Excalidraw配图+知识沉淀+重要提醒。iCloud同步，权威来源采集，分类沉淀到知识库各模块。"
-version: 1.0.0
+version: 1.1.0
 author: Hermes Agent
 license: Apache-2.0
 dependencies: []

@@ -1,7 +1,7 @@
 ---
 name: contract-review
 description: "合同审查技能 — 民商事合同类型识别、立场分流、条款逐项审查、缺失条款与内部矛盾排查、风险分级、谈判优先级排序与审查意见书出具。"
-version: 1.0.0
+version: 1.1.0
 author: 余正洪律师
 license: Apache-2.0
 platforms: [linux, macos]

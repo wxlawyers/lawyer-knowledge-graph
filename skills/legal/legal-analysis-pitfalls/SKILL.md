@@ -1,7 +1,7 @@
 ---
 name: legal-analysis-pitfalls
 description: "法律分析常见错误与教训 — 诉讼策略、法条引用、举证责任的血泪教训。2026-06-04某设备买卖合同纠纷案总结。"
-version: 1.0.0
+version: 1.2.0
 author: 余正洪律师
 license: Apache-2.0
 platforms: [linux, macos]

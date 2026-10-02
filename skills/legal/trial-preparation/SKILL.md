@@ -1,7 +1,7 @@
 ---
 name: trial-preparation
 description: "庭前准备技能 — 质证要点梳理、发问提纲设计、对方抗辩预判、庭审策略制定。"
-version: 1.0.0
+version: 1.1.0
 author: 余正洪律师
 license: Apache-2.0
 platforms: [linux, macos]

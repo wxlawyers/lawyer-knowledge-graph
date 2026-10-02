@@ -1,7 +1,7 @@
 ---
 name: wechat-lawyer-article
 description: "律师微信公众号文章撰写技能——选题护城河、19条质量标准、降AI味技巧、封面图设计、HTML排版导出。集成北大法宝+元典智库交叉验证，确保法条/案例/数据权威可溯源。"
-version: 1.0.0
+version: 1.1.0
 author: Hermes Agent
 license: Apache-2.0
 dependencies: []

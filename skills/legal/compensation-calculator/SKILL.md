@@ -1,7 +1,7 @@
 ---
 name: compensation-calculator
 description: "交通事故·工伤·劳动纠纷·违法辞退·逾期利息（LPR分段）计算器 — 四大模块合一，支持31省份标准，十级伤残与月工资速算，可生成利息计算表，数据来源权威。"
-version: 2.0.0
+version: 2.1.0
 author: 余正洪律师
 license: Apache-2.0
 platforms: [linux, macos]

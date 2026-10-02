@@ -1,7 +1,7 @@
 ---
 name: chinese-legal-practice
 description: "中国法律实务技能集 — 争议解决、商事合同、公司并购、知识产权、劳动用工、隐私数据、产品合规、监管合规、AI治理、法律诊所、法学教育。覆盖江苏三诚律师事务所全部执业领域。"
-version: 1.0.0
+version: 1.1.0
 author: 余正洪律师
 license: Apache-2.0
 platforms: [linux, macos]

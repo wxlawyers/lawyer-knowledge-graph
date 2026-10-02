@@ -1,7 +1,7 @@
 ---
 name: client-communication
 description: "当事人沟通技能 — 案情通俗化表达、风险坦诚告知、预期管理。"
-version: 1.0.0
+version: 1.1.0
 author: 余正洪律师
 license: Apache-2.0
 platforms: [linux, macos]

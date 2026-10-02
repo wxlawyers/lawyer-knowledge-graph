@@ -1,7 +1,7 @@
 ---
 name: evidence-organization
 description: "证据组织与四性验证技能 — 证据收集、整理、编排、四性验证、证据链构建、质证准备。"
-version: 1.0.0
+version: 1.1.0
 author: 余正洪律师
 license: Apache-2.0
 platforms: [linux, macos]

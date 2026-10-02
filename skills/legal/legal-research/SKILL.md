@@ -1,7 +1,7 @@
 ---
 name: legal-research
 description: "法律检索与案例研究技能 — 法条精准检索、类案检索、裁判规则提炼、双源交叉验证。以北大法宝 MCP 为主检索源、元典 MCP 交叉核验；工具清单见 chinese-legal-practice/references/mcp-tool-inventory.md。"
-version: 1.0.0
+version: 1.1.0
 author: 余正洪律师
 license: Apache-2.0
 platforms: [linux, macos]

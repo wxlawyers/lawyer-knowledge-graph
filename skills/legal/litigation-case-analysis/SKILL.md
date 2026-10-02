@@ -1,7 +1,7 @@
 ---
 name: litigation-case-analysis
 description: "诉讼案件分析技能 — 请求权基础分析、证据组织、法律检索、知识卡片生成。集成北大法宝（主）与元典（核验）法规案例检索、启信慧眼企业尽调。"
-version: 1.0.0
+version: 1.1.0
 author: 余正洪律师
 license: Apache-2.0
 platforms: [linux, macos]

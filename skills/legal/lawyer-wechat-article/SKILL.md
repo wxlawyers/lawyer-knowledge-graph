@@ -155,11 +155,11 @@ license: Apache-2.0
 
 ### 验证工具
 ```
-法条 → mcp_yuandian_search_fatiao（元典智库，优先）
-     → mcp_pkulaw_get_article（北大法宝，交叉验证）
+法条 → 北大法宝精准法条（主）
+     → 元典法条检索（交叉核验）
 
-案例 → mcp_yuandian_search_qwal（元典智库）
-     → mcp_pkulaw_case_search_search_case（北大法宝）
+案例 → 北大法宝案例检索（唯一来源）
+     → 元典案例检索不可靠，不要使用
 ```
 
 ## 涉外律师内容营销起步路径

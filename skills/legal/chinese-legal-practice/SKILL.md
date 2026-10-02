@@ -25,52 +25,36 @@ examples:
 - **律师联系人**：余正洪 律师
 - **管辖法院**：江苏省内法院（海门、宜兴、无锡、南通等基层及中级法院）
 
-## MCP 工具（已接入）
+## MCP 工具（2026-10-02 校准）
 
-### 元典智库（5个工具）
-- `mcp_yuandian_search_fagui` — 法规检索（关键词搜索法律法规）
-- `mcp_yuandian_search_fatiao` — 法条检索（法规名称+条号精确检索）
-- `mcp_yuandian_search_qwal` — 案例检索（关键词+法院地域+年份）
-- `mcp_yuandian_get_fagui_detail` — 法规详情（法规ID获取全文）
-- `mcp_yuandian_get_fatiao_detail` — 法条详情（法条ID获取完整内容）
+> 完整清单、三端配置对照、认证方式详见 `references/mcp-tool-inventory.md`。以下只列用途分组；**实际工具名以当次会话 `tools/list` 为准**，不要照抄文档写死。
 
-### 北大法宝 MCP（9个 HTTP 服务，Bearer token 认证）
-- `pkulaw` — 法规搜索（/mcp-law-search-service）
-- `pkulaw-law-keyword` — 法规关键词检索（/mcp-law/mcp）
-- `pkulaw-case` — 案例检索（/mcp-case/mcp）
-- `pkulaw-fatiao` — 法条检索（/mcp-fatiao/mcp）
-- `pkulaw-case-search` — 案例搜索（/mcp-case-search-service）
-- `pkulaw-law` — 法规查询（/mcp-law）
-- `pkulaw-doc-link` — 文档链接（/add-doc-link）
-- `pkulaw-law-recognition` — 法规识别（/law_recognition）
-- `pkulaw-case-number-recognition` — 案号识别（/case_number_recognition）
+### 法律法规与案例（北大法宝 · 主检索源）
+按用途分四组：法规检索（`pkulaw-law-keyword`、`pkulaw-law`、`pkulaw`）、精准法条（`pkulaw-fatiao`）、案例检索（`pkulaw-case`、`pkulaw-case-search`）、辅助能力（`pkulaw-doc-link`、`pkulaw-law-recognition`、`pkulaw-case-number-recognition`）。路由规范见 `pkulaw-mcp-*` 技能族。
 
-### 快查企业数据 MCP（1个 HTTP 服务，discover/call 模式）
-- `kuaicha-search` — 企业数据查询引擎（https://bizveris.kuaicha365.com/mcp）
-- 认证方式：`open-authorization: Bearer <token>`（非标准 Authorization 头）
-- 使用方式：先 `discover` 发现工具，再 `call` 调用具体工具
-- 覆盖范围：工商信息、司法风险、知识产权、经营状况、企业筛选
-- 数据来源：同花顺旗下快查企业数据引擎
+### 法律法规与案例（元典 · 交叉核验）
+法规检索、法条检索较可靠，用于与法宝结果交叉核验；**案例检索可靠性差（非主流案由常返回不相关案例），不作为类案来源**。
 
-### 企查查 MCP（6个 HTTP 服务，Streamable HTTP 协议）
-- `qcc-company` — 企业基座（工商信息、股东、对外投资）
-- `qcc-risk` — 司法风险（诉讼、失信、被执行人、34类风险）
-- `qcc-ipr` — 知识产权（商标、专利、软著）
-- `qcc-operation` — 经营状况（招投标、融资、新闻舆情）
-- `qcc-executive` — 高管/上市（董监高、十大股东、财务报表）
-- `qcc-history` — 历史信息（变更记录、年报）
-- 认证方式：`Authorization: Bearer <token>`
-- 平台地址：https://agent.qcc.com
-- 特点：180个原子工具、决策性输出、上下文脱水优化Token
+### 企业尽调（启信慧眼 / 企查查 / 快查）
+> 以下工具**不分先后**，用当前环境已配置且可用的即可（其他企业数据 MCP 同样可以）。
 
-**配置位置**：`~/.hermes/config.yaml` → `mcp_servers`
-**原始配置**：`~/.claude/settings.json` → `mcpServers`
-**认证方式**：`Authorization: Bearer <token>`（北大法宝/元典）；`open-authorization: Bearer <token>`（快查）
+- **启信慧眼**（MCP 名 `qixin`，Codex / Claude Code 环境）— 工商、股权穿透、实际控制人、关联关系、对外投资、经营风险、涉诉；
+- **企查查**（`qcc-company` / `qcc-risk` / `qcc-ipr` / `qcc-operation` / `qcc-executive` / `qcc-history`，Hermes 环境）— 约 180 个原子工具；
+- **快查365**（`kuaicha-search`，Hermes 环境）— 企业数据查询与筛选，认证头为非标准的 `open-authorization`；
+- 这类工具**都不得**用于查法条或案例。
+
+### 分工红线
+1. 法条、司法解释、案例、案号 → 北大法宝（主）+ 元典（核验）；
+2. 企业经营数据 → 当前环境已配置的企业数据 MCP（启信慧眼 / 企查查 / 快查或其他同类）；
+3. 两套工具不得混用；未取得 MCP 返回前，不得写出具体法规名称、条号、案号或裁判要点。
+
+**配置位置**：`~/.codex/config.toml`（Codex）、`~/.claude.json`（Claude Code）、`~/.hermes/config.yaml`（Hermes）
+**认证方式**：`Authorization: Bearer <token>`；快查为 `open-authorization: Bearer <token>`
 
 ## 检索策略（三轮递进）
-1. **第一轮**：元典智库 + 北大法宝双源交叉检索
+1. **第一轮**：北大法宝主检索（法规 / 法条 / 案例），元典交叉核验法规与法条
 2. **第二轮**：人民法院案例库验证裁判规则（WebFetch）
-3. **第三轮**：威科先行/裁判文书网补充特定法院/法官历史裁判
+3. **第三轮**：威科先行 / 裁判文书网 / 省高院官网补充特定法院、法官历史裁判与地方司法文件（技巧见 `../legal-research/references/official-case-sources.md`）
 
 ## 模块一：争议解决（诉讼）
 
@@ -341,7 +325,7 @@ with open(config_path, 'w') as f:
 工具名格式：`mcp_{server_name}_{tool_name}`
 - 连字符和点号替换为下划线
 - 示例：server `pkulaw-case`, tool `get_case_list` → `mcp_pkulaw_case_get_case_list`
-- 元典智库：`mcp_yuandian_search_fagui`, `mcp_yuandian_search_fatiao`, `mcp_yuandian_search_qwal` 等
+- 元典：`mcp_yuandian_search_fagui`, `mcp_yuandian_search_fatiao` 等（案例检索不适用）
 - 北大法宝：`mcp_pkulaw_case_get_case_list`, `mcp_pkulaw_law_recognition_law_recognition` 等
 
 ### 配置来源

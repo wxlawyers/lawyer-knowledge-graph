@@ -6,7 +6,7 @@
 [![Python](https://img.shields.io/badge/Python-3.11-green)](https://python.org)
 [![Docker](https://img.shields.io/badge/Docker-Compose-blue)](docker-compose.yml)
 
-一套面向诉讼律师的 AI 个人知识管理系统 + 39个专业技能集。两个模块互补协作：
+一套面向诉讼律师的 AI 个人知识管理系统 + 38个专业技能集。两个模块互补协作：
 
 - **知识图谱系统**：案件经验自动沉淀 → 向量检索 → 类案秒级匹配
 - **技能集**：覆盖办案全流程的 Hermes Agent 技能，对话即用
@@ -48,7 +48,7 @@ lawyer-knowledge-graph/
 ├── scripts/              # 独立可运行脚本
 │   ├── extract_cards.py  # 知识卡片提取
 │   └── vector_search.py  # 向量检索
-├── skills/legal/         # 模块二：39个律师专业技能
+├── skills/legal/         # 模块二：38个律师专业技能
 ├── docs/                 # 项目文档
 ├── deploy.sh             # 一键部署脚本
 ├── DEPLOY.md             # 零基础部署指南
@@ -177,7 +177,7 @@ python scripts/vector_search.py --query "买卖合同违约金过高" --top-k 5
 
 ---
 
-## 模块二：律师专业技能集（39个）
+## 模块二：律师专业技能集（38个）
 
 > 需要 [Hermes Agent](https://hermes-agent.nousresearch.com) 运行环境。
 
@@ -192,7 +192,7 @@ python scripts/vector_search.py --query "买卖合同违约金过高" --top-k 5
 |------|------|
 | litigation-case-analysis | 案件分析与请求权基础分析 |
 | evidence-organization | 证据组织与四性验证 |
-| legal-research | 法律检索与案例研究 |
+| legal-research | 法律检索与案例研究（含官方案例来源检索指引） |
 | legal-document-drafting | 法律文书撰写 |
 | trial-preparation | 庭前准备 |
 | trial-response | 庭审应对 |
@@ -209,7 +209,7 @@ python scripts/vector_search.py --query "买卖合同违约金过高" --top-k 5
 </details>
 
 <details>
-<summary><strong>知识管理技能（5个）</strong></summary>
+<summary><strong>知识管理技能（4个）</strong></summary>
 
 | 技能 | 功能 |
 |------|------|
@@ -217,7 +217,6 @@ python scripts/vector_search.py --query "买卖合同违约金过高" --top-k 5
 | knowledge-base-enrichment | 知识库审计与丰容 |
 | obsidian-knowledge-pipeline | Obsidian知识库自动化 |
 | legal-analysis-pitfalls | 法律分析常见错误与教训 |
-| case-search-sources | 法律案例搜索源指南 |
 
 </details>
 
@@ -324,7 +323,7 @@ mcp:
 
 ### 技能集
 
-- [x] 39个技能已发布
+- [x] 38个技能已发布
 - [ ] 持续迭代优化
 
 ---

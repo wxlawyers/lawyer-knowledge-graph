@@ -32,6 +32,9 @@ EOF
 
 ## 已配置的 MCP 服务器
 
+> 以下为各端已配置的 MCP 条目（主要来自 Hermes 的 `~/.hermes/config.yaml`，括号内标注环境差异）。三端配置位置对照见 `mcp-tool-inventory.md`。
+> **企业数据类 MCP 不分先后**，以当前环境实际配置且可用的为准。
+
 ### 北大法宝（9个 HTTP 服务）
 - `pkulaw` — 法规搜索
 - `pkulaw-law-keyword` — 法规关键词检索
@@ -44,6 +47,11 @@ EOF
 - `pkulaw-case-number-recognition` — 案号识别
 
 认证方式：`Authorization: Bearer <token>`
+
+### 启信慧眼（1个 HTTP 服务，Codex / Claude Code 环境已配置）
+- `qixin` — 企业尽调（工商、股权穿透、实际控制人、关联关系、对外投资、经营风险、涉诉）
+
+认证方式：`Authorization: Bearer <token>`；地址 `https://mcp.qixin.com/mcp`
 
 ### 快查企业数据（1个 HTTP 服务）
 - `kuaicha-search` — 企业数据查询引擎

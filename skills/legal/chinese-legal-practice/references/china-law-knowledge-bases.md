@@ -2,16 +2,16 @@
 
 ## 一级检索源（优先，有MCP集成）
 
-### 华宇元典智库 MCP（5个 stdio 工具）
-- `mcp_yuandian_search_fagui` — 法规检索
-- `mcp_yuandian_search_fatiao` — 法条检索
-- `mcp_yuandian_search_qwal` — 案例检索
-- `mcp_yuandian_get_fagui_detail` — 法规详情
-- `mcp_yuandian_get_fatiao_detail` — 法条详情
+### 北大法宝 MCP（主检索源，多个 HTTP 服务）
+- 法规检索、精准法条、案例检索、法规识别、案号识别、文书超链接
+- 详见 `pkulaw-mcp-services.md`；路由规范见 `pkulaw-mcp-*` 技能族
 
-### 北大法宝 MCP（9个 HTTP 服务）
-- `mcp_pkulaw_*` — 法规搜索、案例检索、法条检索、法规识别、案号识别等
-- 详见 `pkulaw-mcp-services.md`
+### 华宇元典智库 MCP（交叉核验用）
+- 法规检索 — 检索法律法规、司法文件
+- 法条检索 — 精确检索法条内容
+- 法规详情 / 法条详情 — 取全文
+
+> **元典案例检索实测可靠性差（非主流案由返回不相关案例），不作为类案来源；类案一律走北大法宝。**
 
 ## 二级检索源（补充，无MCP集成）
 

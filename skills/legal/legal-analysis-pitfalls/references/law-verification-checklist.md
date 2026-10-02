@@ -31,12 +31,13 @@
 | `mcp_pkulaw_search_article` | 搜索相关法条 | `text="过错相抵"` |
 | `mcp_pkulaw_case_search_search_case` | 搜索案例 | `text="买卖合同 质量缺陷"` |
 
-### 元典智库
-| 工具 | 用途 | 示例 |
+### 元典（交叉核验用）
+| 能力 | 用途 | 示例 |
 |------|------|------|
-| `mcp_yuandian_search_fagui` | 搜索法规 | `keyword="民法典"` |
-| `mcp_yuandian_search_fatiao` | 搜索法条 | `keyword="民法典 第592条"` |
-| `mcp_yuandian_search_qwal` | 搜索案例 | `keyword="买卖合同 质量缺陷"` |
+| 法规检索 | 搜索法规 | `keyword="民法典"` |
+| 法条检索 | 搜索法条 | `keyword="民法典 第592条"` |
+
+> 案例检索一律走北大法宝；元典案例检索实测可靠性差，不作为类案来源。
 
 ---
 

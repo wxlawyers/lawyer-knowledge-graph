@@ -30,12 +30,13 @@ mcp_yuandian_search_fatiao(keyword="民法典 第五百七十七条")
 - 用途：精确检索法条内容
 - 建议：使用"法规名称 条号"格式
 
-#### 案例检索
+#### 案例检索（走北大法宝）
 ```
-mcp_yuandian_search_qwal(keyword="合同纠纷 违约 南京 2024")
+案例检索（法宝）：text="合同纠纷 违约 南京 2024"
 ```
 - 用途：检索司法案例
 - 建议：包含案由+争议焦点+地域+年份
+- 注意：元典案例检索实测可靠性差，不作为类案来源
 
 #### 法规详情
 ```
@@ -128,9 +129,9 @@ mcp_pkulaw_search_law(keyword="民法典 合同编")
 
 **示例**：
 ```
-# 股权转让纠纷
-mcp_yuandian_search_qwal(keyword="股权转让 股东优先购买权 南京 2024")
-mcp_pkulaw_search_case(keyword="股权转让 优先购买权")
+# 股权转让纠纷（法宝先行）
+案例检索：text="股权转让 股东优先购买权 南京 2024"
+案例检索：text="股权转让 优先购买权"
 ```
 
 ### 策略三：裁判规则验证
@@ -145,8 +146,8 @@ mcp_pkulaw_search_case(keyword="股权转让 优先购买权")
 
 **示例**：
 ```
-# 检索案例
-mcp_yuandian_search_qwal(keyword="合同解除 违约")
+# 检索案例（法宝）
+案例检索：text="合同解除 违约"
 # 提取裁判要旨
 # 对比我方案情
 # 判断是否适用

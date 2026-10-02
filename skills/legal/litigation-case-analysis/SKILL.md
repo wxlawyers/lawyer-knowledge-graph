@@ -1,6 +1,6 @@
 ---
 name: litigation-case-analysis
-description: "诉讼案件分析技能 — 请求权基础分析、证据组织、法律检索、知识卡片生成。集成元典智库+北大法宝+企查查MCP工具。"
+description: "诉讼案件分析技能 — 请求权基础分析、证据组织、法律检索、知识卡片生成。集成北大法宝（主）与元典（核验）法规案例检索、启信慧眼企业尽调。"
 version: 1.0.0
 author: 余正洪律师
 license: Apache-2.0
@@ -29,42 +29,32 @@ examples:
 
 ## MCP 工具
 
-### 企查查 QCC（6个Server，约180个工具）
+> **工具口径（2026-10-02 校准）**：法规、案例检索只用北大法宝（主）与元典（核验）；企业尽调用当前环境已配置的企业数据 MCP（启信慧眼、企查查、快查或其他同类，不分先后）。实际工具名以当次会话 `tools/list` 为准，完整清单见 `../chinese-legal-practice/references/mcp-tool-inventory.md`。
 
-企业尽调专用工具集，覆盖工商、税务、司法、知识产权、招投标全维度。
-详见 `references/qcc-enterprise-due-diligence.md`。
+### 企业尽调（企业数据 MCP，不分先后）
+
+企业尽调专用工具集，覆盖工商、股权、司法风险、经营资质、知识产权全维度。
+工作流详见 `references/enterprise-due-diligence-workflow.md`，报告模板 `templates/enterprise-due-diligence-report.md`。
 
 **诉讼场景速查**：
-- 对手画像 → `get_company_registration_info` + `get_judicial_documents` + `get_dishonest_info`
-- 执行评估 → `get_judgment_debtor_info` + `get_high_consumption_restriction` + `get_equity_freeze`
-- 关键人物背调 → `mcp_qcc_executive_*` 系列（需双参数：企业名+人名）
+- 对手画像 → 工商注册信息 + 裁判文书 + 失信记录
+- 执行评估 → 被执行人 + 限制高消费 + 股权冻结
+- 关键人物背调 → 董监高个人维度（企查查需双参数：企业名 + 人名）
 
-**报告模板**：`templates/enterprise-due-diligence-report.md`
+### 法律法规与案例检索（北大法宝 · 主）
 
-### 元典智库（5个工具）
-- `mcp_yuandian_search_fagui` — 法规检索
-- `mcp_yuandian_search_fatiao` — 法条检索
-- `mcp_yuandian_search_qwal` — 案例检索
-- `mcp_yuandian_get_fagui_detail` — 法规详情
-- `mcp_yuandian_get_fatiao_detail` — 法条详情
+按用途分四组：法规检索、精准法条、案例检索、辅助能力（文书超链接 / 法规识别 / 案号识别）。路由规范见 `pkulaw-mcp-*` 技能族。
 
-### 北大法宝（9个 HTTP 服务）
-- `mcp_pkulaw_case_get_case_list` — 案例列表查询
-- `mcp_pkulaw_case_search_search_case` — 案例智能检索
-- `mcp_pkulaw_case_number_recognition_anhao_recognition` — 案号识别
-- `mcp_pkulaw_law_get_law_list` — 法规列表查询
-- `mcp_pkulaw_law_keyword_get_law_list` — 法规关键词检索
-- `mcp_pkulaw_law_recognition_law_recognition` — 法规识别
-- `mcp_pkulaw_search_article` — 法条语义检索
-- `mcp_pkulaw_get_article` — 法条精确获取
-- `mcp_pkulaw_doc_link_get_linked_content` — 文档链接
+### 法律法规与案例检索（元典 · 交叉核验）
+
+法规检索、法条检索较可靠，用于交叉核验；**案例检索可靠性差，不作为类案来源**。
 
 ## 执行步骤
 
 ### 步骤零：对手企业尽调（诉讼案件必做）
 
 对诉讼对手进行企业尽调，获取工商、司法、资质、知识产权全维度数据。
-详见 `references/qcc-enterprise-due-diligence.md`，报告模板 `templates/enterprise-due-diligence-report.md`。
+详见 `references/enterprise-due-diligence-workflow.md`，报告模板 `templates/enterprise-due-diligence-report.md`。
 
 沉淀路径：`法律知识库/01-案件笔记/{企业名称}-企业尽调报告.md`
 
@@ -117,19 +107,18 @@ examples:
 
 ### 步骤四：法律检索（三轮递进）
 
-**第一轮：双源交叉检索**
+**第一轮：法宝为主 + 元典交叉**
 
-使用元典智库：
+使用北大法宝（主检索）：
 ```
-mcp_yuandian_search_fagui(keyword="相关法规关键词")
-mcp_yuandian_search_fatiao(keyword="法规名称 条号")
-mcp_yuandian_search_qwal(keyword="案由 争议焦点 地域 年份")
+法规检索：title="相关法规关键词"
+案例检索：text="案由 争议焦点"
 ```
 
-使用北大法宝：
+使用元典（交叉核验法规与法条；**案例检索不可靠，不作为类案来源**）：
 ```
-mcp_pkulaw_law_get_law_list(title="相关法规关键词")
-mcp_pkulaw_case_search_search_case(text="案由 争议焦点")
+法规检索：keyword="相关法规关键词"
+法条检索：keyword="法规名称 条号"
 ```
 
 **第二轮：裁判规则验证**
@@ -193,7 +182,7 @@ mcp_pkulaw_case_search_search_case(text="案由 争议焦点")
 | **⑦ 风险提示** | 最坏结果、应对预案 | 坦诚告知，不回避不利因素 |
 | **⑧ 对手分析** | 对方诉讼画像、诉讼风格、和解动机 | 企业尽调+历史诉讼分析（必做步骤零） |
 | **⑨ 调解策略** | 和解方案、谈判筹码、底线预期 | 经济分析+方案对比+谈判话术 |
-| **⑩ 执行评估** | 对方偿债能力、执行风险、财产线索 | 企查查风险维度扫描（失信/被执行/限高/冻结） |
+| **⑩ 执行评估** | 对方偿债能力、执行风险、财产线索 | 企业尽调风险维度扫描（失信/被执行/限高/冻结） |
 
 **输出要求**：
 - 不能只写"法律依据"和"裁判规则"就结束
@@ -284,15 +273,15 @@ mcp_pkulaw_case_search_search_case(text="案由 争议焦点")
 
 **注意**：如果被告主张"原告存在过错"（过错相抵），则该主张的举证责任在被告方。
 
-### 5. 企查查多候选实体未等用户确认
-**错误**：`get_company_by_query` 返回多个候选时自动选择第一个
+### 5. 企业尽调多候选实体未等用户确认
+**错误**：实体锁定接口返回多个候选时自动选择第一个
 **正确**：必须将候选列表完整展示给用户，等待用户明确指定后再调用下游工具
 **后果**：自动选择可能导致查询错误主体，产生严重尽调风险
 **例外**：唯一精确匹配时可直接使用
 
-### 6. 企查查高管查询漏传 personName
-**错误**：用 `mcp_qcc_executive_*` 系列工具时只传 searchKey
-**正确**：`mcp_qcc_executive_*` 需要双参数锚定：`searchKey`（企业名/信用代码）+ `personName`（董监高姓名）
+### 6. 关键人物背调漏传人员参数
+**错误**：查询董监高个人维度时只传企业标识
+**正确**：关键人物查询需要双参数锚定——企业标识（企业名/信用代码）+ 人员姓名；企查查对应 `mcp_qcc_executive_*` 系列
 **后果**：漏传 personName 会导致查询失败或返回无关数据
 
 ### 7. 法条引用未核实（极高频！）

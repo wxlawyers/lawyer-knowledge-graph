@@ -247,10 +247,9 @@ with open("image.png", "rb") as f:
 ## 六、数据交叉验证流程
 
 ### 法律内容验证（MCP工具）
-1. `mcp_pkulaw_fatiao_get_law_item_content` — 获取法条原文
-2. `mcp_pkulaw_case_search_search_case` — 检索相关案例
-3. `mcp_yuandian_search_fagui` — 元典智库法规检索（交叉验证）
-4. `mcp_yuandian_search_qwal` — 元典智库案例检索（交叉验证）
+1. 北大法宝精准法条 — 获取法条原文
+2. 北大法宝案例检索 — 检索相关案例（类案唯一来源）
+3. 元典法规检索 — 法规交叉验证
 
 ### 非法律内容验证（科技/经验/行业文章）
 写涉及科技产品、行业数据、公司信息等内容时，**必须在发布前逐条核实**。使用 `delegate_task` 并行搜索验证：

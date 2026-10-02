@@ -2,7 +2,7 @@
 name: case-deadline-monitor
 description: "案件期限自动监控 — 从Obsidian提取案件信息，自动创建Apple Calendar提醒，监控开庭/举证/上诉/执行期限。"
 argument-hint: "[案件名称] [--days=30]"
-version: 1.1.0
+version: 1.2.0
 author: 余正洪律师
 platforms: [macos]
 metadata:

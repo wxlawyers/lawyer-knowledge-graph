@@ -261,9 +261,11 @@ python scripts/vector_search.py --query "买卖合同违约金过高" --top-k 5
 # 克隆仓库
 git clone https://github.com/wxlawyers/lawyer-knowledge-graph.git
 
-# 复制技能到 Hermes Agent
+# 复制技能到 Hermes Agent（* 会一并复制 _shared/ 通用护栏，请不要漏掉）
 cp -r lawyer-knowledge-graph/skills/legal/* ~/.hermes/skills/legal/
 ```
+
+> 技能末尾的「事实核验原则」统一来自 `skills/legal/_shared/guardrails.md`，由 `scripts/sync_guardrails.py` 同步；要改护栏请改单一来源再跑同步脚本。
 
 在 `~/.hermes/config.yaml` 中配置 MCP 工具：
 
@@ -296,6 +298,8 @@ mcp:
 - 技能版本规则：[VERSIONING.md](VERSIONING.md)（改一次升一版：主版本=结构性变化，次版本=内容变化，补丁=文字修正）
 - 变更记录：[CHANGELOG.md](CHANGELOG.md)
 - 提交前自检：`python3 scripts/check_versions.py`
+- 通用护栏单一来源：`skills/legal/_shared/guardrails.md`，同步用 `python3 scripts/sync_guardrails.py`
+- 命令参数提示：全部技能带 `argument-hint`（如 `/contract-review 合同.docx --side=卖方`），统一由 `scripts/add_argument_hint.py` 维护
 
 ---
 

@@ -1,7 +1,8 @@
 ---
 name: obsidian-knowledge-pipeline
 description: "Obsidian知识库自动化流水线 — 每日速报+Excalidraw配图+知识沉淀+重要提醒。iCloud同步，权威来源采集，分类沉淀到知识库各模块。"
-version: 1.1.0
+argument-hint: "[--type=daily|weekly]"
+version: 1.2.0
 author: Hermes Agent
 license: Apache-2.0
 dependencies: []
@@ -410,6 +411,4 @@ cd "<vault_path>" && find . -name "*.md" -newer ./00-导航中心.md | wc -l
 
 ## 事实核验原则
 
-- 任何法条、案例、案号、金额与事实结论，必须可回源到真实材料或实际检索结果；禁止编造或凭记忆补全。
-- 来源缺失或无法核验时，输出 `[待补: ...]` 占位符，并说明缺什么、应去哪里查找。
-- 正式交付前由使用者复核全部引用与数字；AI 不得把未核验内容表述为已核验依据。
+> 完整规则见 `../_shared/guardrails.md`（单一来源，勿在本文件单独修改此段）。核心不变：法条、案例、案号、金额与事实结论必须可回源到真实材料或实际检索结果，禁止编造或凭记忆补全；无法核验时输出 `[待补: ...]` 并说明去哪里查；交付前由使用者复核全部引用与数字。

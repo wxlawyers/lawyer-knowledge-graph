@@ -49,3 +49,16 @@ jobs:
           # PR 用基线分支的 SHA；push 用推送前的 SHA
           BASE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: python scripts/check_versions.py --base "$BASE_REF"
+
+  sync-check:
+    name: Shared guardrails & argument-hint sync
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Guardrails section matches _shared/guardrails.md
+        run: python scripts/sync_guardrails.py --check
+      - name: argument-hint matches scripts/add_argument_hint.py
+        run: python scripts/add_argument_hint.py --check

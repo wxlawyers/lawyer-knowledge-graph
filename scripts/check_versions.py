@@ -83,7 +83,8 @@ def main():
         head_message = git("log", "-1", "--format=%B")
     except SystemExit:
         head_message = ""
-    if "[skip version-check]" in head_message:
+    # 只有把标记**单独占一行**才视为跳过，避免提交信息里提到这个标记时被误判
+    if any(line.strip() == "[skip version-check]" for line in head_message.splitlines()):
         print("[version-check] 提交信息包含 [skip version-check]，跳过")
         return 0
 

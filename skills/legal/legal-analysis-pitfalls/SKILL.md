@@ -113,17 +113,46 @@ examples:
 
 **正确做法**：
 1. **法条引用必须用MCP工具核实原文**，不能凭记忆
-2. 使用 `mcp_pkulaw_get_article(title="中华人民共和国民法典", number="第XXX条")` 获取准确条文
-3. 使用 `mcp_pkulaw_search_article(text="关键词")` 搜索相关法条
-4. 使用 `mcp_yuandian_search_fatiao(keyword="法规名称 条号")` 交叉验证
-5. 引用时标注来源：`来源：北大法宝` 或 `来源：元典智库`
+2. 已知法规名 + 条号 → 用**精准法条**服务取条文原文
+3. 只知关键词 → 用**法规检索 / 法条检索**服务先定位条文
+4. 用元典法条检索做**交叉核验**（元典案例检索不可靠，不用于案例）
+5. 引用时标注来源工具与检索日期
+
+> 工具名以当次会话 `tools/list` 为准，路由规范见 `pkulaw-mcp-*` 技能族；口径见 `../chinese-legal-practice/references/mcp-tool-inventory.md`。
 
 **核实流程**：
 ```
-1. 先用 mcp_pkulaw_get_article 获取条文原文
+1. 先用精准法条服务获取条文原文
 2. 对比我方文件中的引用
 3. 如有差异，立即修正
-4. 在文件中标注"来源：北大法宝"和核实日期
+4. 在文件中标注来源工具和核实日期
+```
+
+### 2.4 三层校验与阻断（强制执行，2026-10-02 新增）
+
+2.1 讲的是**行为**层面的问题（不要凭记忆），这一节解决**流程**层面的问题：把核实做成可执行、可留痕、可阻断的协议。
+
+**三层校验**
+
+| 层级 | 问什么 | 不通过怎么办 |
+|------|--------|--------------|
+| 存在性 | 这条法规、这个条号，权威数据库里查得到吗？ | 查不到 ≠ 错误：换法规检索或官网二次确认；仍无法确认 → 标 `[待核实]` |
+| 内容一致性 | 材料里写的内容与原文逐字一致吗？（重点看虚词、否定范围、款/项） | 以检索到的原文为准修正 |
+| 时效性 | 现在还有效吗？被修订或被新法取代了吗？ | 已废止的引用一律删除或替换 |
+
+**阻断规则**
+
+- 任一层次不通过 → **阻断**，不得进入对外交付物；
+- 状态只有三种：✅ 已核验（附来源与日期）/ ⚠️ 待核实（须标注并说明去哪查）/ ⛔ 阻断（标 `[阻断-法条核验: 原因]`）；
+- 禁止把"待核实"写成"已确认"，也禁止用"据相关规定""有关法律"绕开核验。
+
+**完整协议与核验报告格式**：`references/citation-verification-protocol.md`
+
+**批量核验**：先用脚本抽取引用清单，再逐条核验。
+
+```bash
+python3 scripts/scan_citations.py <文件或目录>     # 生成待核验清单（Markdown 表格）
+python3 scripts/scan_citations.py --json <目录>    # 输出 JSON 供下游处理
 ```
 
 ### 2.2 常见法条引用错误对照表
@@ -397,8 +426,10 @@ examples:
 
 - `references/burden-of-proof-rules.md` — 举证责任规则速查表
 - `references/law-verification-checklist.md` — 法条引用核实清单
+- `references/citation-verification-protocol.md` — **法条引用核验协议（三层校验 + 阻断 + 核验报告格式）**
 - `references/data-verification-lessons.md` — 数据核实教训（赔偿标准、工伤数据等）
 - `references/nuanced-legal-writing.md` — 法律规则表述规范（避免绝对化）
+- `scripts/scan_citations.py` — 抽取文本中的法条引用，生成待核验清单（Markdown / JSON）
 
 ## 事实核验原则
 

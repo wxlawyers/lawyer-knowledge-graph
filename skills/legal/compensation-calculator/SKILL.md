@@ -1,6 +1,6 @@
 ---
 name: compensation-calculator
-description: "交通事故·工伤·劳动纠纷·违法辞退赔偿计算器 — 三大模块合一，支持31省份标准，十级伤残与月工资速算，数据来源权威。"
+description: "交通事故·工伤·劳动纠纷·违法辞退·逾期利息（LPR分段）计算器 — 四大模块合一，支持31省份标准，十级伤残与月工资速算，可生成利息计算表，数据来源权威。"
 version: 2.0.0
 author: 余正洪律师
 license: Apache-2.0
@@ -48,6 +48,12 @@ examples:
 - 违法解除赔偿金（2N）
 - 代通知金（+1）
 - 高工资限制（社平工资3倍，年限最高12年）
+
+### 4. 逾期利息（LPR 分段）
+- 资金占用利息 / 逾期付款利息，按一年期 LPR 分段计算
+- 输出可直接用于起诉状、代理词、立案材料的**利息计算表**
+- 支持约定天数口径（算头不算尾 / 含尾日）、年基数（365 / 360）
+- 民间借贷利率上限（合同成立时一年期 LPR 四倍）的对照提示
 
 ---
 
@@ -126,6 +132,7 @@ python3 compensation_calculator.py
 | 工伤标准 | 《工伤保险条例》、《江苏省实施〈工伤保险条例〉办法》 |
 | 劳动标准 | 《劳动合同法》第47/87条、《实施条例》第27条 |
 | 扶养费标准 | 《最高人民法院关于审理人身损害赔偿案件适用法律若干问题的解释》 |
+| LPR 利率 | 全国银行间同业拆借中心受权公布（每月20日，遇节假日顺延）——**不内置，必须现查现填** |
 
 ---
 
@@ -160,6 +167,40 @@ python3 compensation_calculator.py
 
 高工资限制：月工资>社平3倍时，按3倍计算，年限最高12年
 
+### 逾期利息（LPR 分段）
+
+| 项目 | 公式 |
+|------|------|
+| 单段利息 | 本金 × 该段年利率 ÷ 年基数 × 该段天数 |
+| 利息合计 | 各段利息之和 |
+
+**计算前必须先确认三件事**：
+
+1. **利率分段**：LPR 每次调整都要单独切段，各段适用该段施行日之后的利率，不能整段套用某一期利率；
+2. **天数口径**：明确"算头不算尾"还是"含尾日"，并在计算表里写清楚；
+3. **年基数**：365 还是 360，按当事人约定或裁判口径。
+
+用脚本生成计算表：
+
+```bash
+python3 scripts/lpr_interest.py --principal 1000000 \
+    --start 2023-06-01 --end 2025-03-15 --rates rates.json
+
+python3 scripts/lpr_interest.py ... --inclusive      # 含尾日
+python3 scripts/lpr_interest.py ... --json           # 输出 JSON
+```
+
+利率表格式（**由使用者从权威渠道填写，脚本不内置任何利率数据**）：
+
+```json
+[
+  {"from": "2023-06-20", "rate": 3.55},
+  {"from": "2023-08-21", "rate": 3.45}
+]
+```
+
+> 第一段的 `from` 必须不晚于起算日，否则脚本会直接报错——这样设计是为了防止漏掉早期分段。
+
 ---
 
 ## 注意事项
@@ -169,6 +210,8 @@ python3 compensation_calculator.py
 3. 距退休不足5年按比例支付
 4. 职业病增发40%医疗补助金
 5. 被扶养人需区分未成年人和丧失劳动能力成年人
+6. **LPR 不能凭记忆填**：利率必须现查现填，并记录公布日期与来源；用错一期利率，整段利息就错了
+7. 利息计算表要写明天数口径与年基数，否则开庭时容易被质疑计算方式
 
 ---
 
@@ -184,13 +227,13 @@ python3 compensation_calculator.py
 
 **问题**：使用了错误的标准
 
-**解决方案**：参考 `references/standards.md` 中的准确数据，或询问用户
+**解决方案**：参考 `references/2025-provincial-compensation-data.md` 与 `references/jiangsu-work-injury-standards.md` 中的准确数据，或询问用户
 
 ### 3. 计算逻辑错误
 
 **问题**：公式实现有误
 
-**解决方案**：参考 `references/formulas.md` 中的标准公式
+**解决方案**：对照本文档「计算规则」一节的公式逐项核对，不要凭印象改公式
 
 ### 4. HTML行号问题（GitHub Pages部署）
 
@@ -258,6 +301,7 @@ with open('docs/index.html', 'w') as f:
 
 - `references/jiangsu-work-injury-standards.md` — 江苏工伤赔偿标准详解
 - `references/2025-provincial-compensation-data.md` — 2025年度31省赔偿标准数据（已核实）
+- `scripts/lpr_interest.py` — LPR 分段利息计算器（输出 Markdown 计算表 / JSON）
 
 - [[legal-analysis-pitfalls]] — 法律分析常见错误与教训（本技能开发过程中的血泪教训）
 
